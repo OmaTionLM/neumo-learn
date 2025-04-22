@@ -1,0 +1,48 @@
+/*Sección Enfermedades de los pulmones*/
+import "./Diseases.css";
+import ContentModule from "../../components/ContentModule/ContentModule";
+
+const Disease = () => {
+    return (
+      <>
+        <div className="disease-container">
+          <div id = "diseases" className = "diseases">
+            <ContentModule
+              type="primary"
+              backgroundImage="epoc.png"
+              size={"100vh"}
+            >
+              <a href="/"><h1>EPOC</h1></a>
+            </ContentModule>
+
+
+            <ContentModule
+              type="primary"
+              backgroundImage="asthma.png"
+              size={"100vh"}
+            >
+            <a href="/"><h1>ASMA</h1></a>
+            </ContentModule>
+
+            <ContentModule
+              type="primary"
+              backgroundImage="pneumonia.png" 
+              size={"100vh"}  
+            > 
+            <a href="/ruta pagina asma"><h1>NEUMONÍA</h1></a>
+            </ContentModule>
+
+            <ContentModule    
+            type="primary"
+            backgroundImage="embolism.png"
+            size={"100vh"}
+            >
+            <a href="/*ruta pagina embolia*/"><h1>EMBOLIA PULMONAR</h1></a>
+            </ContentModule>
+          </div>
+        </div> 
+      </>
+    );
+  };
+  
+  export default Disease;
