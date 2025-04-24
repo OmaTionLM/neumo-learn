@@ -5,9 +5,10 @@ import Home from "./pages/home/Home";
 import NotFound from "./pages/not-found/NotFound";
 import Layout from "./layout/Layout";
 import Profile from "./pages/profile/Profile";
-import Disease from "./pages/diseases/diseases";
+import Disease from "./pages/diseases/Diseases";
 import Quiz from "./pages/quiz/Quiz";
 import Explore from "./pages/3D-Explore/Explore";
+
 
 
 createRoot(document.getElementById("root")).render(
