@@ -1,5 +1,5 @@
 /*Sección Enfermedades de los pulmones*/
-import "./Diseases.css";
+import "./diseases.css";
 import ContentModule from "../../components/ContentModule/ContentModule";
 
 const Disease = () => {
