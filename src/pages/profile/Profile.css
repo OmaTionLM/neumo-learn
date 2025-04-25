@@ -1,0 +1,23 @@
+/*Sección Sistema respiratorio*/
+.layout-content.profile {
+    background-image: url('../../assets/profile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+/* 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-width: 100vh;
+} */
+
+.blurred-container {
+  display: flex;
+  background-color: rgba(142, 228, 17, 0.55);
+  flex-direction: column;
+  justify-content: flex-end;
+}
