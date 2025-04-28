@@ -31,12 +31,16 @@
     
 }
 
-.disease:hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform: scale(1.02); /* Agranda ligeramente */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
-    z-index: 0.5;
+.diseases a h1 {
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 5rem;
   }
+  
+  .diseases a h1:hover {
+    transform: scale(1.05);
+    color: rgb(213, 199, 199);
+  }
+
 
 .disease.epoc{
     background-image: url('../../assets/epoc.png');

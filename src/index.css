@@ -3,6 +3,7 @@
   --color-primary-hover: #7ec90e;
   --color-secondary: #AC6CFF;
   --color-tertiary: #332b2c;
+  --color-tertiary-hover: #000000;
   --color-neutral: whitesmoke;
 }
 
@@ -39,12 +40,18 @@ p {
 
 a,
 li {
-  color: var(--color-neutral);
+  color: var(--color-tertiary);
   font-family: "Verdana", serif;
+}
+
+a:hover{
+  color: var(--color-tertiary-hover);
+  font-size: 1.02rem;
 }
 
 a {
   text-decoration: none;
+  transition: font-size 0.3s ease-in-out;
 }
 
 li {

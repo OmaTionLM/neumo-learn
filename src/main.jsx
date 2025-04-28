@@ -10,7 +10,6 @@ import Quiz from "./pages/quiz/Quiz";
 import Explore from "./pages/3D-Explore/Explore";
 
 
-
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Layout>
