@@ -1,5 +1,6 @@
 /*Sección Enfermedades de los pulmones*/
 import "./Diseases.css";
+import { Link } from "react-router-dom";
 import ContentModule from "../../components/ContentModule/ContentModule";
 
 const Disease = () => {
@@ -21,7 +22,7 @@ const Disease = () => {
               backgroundImage="asthma.png"
               size={"100vh"}
             >
-            <a href="/"><h1>ASMA</h1></a>
+           <Link to="/asthma"><h1>ASMA</h1></Link>
             </ContentModule>
 
             <ContentModule
@@ -29,7 +30,7 @@ const Disease = () => {
               backgroundImage="pneumonia.png" 
               size={"100vh"}  
             > 
-            <a href="/ruta pagina asma"><h1>NEUMONÍA</h1></a>
+            <a href="/"><h1>NEUMONÍA</h1></a>
             </ContentModule>
 
             <ContentModule    

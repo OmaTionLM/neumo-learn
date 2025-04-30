@@ -2,8 +2,8 @@
   --color-primary: #8EE411;
   --color-primary-hover: #7ec90e;
   --color-secondary: #AC6CFF;
-  --color-tertiary: #332b2c;
-  --color-tertiary-hover: #000000;
+  --color-sec: #701ADB;
+  --color-tertiary: #000000;
   --color-neutral: whitesmoke;
 }
 
@@ -45,11 +45,10 @@ li {
 }
 
 a:hover{
-  color: var(--color-tertiary-hover);
-  font-size: 1.02rem;
+  color: var(--color-neutral);
 }
 
-a {
+a { 
   text-decoration: none;
   transition: font-size 0.3s ease-in-out;
 }

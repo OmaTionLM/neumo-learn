@@ -14,45 +14,10 @@
   padding: 2rem;
   min-width: 100vh;
 } */
-/* 
+
 .blurred-container {
   display: flex;
   background-color: rgba(142, 228, 17, 0.55);
   flex-direction: column;
   justify-content: flex-end;
-} */
-
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* padding: 2rem; */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.blurred-container {
-  background-color: rgba(142, 228, 17, 0.55);
-  /* padding: 1rem; */
-  border-radius: 10px;
-  text-align: center;
-  width: 100%;
-}
-
-/* Media Queries */
-@media (max-width: 2200px) {
-  .profile-container {
-      /* padding: 1rem; */
-  }
-
-  .blurred-container {
-      /* padding: 1rem; */
-  }
-}
-
-@media (max-width: 2200px) {
-  .blurred-container {
-      font-size: 0.9rem;
-  }
 }

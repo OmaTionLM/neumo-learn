@@ -29,7 +29,7 @@ const Profile = () => {
           <h1>¡Conoce tu sistema respiratorio!</h1>
         </ContentModule>
 
-        <ContentModule type="secondary" backgroundColor="var(--color-secondary)" size="70vh">
+        <ContentModule type="secondary" backgroundColor="var(--color-sec)" size="70vh">
             <h1>Sección 3</h1>
         </ContentModule>
 

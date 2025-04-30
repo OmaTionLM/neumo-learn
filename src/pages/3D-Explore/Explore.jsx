@@ -31,7 +31,7 @@ const Explore = () => {
 
           <ContentModule
             type="primary"
-            backgroundColor="var(--color-secondary)"
+            backgroundColor="var(--color-sec)"
             size={"70vh"}
           >
             <h2>La importancia de la salud de nuestros pulmones</h2>
