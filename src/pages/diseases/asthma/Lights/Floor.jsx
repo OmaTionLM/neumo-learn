@@ -1,4 +1,4 @@
-const Floor = ({ x, y , position}) => {
+const Floor = ({ x, y , position, color}) => {
   // const PATH = useMemo(() => "textures/asthma/floor/silver_" , []);
 
   // const floorTexture = useTexture({
@@ -10,11 +10,13 @@ const Floor = ({ x, y , position}) => {
   // });
 
   return (
-    <mesh rotation-x={-Math.PI / 2} receiveShadow={true} position={position}>
+    <mesh rotation-x={-Math.PI / 2} receiveShadow={true} position={position} color={color}>
 
-      <planeGeometry args={[x, y]} />
-      <meshStandardMaterial color={"gray"} />
+      <circleGeometry args={[x, y]} />
+      <meshStandardMaterial color={color} />
+      <shadowMaterial opacity={0.2} />
     </mesh>
+    
   );
 };
 

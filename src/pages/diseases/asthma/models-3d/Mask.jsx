@@ -1,13 +1,21 @@
 import { useGLTF } from '@react-three/drei';
-import { use, useEffect } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { use, useEffect, useRef } from 'react';
 
 
 const Mask = (props) => {
 
+    const group = useRef();
     const{nodes, materials} = useGLTF("/models-3d/asthma/mask.glb");
 
+    useFrame(() => {
+      if (group.current) {
+        group.current.rotation.y += 0.003;
+      }
+    });
+
     return(
-        <group {...props} dispose={null} scale={[0.1, 0.1, 0.1]} position={[1, 1, 0]} >
+        <group ref={group} {...props} dispose={null} scale={[0.11, 0.1, 0.1]} position={[1, 1, 0]} >
       <mesh
         castShadow
         receiveShadow

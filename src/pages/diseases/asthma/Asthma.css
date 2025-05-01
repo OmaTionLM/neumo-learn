@@ -4,7 +4,7 @@
     justify-content: center;
 } */
 ._container_1tucx_117 canvas {
-  width: 800px;
+  width: 900px;
   height: 420px;
 }
 
@@ -47,10 +47,51 @@
 
 .descripcion-causas li {
   font-size: 1.2rem;
+  font-family: Poppins;
   margin: 17px 0 0 0;
   text-align: justify;
 }
 
+
 .texto-causas {
   width: 100%;
+  font-family: Poppins;
+}
+
+.texto-causas p{
+  font-size: 1.2rem;
+  text-align: justify;
+  margin: 0;
+}
+
+.causas-container h2{
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+/* .asthma-description p{
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-align: justify;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-tertiary);
+  padding: 0 3rem;
+} */
+
+.asthma-description {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+.asthma-description p {
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-align: justify;        
+  max-width: 800px;        
+  margin: 6px auto;             
+  color: var(--color-tertiary);
+  padding: 0 3rem;
 }

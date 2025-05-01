@@ -8,7 +8,8 @@
 
 .blurred-container {
   display: flex;
-  background-color: rgba(142, 228, 17, 0.55);
+  background-color:#8EE411;
+  opacity: 0.8;
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -114,4 +115,88 @@
 
 .button-about-us:hover {
   background-color: var(--color-primary-hover);
+}
+
+.subtitle-profile h2{
+  font-size: 3rem;
+  color: var(--color-neutral);
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.blurred-container h1{
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--color-neutral);
+  margin: 3rem 0 0 0;
+  color: #FFFFFF;
+}
+
+.description-profile p{
+  align-items: center;
+  font-size: 1.5rem;
+  
+}
+
+.titulo-conoce-tu-sr{
+  font-size: 3rem;
+  color: var(--color-neutral);
+  margin: 6rem 0 0 0;
+}
+
+.sistema-respiratorio-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6vw 5vw 0;
+}
+
+.sistema-respiratorio-container img{
+  margin: 0 50px 15px;
+}
+
+.sistema-respiratorio-container p{
+  color: var(--color-tertiary);
+  text-align: center;
+}
+
+.titulo-conoce-tu-sr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0 0 0;
+}
+
+.titulo-conoce-tu-sr h1{
+  font-size: 2rem;
+  color: var(--color-tertiary);
+}
+
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 4rem;
+} 
+
+.button-conoce-tu-sr{
+  width: 10%;
+  height: 40px;
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: var(--color-neutral);
+  color: var(--color-tertiary);
+  border: black 2px solid;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-conoce-tu-sr:hover {
+  background-color: var(--color-tertiary);
+  color: var(--color-neutral);
 }

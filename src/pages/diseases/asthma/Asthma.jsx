@@ -10,7 +10,7 @@ import { Bottle } from "./models-3d/Bottle";
 const Asthma = () => {
   return (
     <div className="asthma-container">
-      <ContentModule type="primary" size={"10vh"}>
+      <ContentModule type="primary" size={"30vh"}>
         <h1
           id="asthma-style"
           style={{
@@ -23,47 +23,37 @@ const Asthma = () => {
         >
           ASMA
         </h1>
-        <p
-          style={{
-            color: "black",
-            fontSize: "1.2rem",
-            fontWeight: 300,
-            justifyContent: "center",
-            textAlign: "justify",
-            fontFamily: "Poppins",
-          }}
-        >
-          El asma es una enfermedad crónica que afecta las vías respiratorias,
+        <div className="asthma-description">
+        <p>
+          El asma es una <strong>enfermedad crónica</strong> que afecta las vías respiratorias,
           causando inflamación y estrechamiento lo que puede producir mayor
-          mucosidad y dificultar la respiración. Se caracteriza por episodios
-          recurrentes de sibilancias(un silbido) al exhalar, tos, falta de aire
-          y opresión en el pecho. Se clasifica en cuatro etapas: intermitente,
+          mucosidad y dificultar la respiración. <br/><br/> Se caracteriza por episodios
+          recurrentes de <strong>sibilancias</strong>(un silbido) al exhalar, <strong>tos, falta de aire
+          y opresión en el pecho</strong>. Se clasifica en cuatro etapas: intermitente, 
           persistente leve, persistente moderada y persistente grave. Aunque no
-          tiene cura, el asma se puede controlar con tratamiento adecuado. El
-          asma es una enfermedad frecuente que varía mucho de un país a otro.
-          Afecta alrededor del 3 al 7 % de la población adulta, siendo más
-          frecuente en edades infantiles. Es una de las más importantes
-          enfermedades crónicas, es decir, de duración prolongada, en niños. Es
-          más frecuente en el sexo masculino en una relación de 2:1, pero al
-          llegar a la pubertad, esta relación tiende a igualarse.
+          tiene cura, el asma se puede controlar con tratamiento adecuado.
         </p>
+        </div>
       </ContentModule>
 
       <ContentModule type="primary" className="asthma-content" size={"50vh"}>
-        <Canvas camera={{ position: [-Math.PI / 30, 3, 3] }} shadows={true}>
+        <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }} shadows={true}>
           <Lights />
           <ambientLight />
           <directionalLight />
           <OrbitControls />
-          <Floor x={6} y={6} />
-          <Mask scale={[1, 1, 1]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
+          <Floor x={3.5} y={25} color={"#8EE411"} />
+          <Mask 
+          scale={[1, 1, 1]} 
+          position={[0, 0, 0]} 
+          rotation={[0, 0, 0]} />
         </Canvas>
       </ContentModule>
 
       <ContentModule
         type="primary"
         backgroundColor="var(--color-sec)"
-        size={"70vh"}
+        size={"80vh"}
       >
         <div className="container">
           <div className="causas-container">
@@ -71,7 +61,7 @@ const Asthma = () => {
             <div className="modelo-texto">
               <div className="modelo3D">
                 <Canvas
-                  camera={{ position: [Math.PI / 90, 1, 3] }}
+                  camera={{ position: [Math.PI / 30, 2, 3] }}
                   shadows={true}
                 >
                   <Lights />
@@ -79,28 +69,32 @@ const Asthma = () => {
                   <directionalLight />
                   <OrbitControls />
                   <Bottle
-                    scale={[0.7, 0.7, 0.7]}
-                    position={[0, -1, 0]}
+                    scale={[1, 1, 1]}
+                    position={[0, -1.8, 0]}
                     rotation={[0, 0, 0]}
                   />
-                  <Floor x={3} y={3} position={[0, -1, 0]} />
+                  <Floor x={2} y={30} position={[0, -1, 0]} color={"white"} />
                 </Canvas>
               </div>
               <div className="descripcion-causas">
                 <ul>
-                  <li>Causa 1</li>
-                  <li>Causa 2</li>
-                  <li>Causa 3</li>
-                  <li>Causa 4</li>
-                  <li>Causa 5</li>
-                  <li>Causa 6</li>
+                  <li>Animales (caspa o pelaje de mascotas)</li>
+                  <li>Ciertos medicamentos <strong>(ácido acetilsalicílico (aspirin)</strong> y otros fármacos antiinflamatorios no esteroides (AINEs)</li>
+                  <li>Cambios en el clima (con mayor frecuencia clima frío)</li>
+                  <li>Químicos en el aire (contaminación) o en los alimentos</li>
+                  <li>Actividad física</li>
+                  <li>Moho</li>
+                  <li>Emociones fuertes (estrés)</li>
+                  <li>Tabaco u otro inhalante que se fuma</li>
                 </ul>
               </div>
             </div>
             <div className="texto-causas">
               <p>
-                Aquí va el texto adicional explicativo que respeta el ancho del
-                contenedor principal.
+              Las sustancias que se encuentran en algunos lugares de trabajo también pueden desencadenar los síntomas de asma, 
+              lo que lleva al asma ocupacional.Los desencadenantes más comunes son el polvo de la madera, el polvo de los granos, la caspa animal, los hongos o los químicos.
+              Muchas personas con asma tienen antecedentes personales o familiares de alergias, como la fiebre del heno (rinitis alérgica) o eccema. 
+              Otros no tienen antecedentes de alergias.
               </p>
             </div>
           </div>

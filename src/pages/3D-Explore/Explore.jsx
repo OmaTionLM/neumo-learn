@@ -34,17 +34,21 @@ const Explore = () => {
             backgroundColor="var(--color-sec)"
             size={"70vh"}
           >
-            <h2>La importancia de la salud de nuestros pulmones</h2>
+            <h2>La importancia de la salud <br/>de nuestros pulmones</h2>
+            <div className="explore-container-text">
             <h3>
-              Los pulmones son esenciales para la vida porque suministran oxígeno
-              a la sangre y eliminan dióxido de carbono. Un sistema respiratorio
+              Los pulmones son esenciales para la vida porque suministran <br/>oxígeno
+              a la sangre y eliminan dióxido de carbono. Un sistema <br/>respiratorio
               sano garantiza:
             </h3>
+            </div>
             <ul>
-              <li>▫️Mejor rendimiento físico y mental. </li>
-              <li>▫️Menor riesgo de enfermedades respiratorias.</li>
-              <li>▫️Mejor calidad de vida y longevidad.</li>
+              <li><strong>Mejor rendimiento</strong> físico y mental. </li>
+              <li><strong>Menor riesgo</strong> de enfermedades respiratorias.</li>
+              <li><strong>Mejor calidad</strong> de vida y longevidad.</li>
             </ul>
+            <h2><br/><br/>Los pulmones llevan oxígeno<br/>
+            a cada célula del cuerpo</h2>
           </ContentModule>
           <ContentModule
             type="primary"
