@@ -17,7 +17,7 @@ footer,
   width: 100%;
   user-select: none;
   overflow-x: hidden;
-  font-family: "Verdana", serif;
+  font-family: "Poppins", serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -35,7 +35,8 @@ h6 {
 span,
 p {
   color: var(--color-tertiary);
-  font-family: "Verdana", serif;
+  font-family: "Poppins", serif;
+  font-size: 1.2rem;
 }
 
 a,
@@ -44,18 +45,13 @@ li {
   font-family: "Verdana", serif;
 }
 
-a:hover{
-  color: var(--color-neutral);
-}
+
 
 a { 
   text-decoration: none;
   transition: font-size 0.3s ease-in-out;
 }
 
-li {
-  list-style-type: none;
-}
 
 button {
   /* display: flex;

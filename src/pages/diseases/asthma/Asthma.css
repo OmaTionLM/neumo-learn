@@ -3,8 +3,54 @@
     align-items: center;
     justify-content: center;
 } */
-._container_1tucx_117 canvas{
-    
-    width: 1000px;
-    height: 400px;
+._container_1tucx_117 canvas {
+  width: 800px;
+  height: 420px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.causas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.modelo-texto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.modelo3D {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.descripcion-causas {
+  width: 40%;
+}
+
+.descripcion-causas ul {
+  list-style-type: disc;
+}
+
+.descripcion-causas li {
+  font-size: 1.2rem;
+  margin: 17px 0 0 0;
+  text-align: justify;
+}
+
+.texto-causas {
+  width: 100%;
 }

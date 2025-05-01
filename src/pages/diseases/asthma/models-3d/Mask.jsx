@@ -7,7 +7,7 @@ const Mask = (props) => {
     const{nodes, materials} = useGLTF("/models-3d/asthma/mask.glb");
 
     return(
-        <group {...props} dispose={null} scale={[0.1, 0.1, 0.1]}>
+        <group {...props} dispose={null} scale={[0.1, 0.1, 0.1]} position={[1, 1, 0]} >
       <mesh
         castShadow
         receiveShadow
