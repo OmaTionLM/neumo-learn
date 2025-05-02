@@ -32,7 +32,7 @@ const Explore = () => {
           <ContentModule
             type="primary"
             backgroundColor="var(--color-sec)"
-            size={"70vh"}
+            size={"90vh"}
           >
             <h2>La importancia de la salud <br/>de nuestros pulmones</h2>
             <div className="explore-container-text">

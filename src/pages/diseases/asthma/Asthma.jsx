@@ -10,7 +10,7 @@ import { Bottle } from "./models-3d/Bottle";
 const Asthma = () => {
   return (
     <div className="asthma-container">
-      <ContentModule type="primary" size={"30vh"}>
+      <ContentModule type="primary" size={"50vh"}>
         <h1
           id="asthma-style"
           style={{
@@ -24,36 +24,35 @@ const Asthma = () => {
           ASMA
         </h1>
         <div className="asthma-description">
-        <p>
-          El asma es una <strong>enfermedad crónica</strong> que afecta las vías respiratorias,
-          causando inflamación y estrechamiento lo que puede producir mayor
-          mucosidad y dificultar la respiración. <br/><br/> Se caracteriza por episodios
-          recurrentes de <strong>sibilancias</strong>(un silbido) al exhalar, <strong>tos, falta de aire
-          y opresión en el pecho</strong>. Se clasifica en cuatro etapas: intermitente, 
-          persistente leve, persistente moderada y persistente grave. Aunque no
-          tiene cura, el asma se puede controlar con tratamiento adecuado.
-        </p>
+          <p>
+            El asma es una <strong>enfermedad crónica</strong> que afecta las
+            vías respiratorias, causando inflamación y estrechamiento lo que
+            puede producir mayor mucosidad y dificultar la respiración. <br />
+            <br /> Se caracteriza por episodios recurrentes de{" "}
+            <strong>sibilancias</strong>(un silbido) al exhalar,{" "}
+            <strong>tos, falta de aire y opresión en el pecho</strong>. Se
+            clasifica en cuatro etapas: intermitente, persistente leve,
+            persistente moderada y persistente grave. Aunque no tiene cura, el
+            asma se puede controlar con tratamiento adecuado.
+          </p>
         </div>
       </ContentModule>
 
-      <ContentModule type="primary" className="asthma-content" size={"50vh"}>
+      <div className="modelo3d-asma">
         <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }} shadows={true}>
           <Lights />
           <ambientLight />
           <directionalLight />
           <OrbitControls />
-          <Floor x={3.5} y={25} color={"#8EE411"} />
-          <Mask 
-          scale={[1, 1, 1]} 
-          position={[0, 0, 0]} 
-          rotation={[0, 0, 0]} />
+          <Floor x={25} y={25} color={"#8EE411"} />
+          <Mask scale={[3, 3, 3]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
         </Canvas>
-      </ContentModule>
+      </div>
 
       <ContentModule
         type="primary"
         backgroundColor="var(--color-sec)"
-        size={"80vh"}
+        size={"100vh"}
       >
         <div className="container">
           <div className="causas-container">
@@ -70,18 +69,24 @@ const Asthma = () => {
                   <OrbitControls />
                   <Bottle
                     scale={[1, 1, 1]}
-                    position={[0, -1.8, 0]}
+                    position={[0, -2, 0]}
                     rotation={[0, 0, 0]}
                   />
-                  <Floor x={2} y={30} position={[0, -1, 0]} color={"white"} />
+                  <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />
                 </Canvas>
               </div>
               <div className="descripcion-causas">
                 <ul>
                   <li>Animales (caspa o pelaje de mascotas)</li>
-                  <li>Ciertos medicamentos <strong>(ácido acetilsalicílico (aspirin)</strong> y otros fármacos antiinflamatorios no esteroides (AINEs)</li>
+                  <li>
+                    Ciertos medicamentos{" "}
+                    <strong>(ácido acetilsalicílico (aspirin)</strong> y otros
+                    fármacos antiinflamatorios no esteroides (AINEs)
+                  </li>
                   <li>Cambios en el clima (con mayor frecuencia clima frío)</li>
-                  <li>Químicos en el aire (contaminación) o en los alimentos</li>
+                  <li>
+                    Químicos en el aire (contaminación) o en los alimentos
+                  </li>
                   <li>Actividad física</li>
                   <li>Moho</li>
                   <li>Emociones fuertes (estrés)</li>
@@ -91,10 +96,14 @@ const Asthma = () => {
             </div>
             <div className="texto-causas">
               <p>
-              Las sustancias que se encuentran en algunos lugares de trabajo también pueden desencadenar los síntomas de asma, 
-              lo que lleva al asma ocupacional.Los desencadenantes más comunes son el polvo de la madera, el polvo de los granos, la caspa animal, los hongos o los químicos.
-              Muchas personas con asma tienen antecedentes personales o familiares de alergias, como la fiebre del heno (rinitis alérgica) o eccema. 
-              Otros no tienen antecedentes de alergias.
+                Las sustancias que se encuentran en algunos lugares de trabajo
+                también pueden desencadenar los síntomas de asma, lo que lleva
+                al asma ocupacional.Los desencadenantes más comunes son el polvo
+                de la madera, el polvo de los granos, la caspa animal, los
+                hongos o los químicos. Muchas personas con asma tienen
+                antecedentes personales o familiares de alergias, como la fiebre
+                del heno (rinitis alérgica) o eccema. Otros no tienen
+                antecedentes de alergias.
               </p>
             </div>
           </div>

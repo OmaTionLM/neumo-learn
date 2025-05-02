@@ -1,0 +1,36 @@
+.about-us-container {
+  background-image: url("./about-us/biblioteca.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 136px);
+}
+
+.texto-container-about-us {
+  background-color: rgba(255, 255, 255, 0.87);
+  padding: 40px;
+  text-align: center;
+  font-family: sans-serif;
+  width: 100%;
+}
+
+.titulo-about-us {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.about-us-container h1 {
+  font-size: 3rem;
+  color: var(--color-neutral);
+  margin: 0 0 4vh 0;
+}
+
+.texto-container-about-us p {
+  font-size: 1.7rem;
+}

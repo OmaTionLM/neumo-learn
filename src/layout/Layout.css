@@ -17,14 +17,6 @@
 
   }
 
-  .layout-content.profile {
-    background-image: url('../assets/profile.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-size: 100vh;
-    flex: 1;
-  } 
-
   .layout-content.diseases {
     display: flex;
     flex-direction: column;

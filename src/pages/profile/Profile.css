@@ -1,22 +1,37 @@
 /*Sección Sistema respiratorio*/
-.layout-content.profile {
-  background-image: url("../../assets/profile.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right;
+.void-banner{
+  height: 30vh;
 }
 
 .blurred-container {
+  position: absolute;
+  bottom: 0; 
+  width: 100%;
+  background-color: rgba(142, 228, 17, 0.8); 
   display: flex;
-  background-color:#8EE411;
-  opacity: 0.8;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 2; 
+}
+
+.banner-image{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .about-us-wrapper {
   position: relative;
   width: 100%;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,51 +131,30 @@
 .button-about-us:hover {
   background-color: var(--color-primary-hover);
 }
-
-.subtitle-profile h2{
-  font-size: 3rem;
-  color: var(--color-neutral);
-  margin: 0;
-  color: #FFFFFF;
-}
-
-.blurred-container h1{
-  font-size: 4rem;
-  font-weight: 300;
-  color: var(--color-neutral);
-  margin: 3rem 0 0 0;
-  color: #FFFFFF;
-}
-
-.description-profile p{
-  align-items: center;
-  font-size: 1.5rem;
-  
-}
-
-.titulo-conoce-tu-sr{
-  font-size: 3rem;
-  color: var(--color-neutral);
-  margin: 6rem 0 0 0;
-}
-
-.sistema-respiratorio-container{
+.subtitle-profile{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 6vw 5vw 0;
-}
-
-.sistema-respiratorio-container img{
-  margin: 0 50px 15px;
-}
-
-.sistema-respiratorio-container p{
-  color: var(--color-tertiary);
   text-align: center;
 }
 
-.titulo-conoce-tu-sr{
+.subtitle-profile h2 {
+  font-size: 2.2rem;
+  color: var(--color-neutral);
+  margin: 0;
+}
+
+.blurred-container h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.6rem;
+  font-weight: 300;
+  color: var(--color-neutral);
+}
+.description-profile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,21 +162,57 @@
   margin: 0 0 0 0;
 }
 
-.titulo-conoce-tu-sr h1{
-  font-size: 2rem;
-  color: var(--color-tertiary);
+.description-profile p {
+  font-size: 1.15rem;
+  color: var(--color-neutral);
+  text-align: center;
+  padding: 0 0 2rem;
 }
 
+.titulo-conoce-tu-sr {
+  font-size: 3rem;
+  color: var(--color-neutral);
+  margin: 6rem 0 0 0;
+}
 
-.button-container{
+.sistema-respiratorio-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6vw 5vw 0;
+}
+
+.sistema-respiratorio-container img {
+  margin: 0 50px 15px;
+}
+
+.sistema-respiratorio-container p {
+  color: var(--color-tertiary);
+  text-align: center;
+}
+
+.titulo-conoce-tu-sr {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 4rem;
-} 
+  margin: 0 0 0 0;
+}
 
-.button-conoce-tu-sr{
+.titulo-conoce-tu-sr h1 {
+  font-size: 2rem;
+  color: var(--color-tertiary);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.button-conoce-tu-sr {
   width: 10%;
   height: 40px;
   margin-top: 1rem;

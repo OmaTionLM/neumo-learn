@@ -32,11 +32,16 @@
 
 .modelo3D {
   width: 40%;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.modelo3d-asma {
+  width: 100%;
+  height: 50vh;
+}
 .descripcion-causas {
   width: 40%;
 }
@@ -52,23 +57,23 @@
   text-align: justify;
 }
 
-
 .texto-causas {
   width: 100%;
   font-family: Poppins;
 }
 
-.texto-causas p{
+.texto-causas p {
   font-size: 1.2rem;
   text-align: justify;
   margin: 0;
 }
 
-.causas-container h2{
+.causas-container h2 {
   font-family: Poppins;
   font-weight: 500;
   font-size: 3rem;
   letter-spacing: 2px;
+  padding: 15px 0 0 0;
 }
 
 /* .asthma-description p{
@@ -89,9 +94,9 @@
 .asthma-description p {
   font-family: Poppins;
   font-size: 1.2rem;
-  text-align: justify;        
-  max-width: 800px;        
-  margin: 6px auto;             
+  text-align: justify;
+  max-width: 800px;
+  margin: 6px auto;
   color: var(--color-tertiary);
   padding: 0 3rem;
 }

@@ -1,7 +1,9 @@
 import { NavLink } from "react-router";
 import "./Header.css";
+import useAuthStore from "../../stores/use-auth-store";
 
 const Header = () => {
+  const { logout } = useAuthStore();
   return (
     <header>
       <nav>
@@ -23,7 +25,7 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="/header-right">
-          <NavLink to="/" end>
+          <NavLink to="/" onClick={logout} end>
           Salir
           </NavLink>
         </div>
