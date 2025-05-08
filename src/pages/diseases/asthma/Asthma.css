@@ -1,0 +1,106 @@
+/* ._container_1tucx_117 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.asthma-container {
+  padding-top: 65px;
+}
+
+._container_1tucx_117 canvas {
+  width: 900px;
+  height: 420px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.causas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.modelo-texto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.modelo3D {
+  width: 40%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelo3d-asma {
+  width: 100%;
+  height: 50vh;
+}
+.descripcion-causas {
+  width: 40%;
+}
+
+.descripcion-causas ul {
+  list-style-type: disc;
+}
+
+.descripcion-causas li {
+  font-size: 1.2rem;
+  font-family: Poppins;
+  margin: 17px 0 0 0;
+  text-align: justify;
+}
+
+.texto-causas {
+  width: 100%;
+  font-family: Poppins;
+}
+
+.texto-causas p {
+  font-size: 1.2rem;
+  text-align: justify;
+  margin: 0;
+}
+
+.causas-container h2 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  padding: 15px 0 0 0;
+}
+
+/* .asthma-description p{
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-align: justify;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-tertiary);
+  padding: 0 3rem;
+} */
+
+.asthma-description {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+.asthma-description p {
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-align: justify;
+  max-width: 800px;
+  margin: 6px auto;
+  color: var(--color-tertiary);
+  padding: 0 3rem;
+}

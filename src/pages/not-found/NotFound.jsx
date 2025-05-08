@@ -1,7 +1,12 @@
-import './NotFound.css'
+import "./NotFound.css";
 
 const NotFound = () => {
-    return <div>NotFound</div>
-}
+  return (
+    <>
+      <h1>¡Ups no encontramos lo que buscabas!</h1>
+      <span>404: Página no encontrada</span>
+    </>
+  );
+};
 
-export default NotFound
+export default NotFound;
