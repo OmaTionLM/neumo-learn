@@ -54,11 +54,11 @@ const Asthma = () => {
         backgroundColor="var(--color-sec)"
         size={"100vh"}
       >
-        <div className="container">
-          <div className="causas-container">
+        <div className="asthma-container">
+          <div className="asthma-causas-container">
             <h2>Causas</h2>
-            <div className="modelo-texto">
-              <div className="modelo3D">
+            <div className="asthma-modelo-texto">
+              <div className="asthma-modelo3D">
                 <Canvas
                   camera={{ position: [Math.PI / 30, 2, 3] }}
                   shadows={true}
@@ -75,7 +75,7 @@ const Asthma = () => {
                   <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />
                 </Canvas>
               </div>
-              <div className="descripcion-causas">
+              <div className="asthma-descripcion-causas">
                 <ul>
                   <li>Animales (caspa o pelaje de mascotas)</li>
                   <li>
@@ -94,7 +94,7 @@ const Asthma = () => {
                 </ul>
               </div>
             </div>
-            <div className="texto-causas">
+            <div className="asthma-texto-causas">
               <p>
                 Las sustancias que se encuentran en algunos lugares de trabajo
                 también pueden desencadenar los síntomas de asma, lo que lleva
