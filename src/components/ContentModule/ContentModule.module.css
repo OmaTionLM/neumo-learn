@@ -1,0 +1,95 @@
+
+
+.primary:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.primary h1 {
+    color: var(--color-neutral);
+    font-family: "Verdana";
+    font-size: 4rem;
+    text-align: center;
+}
+
+.primary h2 {
+    color: var(--color-neutral);
+    font-family: "Verdana", serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.primary h3 {
+    color: var(--color-neutral);
+    font-family: "Verdana", serif;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.primary p {
+    color: var(--color-neutral);
+    font-family: "Verdana";
+    font-size: 2rem;
+    text-align: center;
+    padding: 3rem;
+    
+}
+
+.primary a {
+    color: var(--color-neutral);
+    font-family: "Verdana", serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.primary li{
+    color: var(--color-neutral);
+    font-family: "Verdana", serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+.secondary {
+    /* background-color: var(--color-neutral); */
+    color: var(--color-neutral);
+    
+}
+
+.container.secondary{
+    display: flex;
+}
+
+.secondary h1 {
+    color: var(--color-tertiary);
+    font-family: "Verdana", serif;
+    font-size: 2rem;
+    text-align: center;
+   
+}
+
+.tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-neutral);
+}
+
+/*No cambiar*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure it covers 100% of the width */
+    background-size: cover; /* Make the background image cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+    max-height: 50vh;
+}
+
+/*No cambiar*/
+.content {
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center the container */
+}

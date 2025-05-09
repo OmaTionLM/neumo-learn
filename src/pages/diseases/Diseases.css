@@ -1,0 +1,59 @@
+/*Sección Enfermedades de los pulmones*/
+
+.layout-content.diseases {
+    background-color: var(--color-secondary);
+    
+
+}
+
+.disease-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.8rem;
+    width: 100%; 
+    min-height: 100vh;
+    margin: 0%;
+    display: grid;
+}
+
+
+.disease{
+    width: 100vh;
+    display: flex;
+    padding: 11rem;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    font-family: "Verdana Black", serif;
+    font-size: 3rem;
+    color: var(--color-neutral);
+    
+}
+
+.diseases a h1 {
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 5rem;
+  }
+  
+  .diseases a h1:hover {
+    transform: scale(1.05);
+    color: rgb(213, 199, 199);
+  }
+
+
+.disease.epoc{
+    background-image: url('../../assets/epoc.png');
+}
+
+.disease.asthma{
+    background-image: url('../../assets/asthma.png');
+}
+
+.disease.pneumonia{
+    background-image: url('../../assets/pneumonia.png');
+}
+
+.disease.embolism{
+    background-image: url('../../assets/embolism.png');
+}
