@@ -10,7 +10,7 @@ import Asthma from "./pages/diseases/asthma/Asthma";
 import Quiz from "./pages/quiz/Quiz";
 import Explore from "./pages/3D-Explore/Explore";
 import AboutUs from "./pages/about-us/about-us";
-
+import Pneumonia from "./pages/diseases/pneumonia/Pneumonia";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -23,8 +23,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/diseases" element={<Disease />} />
         <Route path="/explore_en_3D" element={<Explore />} />
         <Route path="/asthma" element={<Asthma />} />
+        <Route path="/pneumonia" element={<Pneumonia />} />
         <Route path="/about-us" element={<AboutUs />} />
-
       </Routes>
     </Layout>
   </BrowserRouter>
