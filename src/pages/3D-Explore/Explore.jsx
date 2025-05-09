@@ -2,7 +2,7 @@
 import ContentModule from "../../components/ContentModule/ContentModule";
 import WaveImage from "../../assets/wave.png";
 import three from "../../assets/explore3d.png";
-import "./Explore.css";
+
 
 const Explore = () => {
     return (
