@@ -10,7 +10,6 @@ const Layout = ({ children }) => {
 
     const getPageClass = () => {
       if (location.pathname === "/") return "layout-content home";
-      if (location.pathname === "/perfil") return "layout-content profile";
       if (location.pathname === "/quiz") return "layout-content quiz";
       if (location.pathname === "/diseases") return "layout-content diseases";
       if (location.pathname === "/3D-explore") return "layout-content explore";

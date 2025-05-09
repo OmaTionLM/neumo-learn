@@ -2,7 +2,8 @@
   --color-primary: #8EE411;
   --color-primary-hover: #7ec90e;
   --color-secondary: #AC6CFF;
-  --color-tertiary: #332b2c;
+  --color-sec: #701ADB;
+  --color-tertiary: #000000;
   --color-neutral: whitesmoke;
 }
 
@@ -14,9 +15,10 @@ footer,
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
   user-select: none;
   overflow-x: hidden;
-  font-family: "Verdana", serif;
+  font-family: "Poppins", serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -34,22 +36,23 @@ h6 {
 span,
 p {
   color: var(--color-tertiary);
-  font-family: "Verdana", serif;
+  font-family: "Poppins", serif;
+  font-size: 1.2rem;
 }
 
 a,
 li {
-  color: var(--color-neutral);
+  color: var(--color-tertiary);
   font-family: "Verdana", serif;
 }
 
-a {
+
+
+a { 
   text-decoration: none;
+  transition: font-size 0.3s ease-in-out;
 }
 
-li {
-  list-style-type: none;
-}
 
 button {
   /* display: flex;

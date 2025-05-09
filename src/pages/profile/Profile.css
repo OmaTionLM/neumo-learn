@@ -1,23 +1,232 @@
 /*Sección Sistema respiratorio*/
-.layout-content.profile {
-    background-image: url('../../assets/profile.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: right;
-  }
-/* 
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  min-width: 100vh;
-} */
+.void-banner{
+  height: 30vh;
+}
 
 .blurred-container {
+  position: absolute;
+  bottom: 0; 
+  width: 100%;
+  background-color: rgba(142, 228, 17, 0.8); 
   display: flex;
-  background-color: rgba(142, 228, 17, 0.55);
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 2; 
+}
+
+.banner-image{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.about-us-wrapper {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-about-us {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.title-about-us h1 {
+  font-size: 4rem;
+  color: var(--color-neutral);
+  margin: 0;
+}
+
+.titulo-prevencion-container h1 {
+  color: var(--color-neutral);
+  font-size: 2.5rem;
+}
+
+.prevencion-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bacteria {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checklist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.prevencion-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4vw 19vw 0;
+}
+
+.prevencion-container img {
+  margin: 0 0 15px;
+}
+
+.prevencion-container p {
+  color: var(--color-neutral);
+  text-align: center;
+}
+
+.checklist img {
+  margin: 0 0 15px;
+}
+
+.about-us {
+  display: flex;
+  width: 100%;
+}
+
+.image-container {
+  flex: 1;
+  height: 520px;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.button-about-us {
+  width: 80%;
+  height: 80px;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 50px;
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  border: none;
+  cursor: pointer;
+}
+
+.button-about-us:hover {
+  background-color: var(--color-primary-hover);
+}
+.subtitle-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.subtitle-profile h2 {
+  font-size: 2.2rem;
+  color: var(--color-neutral);
+  margin: 0;
+}
+
+.blurred-container h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.6rem;
+  font-weight: 300;
+  color: var(--color-neutral);
+}
+.description-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0 0 0;
+}
+
+.description-profile p {
+  font-size: 1.15rem;
+  color: var(--color-neutral);
+  text-align: center;
+  padding: 0 0 2rem;
+}
+
+.titulo-conoce-tu-sr {
+  font-size: 3rem;
+  color: var(--color-neutral);
+  margin: 6rem 0 0 0;
+}
+
+.sistema-respiratorio-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6vw 5vw 0;
+}
+
+.sistema-respiratorio-container img {
+  margin: 0 50px 15px;
+}
+
+.sistema-respiratorio-container p {
+  color: var(--color-tertiary);
+  text-align: center;
+}
+
+.titulo-conoce-tu-sr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0 0 0;
+}
+
+.titulo-conoce-tu-sr h1 {
+  font-size: 2rem;
+  color: var(--color-tertiary);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.button-conoce-tu-sr {
+  width: 10%;
+  height: 40px;
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: var(--color-neutral);
+  color: var(--color-tertiary);
+  border: black 2px solid;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-conoce-tu-sr:hover {
+  background-color: var(--color-tertiary);
+  color: var(--color-neutral);
 }
