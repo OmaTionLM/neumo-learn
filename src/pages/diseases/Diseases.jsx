@@ -13,7 +13,7 @@ const Disease = () => {
               backgroundImage="epoc.png"
               size={"100vh"}
             >
-              <a href="/epoc"><h1>EPOC</h1></a>
+              <Link to="/epoc"><h1>EPOC</h1></Link>
             </ContentModule>
 
 
@@ -22,23 +22,23 @@ const Disease = () => {
               backgroundImage="asthma.png"
               size={"100vh"}
             >
-           <Link to="/asthma"><h1>ASMA</h1></Link>
+              <Link to="/asthma"><h1>ASMA</h1></Link>
             </ContentModule>
 
             <ContentModule
               type="primary"
               backgroundImage="pneumonia.png" 
-              size={"100vh"}  
+              size={"100vh"}
             > 
-            <a href="/pneumonia"><h1>NEUMONÍA</h1></a>
+              <Link to="/pneumonia"><h1>NEUMONÍA</h1></Link>
             </ContentModule>
 
-            <ContentModule    
-            type="primary"
-            backgroundImage="embolism.png"
-            size={"100vh"}
+            <ContentModule
+              type="primary"
+              backgroundImage="embolism.png"
+              size={"100vh"}
             >
-            <a href="/embolism"><h1>EMBOLIA PULMONAR</h1></a>
+              <Link to="/embolism"><h1>EMBOLIA PULMONAR</h1></Link>
             </ContentModule>
           </div>
         </div> 
