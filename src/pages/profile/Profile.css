@@ -1,4 +1,11 @@
 /*Sección Sistema respiratorio*/
+.layout{
+  display:grid;
+  grid-template-rows: auto 1fr auto;
+  flex-direction: column;
+  width: 100%;
+}
+
 .void-banner{
   height: 30vh;
 }
@@ -31,7 +38,6 @@
 .about-us-wrapper {
   position: relative;
   width: 100%;
-  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;

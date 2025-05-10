@@ -1,94 +1,57 @@
-/* ._container_1tucx_117 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+
 ._container_1tucx_117 canvas {
   width: 900px;
   height: 420px;
 }
 
-.container {
+.asthma-container-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
-.causas-container {
+.asthma-description{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(99, 18, 97, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.modelo-texto {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-.modelo3D {
-  width: 40%;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modelo3d-asma {
-  width: 100%;
-  height: 50vh;
-}
-.descripcion-causas {
-  width: 40%;
-}
-
-.descripcion-causas ul {
-  list-style-type: disc;
-}
-
-.descripcion-causas li {
-  font-size: 1.2rem;
-  font-family: Poppins;
-  margin: 17px 0 0 0;
-  text-align: justify;
-}
-
-.texto-causas {
-  width: 100%;
-  font-family: Poppins;
-}
-
-.texto-causas p {
-  font-size: 1.2rem;
-  text-align: justify;
-  margin: 0;
-}
-
-.causas-container h2 {
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 3rem;
+.asthma-tittle h1{
+color: #333;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   letter-spacing: 2px;
-  padding: 15px 0 0 0;
+  margin: 16px 0 25px 0;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(45deg, #333, #7b1fa2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* .asthma-description p{
-  font-family: Poppins;
-  font-size: 1.2rem;
-  text-align: justify;
+.data-engine{
+  display: flex;
   justify-content: center;
-  margin: 0;
-  color: var(--color-tertiary);
-  padding: 0 3rem;
-} */
-
+  align-items: center;
+  width: 50%;
+  height: 50vh;
+}
 .asthma-description {
   display: flex;
-  justify-content: center; /* Centra horizontalmente el contenido */
+  justify-content: center; 
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(99, 18, 97, 0.2);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .asthma-description p {
@@ -98,5 +61,200 @@
   max-width: 800px;
   margin: 6px auto;
   color: var(--color-tertiary);
-  padding: 0 3rem;
+  padding: 0 2rem;
+  
+}
+
+/*Caja asma*/
+.asthma-description p{
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  position: relative;
+  z-index: 1;
+  border-left: 3px solid #7b1fa2;
+  font-size: 1.2rem;
+}
+
+.asthma-causas-container {
+
+  align-items: center;
+  width: 80%;
+}
+
+.asthma-modelo-texto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  
+  
+}
+
+.asthma-modelo3D {
+  width: 70%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelo3d-asthma {
+  width: 50%;
+  height: 50vh;
+}
+
+
+/* .asthma-descripcion-causas {
+  width: 40%;
+} */
+
+
+.asthma-container-causas-tratamiento{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;;
+}
+
+.asthma-descripcion-causas li {
+  font-size: 1.0rem;
+  font-family: Poppins;
+  margin: 17px 0 0 0;
+  text-align: justify;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--color-tertiary);
+  padding: 1px;
+  
+}
+
+/* .asthma-texto-causas {
+  width: 100%;
+  font-family: Poppins;
+  
+} */
+
+/* .asthma-texto-causas p {
+  font-size: 1.0em;
+  text-align: justify;
+  margin: 35px 0 0 0;
+  display: flex;
+  justify-content: center; 
+  padding: 20px;
+  line-height: 1.5;
+  
+} */
+
+
+/*Caja Causas*/
+.lista-causas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  line-height: 1.6;
+  margin-top: 30px;
+  background-color: rgb(254, 254, 254);
+  align-items: center;
+}
+
+.tittle-causas-asthma{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tittle-causas-asthma h2 {
+  width: 100%;
+  font-family: Verdana;
+  padding : 0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  margin: 0 0 30px 0;
+  color: #333;
+  border-bottom:solid 2px #4b9cd3;
+}
+
+.asthma-tratamiento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.lista-causas
+ {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 30px;
+  padding: 25px 30px 25px 45px;
+  width: 700px;
+  height: 700px;
+  
+}
+
+.asthma-tratamiento {
+   background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 30px;
+  padding: 25px 30px 25px 45px;
+  width: 700px;
+  height: 700px;
+}
+
+
+.asthma-container-causas-tratamiento {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px 0;
+  
+}
+
+.asthma-tratamiento li{
+  font-size: 1.0rem;
+  font-family: Poppins;
+  margin: 17px 0 0 0;
+  text-align: justify;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--color-tertiary);
+  padding: 1px;
+  
+}
+
+.tratamiento-tittle-asthma{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tratamiento-tittle-asthma h2 {
+  width: 100%;
+  font-family: Verdana;
+  padding : 0 0 5px 0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  margin: 0 0 30px 0;
+  color:#333;
+  border-bottom:solid 2px #4b9cd3;
+  
+}
+
+.asthma-modelo3D-tratamiento{
+  height: 25vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+ 
 }
