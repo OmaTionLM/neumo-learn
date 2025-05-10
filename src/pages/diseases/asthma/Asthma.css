@@ -161,7 +161,14 @@ color: #333;
   align-items: center;
 }
 
+.tittle-causas-asthma{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .tittle-causas-asthma h2 {
+  width: 100%;
   font-family: Verdana;
   padding : 0;
   font-weight: 600;
@@ -224,7 +231,14 @@ color: #333;
   
 }
 
+.tratamiento-tittle-asthma{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .tratamiento-tittle-asthma h2 {
+  width: 100%;
   font-family: Verdana;
   padding : 0 0 5px 0;
   font-weight: 600;
