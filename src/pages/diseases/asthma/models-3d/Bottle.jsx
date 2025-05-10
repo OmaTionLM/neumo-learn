@@ -7,7 +7,7 @@ export function Bottle(props) {
   const { nodes, materials, animations } = useGLTF('/models-3d/asthma/bottle.glb')
   const { actions } = useAnimations(animations, group)
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} scale={[1.4, 1.2, 1.3]}>
       <group name="Scene">
         <group name="Armature">
           <mesh
