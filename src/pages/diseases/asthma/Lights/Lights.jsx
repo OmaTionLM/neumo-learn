@@ -35,12 +35,12 @@ const Lights = () => {
             penumbra={1}
          />
 
-
+*/}
         <pointLight 
             color={"green"} 
             position={[0, 2, -4]} 
-            intensity={10} 
-        /> */}
+            intensity={20} 
+        /> 
 
         <ambientLight 
             intensity={0.5} 
@@ -52,7 +52,7 @@ const Lights = () => {
         <directionalLight
             ref={directionalLightRef} 
             position={[0, 5, 5]} 
-            intensity={1.2} 
+            intensity={2.2} 
             color={"white"} 
             castShadow={true} 
         />
