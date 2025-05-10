@@ -1,5 +1,5 @@
 .about-us-container {
-  background-image: url("./about-us/campus.jpg");
+  background-image: url("/about-us/campus.jpg");
   background-size: cover;
   background-position: center;
   display: flex;

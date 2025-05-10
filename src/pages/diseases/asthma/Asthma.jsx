@@ -46,7 +46,7 @@ const Asthma = () => {
         type="primary"
         // backgroundColor={"var(--color-sec)"}
        backgroundColor= "#7b1fa2"
-        size={"90dvh"}
+        size={"100dvh"}
       >
         <div className="asthma-container-causas-tratamiento">
          
