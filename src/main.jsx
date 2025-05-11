@@ -11,6 +11,7 @@ import Quiz from "./pages/quiz/Quiz";
 import Explore from "./pages/3D-Explore/Explore";
 import AboutUs from "./pages/about-us/about-us";
 import Pneumonia from "./pages/diseases/pneumonia/Pneumonia";
+import Epoc from "./pages/diseases/epoc/Epoc";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/asthma" element={<Asthma />} />
         <Route path="/pneumonia" element={<Pneumonia />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/epoc" element={<Epoc />} />
       </Routes>
     </Layout>
   </BrowserRouter>

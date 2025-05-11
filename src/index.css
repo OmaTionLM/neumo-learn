@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --color-primary: #8EE411;
   --color-primary-hover: #7ec90e;
@@ -186,3 +187,61 @@ button {
 button:hover {
   background-color: var(--color-primary-hover);
 }
+=======
+:root {
+  --color-primary: #8EE411;
+  --color-primary-hover: #7ec90e;
+  --color-secondary: #AC6CFF;
+  --color-sec: #701ADB;
+  --color-tertiary: #000000;
+  --color-neutral: whitesmoke;
+}
+
+html,
+body,
+header,
+/* footer, */
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  overflow-x: hidden;
+  font-family: "Poppins", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+  font-family: "Verdana", serif;
+}
+
+span,
+p {
+  color: var(--color-tertiary);
+  font-family: "Poppins", serif;
+  font-size: 1.2rem;
+}
+
+a,
+li {
+  color: var(--color-tertiary);
+  font-family: "Verdana", serif;
+}
+
+
+
+a { 
+  text-decoration: none;
+  transition: font-size 0.3s ease-in-out;
+}
+
+
+>>>>>>> origin/develop
