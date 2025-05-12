@@ -38,7 +38,7 @@ const Disease = () => {
               backgroundImage="embolism.png"
               size={"100vh"}
             >
-              <Link to="/embolism"><h1>EMBOLIA PULMONAR</h1></Link>
+              <Link to="/embolia"><h1>EMBOLIA PULMONAR</h1></Link>
             </ContentModule>
           </div>
         </div> 
