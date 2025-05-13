@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.epoc-section {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.epoc-header {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.epoc-title {
+  font-family: 'Prompt', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.epoc-description {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.epoc-model {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Estilo para el texto de hover sobre el modelo */
+.hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  font-family: 'Prompt', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-text.show {
+  opacity: 1; /* El texto solo aparece cuando el mouse está sobre el modelo */
+}
+
+.info-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.epoc-info-panel {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 25%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sintomasEPOC {
+  background-color: rgba(255, 69, 0, 0.8);
+}
+
+.tratamientosEPOC {
+  background-color: rgba(34, 193, 195, 0.8);
+}
+
+.menu-panel {
+  position: absolute;
+  top: 20%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-panel button {
+  background-color: #38b000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-panel button:hover {
+  background-color: #2d8600;
+}
+
+.info-sections {
+  width: 100%;
+  font-family: 'Proxima Nova', sans-serif;
+  height: 100vh; /* Ocupa toda la ventana */
+  padding: 2rem;
+  background-color: var(--color-primary);
+  display: flex;
+  gap: 2rem;
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+}
+
+.info-list {
+  text-align: left;
+  list-style-type: disc;
+  padding-left: 2rem;
+  max-width: 600px;
+  font-size: 1.4rem;
+  line-height: 1.9;  
+}
+
+.vertical-title {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  padding-right: 1rem;
+  border-right: 3px solid #e0fce4;
+}
+
+
+.treatment-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  box-sizing:border-box;
+}
+
+.treatment-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.treatment-header h1 {
+  color: black;
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Proxima Nova', sans-serif;
+  margin: 0;
+}
+
+.treatment-content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.treatment-content ul {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+.treatment-content li {
+  flex: 1;
+  font-family: 'Proxima Nova', sans-serif;
+  background-color: var(--color-sec); /* verde */
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.treatment-content li:hover {
+  transform: scale(1.03);
+}
+
+.prevention-section {
+  background-color: white;
+  padding: 4rem 2rem;
+  text-align: left;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prevention-title {
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #000;
+  align-self: flex-start;
+}
+
+.prevention-text {
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #333;
+  text-align: left;
+}
+
+.video-wrapper {
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.video-player {
+  width: 100%;
+  height: auto;
+  border: none;
+  display: block;
+}
+
+.visual-section-green {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  background-color: var(--color-primary);
+  padding: 1rem;
+}
+
+.model-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh; 
+}
+
+.text-box {
+  flex: 1;
+  margin-right: 2rem; /* Espacio entre el texto y el modelo */
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8); /* Fondo ligeramente transparente */
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.model-container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.text-box p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .epoc-info-panel {
+    width: 90%;
+  }
+  .epoc-model {
+    height: 300px;
+  }
+}
+
