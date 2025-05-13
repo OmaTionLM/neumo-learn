@@ -88,7 +88,7 @@ const EPOC = () => {
       </section>
 
       {/* Sección de síntomas */}
-      <section id="sintomas" className="info-section">
+      <section id="sintomasEpoc" className="info-sections">
         <div className="vertical-title">SÍNTOMAS</div>
         <ul className="info-list">
           <li>Dificultad para respirar (disnea), especialmente durante el ejercicio.</li>
@@ -102,7 +102,7 @@ const EPOC = () => {
         </ul>
       </section>
 
-      <div id="tratamientos" className="treatment-section">
+      <div id="tratamientosEPOC" className="treatment-section">
           <div className="treatment-header">
             <h1>TRATAMIENTO</h1>
           </div>
