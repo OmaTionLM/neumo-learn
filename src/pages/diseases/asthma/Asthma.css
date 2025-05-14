@@ -101,14 +101,10 @@ color: #333;
 }
 
 .modelo3d-asthma {
-  width: 50%;
-  height: 50vh;
-}
-
-
-/* .asthma-descripcion-causas {
+  margin: 10px 0 0 0;
   width: 40%;
-} */
+  height: 40vh;
+}
 
 
 .asthma-container-causas-tratamiento{
@@ -129,24 +125,6 @@ color: #333;
   padding: 1px;
   
 }
-
-/* .asthma-texto-causas {
-  width: 100%;
-  font-family: Poppins;
-  
-} */
-
-/* .asthma-texto-causas p {
-  font-size: 1.0em;
-  text-align: justify;
-  margin: 35px 0 0 0;
-  display: flex;
-  justify-content: center; 
-  padding: 20px;
-  line-height: 1.5;
-  
-} */
-
 
 /*Caja Causas*/
 .lista-causas {
@@ -250,7 +228,7 @@ color: #333;
 }
 
 .asthma-modelo3D-tratamiento{
-  height: 25vh;
+  height: 30vh;
   width: 100%;
   display: flex;
   justify-content: center;

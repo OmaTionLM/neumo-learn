@@ -18,7 +18,7 @@ const Lights = () => {
     return (
         <>
 
-        {/* <hemisphereLight
+        <hemisphereLight
             ref={hemisphereLightRef}
             color={"black"}
             groundColor={"black"}
@@ -35,7 +35,7 @@ const Lights = () => {
             penumbra={1}
          />
 
-*/}
+
         <pointLight 
             color={"white"} 
             position={[0, 2, -4]} 

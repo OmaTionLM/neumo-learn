@@ -7,6 +7,7 @@ import Lights from "./Lights/Lights";
 import Floor from "./Lights/Floor";
 import { Bottle } from "./models-3d/Bottle";
 import  {Inhaler}  from "./models-3d/Inhaler";
+import Staging from "./staging/Staging";
 
 const Asthma = () => {
   return (
@@ -33,6 +34,7 @@ const Asthma = () => {
             <Lights />
             <ambientLight />
             <directionalLight />
+            <Staging/>
             <OrbitControls />
             <Floor x={25} y={25} color={"#8EE411"} />
             <Mask scale={[3, 3, 3]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
@@ -49,9 +51,6 @@ const Asthma = () => {
         size={"100dvh"}
       >
         <div className="asthma-container-causas-tratamiento">
-         
-           
-                  
               
               <div className="asthma-descripcion-causas">
            
@@ -69,6 +68,7 @@ const Asthma = () => {
                   <Lights />
                   <ambientLight />
                   <directionalLight />
+                  {/* <Staging/> */}
                   <OrbitControls />
                   <Bottle
                     scale={[1, 1, 1]}
@@ -125,8 +125,9 @@ const Asthma = () => {
                     size={[50, 50]}
                   >
                     <Lights />
-                    <ambientLight />
+                    {/* <ambientLight /> */}
                     <directionalLight />
+                    <spotLight/>
                     <pointLight/>
                     <OrbitControls />
                     <Inhaler

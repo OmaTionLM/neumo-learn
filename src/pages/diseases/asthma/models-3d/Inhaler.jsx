@@ -5,6 +5,8 @@ import { useGLTF } from '@react-three/drei'
 export function Inhaler(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models-3d/asthma/inhaler.glb')
+
+
   return (
     <group ref={group} {...props} dispose={null} scale={[2.5, 2.6, 2.0]}>
       <mesh
