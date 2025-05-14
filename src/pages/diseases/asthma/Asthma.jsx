@@ -8,11 +8,14 @@ import Floor from "./Lights/Floor";
 import { Bottle } from "./models-3d/Bottle";
 import  {Inhaler}  from "./models-3d/Inhaler";
 import Staging from "./staging/Staging";
+import { useState } from "react";
 
 const Asthma = () => {
+  const [showMaskInfo, setShowMaskInfo] = useState(false)
   return (
     <>
     <div className="asthma-container-hero">
+      
      <div className="asthma-tittle">
         <h1>ASMA</h1>
       </div>
@@ -30,7 +33,11 @@ const Asthma = () => {
           </p>
         </div>
         <div className="modelo3d-asthma">
-          <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }}  shadows={true} size={[50, 50]}>
+          <Canvas 
+          camera={{ position: [-Math.PI / 30, 3, 2.5] }}  
+          shadows={true} 
+          size={[50, 50]}>
+
             <SoftShadows 
             size ={20}
             samples={15}
@@ -41,10 +48,27 @@ const Asthma = () => {
             <directionalLight />
             <Staging/>
             <OrbitControls />
-            <Floor x={25} y={25} color={"#8EE411"} />
-            <Mask scale={[3, 3, 3]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
-           
-            {/* <Html position={[0, 2, 0]} transform distanceFactor={5} style={{ pointerEvents: "none" }}>
+
+            <Floor x={25} y={25} 
+            color={"#8EE411"} />
+            
+            <Mask 
+            scale={[3, 3, 3]} 
+            position={[0, 0, 0]} 
+            rotation={[0, 0, 0]} 
+            onClick={() => setShowMaskInfo(false)}/>
+
+            {!showMaskInfo && (
+            <Html position={[-1, -2.5, 1]} distanceFactor={5}>
+              <button
+                id="button-mask-asthma"
+                onClick={() => setShowMaskInfo(true)}
+              >
+                Nebulizador
+              </button>
+            </Html>
+          )}   
+            {/* {/* <Html position={[0, 2, 0]} transform distanceFactor={5} style={{ pointerEvents: "none" }}>
               <h1 style={{ 
                 fontSize: "1rem", 
                 color: "#7b1fa2", 
@@ -54,34 +78,29 @@ const Asthma = () => {
               }}>
                 Máscara para asma
               </h1>
-            </Html>
-            <Html position={[2, 1.5, 0]} transform distanceFactor={5}>
-              <button
-                  onClick={() => alert("Botón 3D presionado")}
-                  style={{
-                    padding: "10px 20px",
-                    fontSize: "16px",
-                    backgroundColor: "#7b1fa2",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "8px",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-                    cursor: "pointer",
-                  }}
-                >
-                  Ver más
-                </button>
-              </Html> */}
-
+            </Html> */}
+            
           </Canvas>
-      </div>
-  
+          {showMaskInfo && (
+            <div className="mask-info-modal">
+              <div className="mask-info-content">
+                <h2 id="tittle-nebu-modal">¿Qué es un nebulizador?</h2>
+                <p id="text-modal-nebu">
+                  Un nebulizador es un dispositivo que convierte medicamentos líquidos en vapor para que 
+                  puedan ser inhalados directamente a los pulmones, facilitando el tratamiento 
+                  de enfermedades respiratorias como el <strong>asma.</strong>
+                </p>
+                <button id="cerrar-nebu" onClick={() => setShowMaskInfo(false)}>Cerrar</button>
+              </div>
+            </div>
+          )}
 
+      </div>
       
   </div>
       <ContentModule
         type="primary"
-        // backgroundColor={"var(--color-sec)"}
+        // backgroundColor={"var(--color-primary)"}
        backgroundColor= "#7b1fa2"
         size={"100dvh"}
       >
