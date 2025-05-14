@@ -1,7 +1,7 @@
 import "./Asthma.css";
 import { Canvas } from "@react-three/fiber";
 import Mask from "./models-3d/Mask";
-import { OrbitControls } from "@react-three/drei";
+import { ContactShadows, OrbitControls, SoftShadows } from "@react-three/drei";
 import ContentModule from "../../../components/ContentModule/ContentModule";
 import Lights from "./Lights/Lights";
 import Floor from "./Lights/Floor";
@@ -30,7 +30,12 @@ const Asthma = () => {
           </p>
         </div>
         <div className="modelo3d-asthma">
-          <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }} shadows={true} size={[50, 50]}>
+          <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }}  shadows={true} size={[50, 50]}>
+            <SoftShadows 
+            size ={20}
+            samples={15}
+            focus={25}
+            />
             <Lights />
             <ambientLight />
             <directionalLight />
@@ -65,6 +70,15 @@ const Asthma = () => {
                   shadows={true}
                   size={[50, 50]}
                 >
+                  <ContactShadows
+                      opacity={0.05}
+                      width={10}
+                      height={10}
+                      blur={5}
+                      far={5}
+                      resolution={256}
+                      color="#000000"
+                    />
                   <Lights />
                   <ambientLight />
                   <directionalLight />
@@ -96,21 +110,6 @@ const Asthma = () => {
                 </ul>
                 </div>
               
-            
-            {/* <div className="asthma-texto-causas">
-              <p>
-                Las sustancias que se encuentran en algunos lugares de trabajo
-                también pueden desencadenar los síntomas de asma, lo que lleva
-                al asma ocupacional.Los desencadenantes más comunes son el polvo
-                de la madera, el polvo de los granos, la caspa animal, los
-                hongos o los químicos. Muchas personas con asma tienen
-                antecedentes personales o familiares de alergias, como la fiebre
-                del heno (rinitis alérgica) o eccema. Otros no tienen
-                antecedentes de alergias.
-              </p>
-            </div> */}
-           
-           
           </div>
                
                 <div className="asthma-tratamiento">
@@ -124,6 +123,16 @@ const Asthma = () => {
                     shadows={true}
                     size={[50, 50]}
                   >
+                     <ContactShadows
+                      position={[0, -1.2, 0]} // posición del "suelo"
+                      opacity={0.5}
+                      width={10}
+                      height={10}
+                      blur={5}
+                      far={5}
+                      resolution={256}
+                      color="#000000"
+                    />
                     <Lights />
                     {/* <ambientLight /> */}
                     <directionalLight />
