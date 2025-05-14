@@ -1,7 +1,7 @@
 import "./Asthma.css";
 import { Canvas } from "@react-three/fiber";
 import Mask from "./models-3d/Mask";
-import { ContactShadows, OrbitControls, SoftShadows } from "@react-three/drei";
+import { ContactShadows, Html, OrbitControls, SoftShadows } from "@react-three/drei";
 import ContentModule from "../../../components/ContentModule/ContentModule";
 import Lights from "./Lights/Lights";
 import Floor from "./Lights/Floor";
@@ -43,6 +43,36 @@ const Asthma = () => {
             <OrbitControls />
             <Floor x={25} y={25} color={"#8EE411"} />
             <Mask scale={[3, 3, 3]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
+           
+            {/* <Html position={[0, 2, 0]} transform distanceFactor={5} style={{ pointerEvents: "none" }}>
+              <h1 style={{ 
+                fontSize: "1rem", 
+                color: "#7b1fa2", 
+                textAlign: "center", 
+                textShadow: "1px 1px 10px rgba(0,0,0,0.5)", 
+                fontWeight: "bold" 
+              }}>
+                Máscara para asma
+              </h1>
+            </Html>
+            <Html position={[2, 1.5, 0]} transform distanceFactor={5}>
+              <button
+                  onClick={() => alert("Botón 3D presionado")}
+                  style={{
+                    padding: "10px 20px",
+                    fontSize: "16px",
+                    backgroundColor: "#7b1fa2",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+                    cursor: "pointer",
+                  }}
+                >
+                  Ver más
+                </button>
+              </Html> */}
+
           </Canvas>
       </div>
   
@@ -90,6 +120,7 @@ const Asthma = () => {
                     rotation={[0, 0, 0]}
                   />
                   <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />
+      
                 </Canvas>
               </div>
                 <ul>

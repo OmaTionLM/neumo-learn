@@ -1,11 +1,20 @@
 
 import React, { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export function Bottle(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models-3d/asthma/bottle.glb')
-  const { actions } = useAnimations(animations, group)
+  const { nodes, materials } = useGLTF('/models-3d/asthma/bottle.glb')
+
+   useFrame((state) => {
+    if (group.current) {
+      const t = state.clock.getElapsedTime()
+      // group.current.rotation.y = t * 0.8 // Giro suave
+      group.current.position.y = Math.sin(t * 2) * 0.2 - 2.1 // Rebote
+    }
+  })
+ 
   return (
     <group ref={group} {...props} dispose={null} scale={[1.4, 1.2, 1.3]}>
       <group name="Scene">

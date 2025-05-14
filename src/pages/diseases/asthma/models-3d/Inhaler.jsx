@@ -5,7 +5,14 @@ import { useGLTF } from '@react-three/drei'
 export function Inhaler(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models-3d/asthma/inhaler.glb')
-
+  
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime()
+    const scale = 2.5 + Math.sin(t * 2) * 0.05 // pulso suave
+    if (group.current) {
+      group.current.scale.set(scale, scale + 0.05, scale) // sutil variación en Y
+    }
+  })
 
   return (
     <group ref={group} {...props} dispose={null} scale={[2.5, 2.6, 2.0]}>
