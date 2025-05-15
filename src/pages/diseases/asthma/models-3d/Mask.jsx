@@ -1,21 +1,68 @@
-import { useGLTF } from '@react-three/drei';
+import { Html, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { use, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 const Mask = (props) => {
 
     const group = useRef();
     const{nodes, materials} = useGLTF("/models-3d/asthma/mask.glb");
-
+    const [hovered, setHovered] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
+  
     useFrame(() => {
-      if (group.current) {
+      if (group.current && isRotating) {
         group.current.rotation.y += 0.003;
       }
     });
 
+   const handleClick = () => {
+    setIsRotating(false); // Detiene la rotación al hacer click
+    if (props.onClick) props.onClick();
+  };
+
+  useEffect(() => {
+  const handleKeyDown = (e) => {
+    if (e.key === "r" || e.key === "R") {
+      setIsRotating(true); 
+    }
+  };
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, []);
+
     return(
-        <group ref={group} {...props} dispose={null} scale={[0.1, 0.1, 0.1]} position={[0, 0, 0]} >
+        <group ref={group} {...props} 
+        dispose={null} 
+        scale={[0.1, 0.1, 0.1]} 
+        position={[0, 1, 0]} 
+        onClick={handleClick}
+        onPointerOver={(e) => {
+        e.stopPropagation();
+        setHovered(true);
+        document.body.style.cursor = 'pointer';
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        setHovered(false);
+        document.body.style.cursor = 'default';
+      }}
+    >
+ {hovered && (
+        <Html position={[0, -1, 1]} center>
+          <div style={{
+            background: "#fff",
+            color: "#7b1fa2",
+            padding: "0.3em 0.8em",
+            borderRadius: "8px",
+            fontSize: "1rem",
+            width:"20rem",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)"
+          }}>
+            Click para detener la rotación y <b>R</b> para reiniciar la rotación
+          </div>
+        </Html>
+      )}
       <mesh
         castShadow
         receiveShadow

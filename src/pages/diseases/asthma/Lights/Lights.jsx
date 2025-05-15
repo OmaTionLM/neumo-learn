@@ -18,7 +18,7 @@ const Lights = () => {
     return (
         <>
 
-        {/* <hemisphereLight
+        <hemisphereLight
             ref={hemisphereLightRef}
             color={"black"}
             groundColor={"black"}
@@ -35,7 +35,7 @@ const Lights = () => {
             penumbra={1}
          />
 
-*/}
+
         <pointLight 
             color={"white"} 
             position={[0, 2, -4]} 
@@ -46,7 +46,7 @@ const Lights = () => {
             intensity={0.5} 
             color="#ffffff" 
             position={[0, 0, 0]}
-            castShadow={true} 
+    
         />
 
         <directionalLight
