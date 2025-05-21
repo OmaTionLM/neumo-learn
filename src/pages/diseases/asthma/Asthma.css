@@ -93,11 +93,12 @@ color: #333;
 }
 
 .asthma-modelo3D {
-  width: 70%;
+  width: 80%;
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .modelo3d-asthma {
@@ -230,6 +231,79 @@ color: #333;
   border-bottom:solid 2px #4b9cd3;
 }
 
+#button-bottle-asthma{
+ background-color: #7b1fa2; 
+  font-family: poppins;
+  color: white; 
+  border: none; 
+  padding: 15px 32px; 
+  text-align: center; 
+  font-size: 16px; 
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#button-bottle-asthma:hover{
+  background-color: rgb(84, 16, 84);
+}
+
+.bottle-info-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+}
+
+.bottle-info-content {
+  background: #7b1fa2;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 500px;
+  min-height: 40%;
+}
+
+#text-modal-bottle {
+  color: var(--color-neutral);
+   font-size: 1rem;
+  padding: 15px 0 10px 0;
+}
+
+#text-modal-bottle li{
+  color: var(--color-neutral);
+   font-size: 1rem;
+  padding: 15px 0 10px 0;
+}
+
+#tittle-modal-bottle{
+  color: var(--color-neutral);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#button-cerrar-bottle{
+  font-family: poppins;
+  background-color: var(--color-primary);
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#button-cerrar-bottle:hover{
+  background-color:var(--color-primary-hover);
+}
+
 .asthma-tratamiento {
   display: flex;
   flex-direction: column;
@@ -237,6 +311,7 @@ color: #333;
   justify-content: center;
   width: 80%;
 }
+
 
 .lista-causas
  {
@@ -302,11 +377,12 @@ color: #333;
 }
 
 .asthma-modelo3D-tratamiento{
+  width: 80%;
   height: 30vh;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
- 
+  margin-bottom: 15px;
+  margin: 0 auto 15px auto
+  
 }
