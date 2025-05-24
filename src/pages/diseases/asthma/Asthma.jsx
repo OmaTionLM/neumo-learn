@@ -15,6 +15,7 @@ import { Inhaler } from "./models-3d/Inhaler";
 import Staging from "./staging/Staging";
 import { useState } from "react";
 import Staging_2 from "./staging/Staging_2";
+import Title from "./texts/Text_asthma_3d";
 
 const Asthma = () => {
   const [showMaskInfo, setShowMaskInfo] = useState(false);
@@ -46,7 +47,11 @@ const Asthma = () => {
             size={[50, 50]}
           >
             <Staging />
-
+            <Title
+              title={"Nebulizador"}
+              id="asma-title-3d"
+              position={[-0.5, 2, -1]}
+            />
             <SoftShadows size={20} samples={15} focus={25} />
             <Lights />
             <ambientLight />
@@ -69,7 +74,7 @@ const Asthma = () => {
                   id="button-mask-asthma"
                   onClick={() => setShowMaskInfo(true)}
                 >
-                  Nebulizador
+                  Saber más💡
                 </button>
               </Html>
             )}
@@ -113,7 +118,15 @@ const Asthma = () => {
           <div className="asthma-descripcion-causas">
             <div className="lista-causas">
               <div className="tittle-causas-asthma">
-                <h2>🫁 Causas 🫁</h2>
+                {/* <h2>🫁 Causas 🫁</h2> */}
+                <Canvas
+                  camera={{ position: [0, 1, 2] }}
+                  style={{ width: "100%", height: "80px" }}
+                >
+                  <Html center>
+                    <h2 id="causas-title-2d">🫁 Causas 🫁</h2>
+                  </Html>
+                </Canvas>
               </div>
 
               <div className="asthma-modelo3D">
@@ -122,6 +135,7 @@ const Asthma = () => {
                   shadows={true}
                   size={[50, 50]}
                 >
+                 
                   <Staging_2 />
                   <ContactShadows
                     opacity={0.05}
@@ -162,15 +176,20 @@ const Asthma = () => {
                       <h2 id="tittle-modal-bottle">¿Qué puede causar esto?</h2>
                       <p id="text-modal-bottle">
                         En personas sensibles:
-                        <li>Broncoespasmos (contracción de los músculos de las vías
-                        respiratorias)</li> 
+                        <li>
+                          Broncoespasmos (contracción de los músculos de las
+                          vías respiratorias)
+                        </li>
                         <li>Tos Silbidos al respirar (sibilancias)</li>
-                        <li>Dificultad para respirar En casos graves: ataques de
-                        asma</li> 
-                       ¿A quién afecta más?<br></br><br></br>Aproximadamente el 5-10% de
-                        los asmáticos son sensibles a la aspirina. El riesgo es
-                        mayor si también tienen rinitis crónica, pólipos nasales
-                        o sinusitis recurrente.
+                        <li>
+                          Dificultad para respirar En casos graves: ataques de
+                          asma
+                        </li>
+                        ¿A quién afecta más?<br></br>
+                        <br></br>Aproximadamente el 5-10% de los asmáticos son
+                        sensibles a la aspirina. El riesgo es mayor si también
+                        tienen rinitis crónica, pólipos nasales o sinusitis
+                        recurrente.
                       </p>
                       <button
                         id="button-cerrar-bottle"
@@ -200,8 +219,15 @@ const Asthma = () => {
           </div>
 
           <div className="asthma-tratamiento">
-            <div className="tratamiento-tittle-asthma">
-              <h2>💊 Tratamiento 💊</h2>
+            <div className="tratamiento-title-asthma">
+              <Canvas
+                  camera={{ position: [0, 1, 2] }}
+                  style={{ width: "100%", height: "80px" }}
+                >
+                  <Html center>
+                    <h2 id="tratamiento-title-2d">💊Tratamiento💊</h2>
+                  </Html>
+                </Canvas>
             </div>
             <div className="modelo-texto-tratamiento-asthma">
               <div className="asthma-modelo3D-tratamiento">
@@ -210,8 +236,8 @@ const Asthma = () => {
                   shadows={true}
                   size={[50, 50]}
                 >
+                  
                   <Staging_2 />
-
                   <ContactShadows
                     position={[0, -1.2, 0]} // posición del "suelo"
                     opacity={0.5}
@@ -228,13 +254,42 @@ const Asthma = () => {
                   <spotLight />
                   <pointLight />
                   <OrbitControls />
+                  <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />
                   <Inhaler
                     scale={[1, 1, 1]}
                     position={[0, -2, 0]}
                     rotation={[0, 0.5, 0]}
+                    onClick={() => setShowInhalerInfo(false)}
                   />
-                  <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />
+                  {!showInhalerInfo && (
+                    <Html position={[2.5, 2, 0.5]} distanceFactor={5}>
+                      <button
+                        id="button-inhaler-asthma"
+                        onClick={() => setShowInhalerInfo(true)}
+                      >
+                        Inhalador
+                      </button>
+                    </Html>
+                  )}
                 </Canvas>
+                {showInhalerInfo && (
+                  <div className="inhaler-info-modal">
+                    <div className="inhaler-info-content">
+                      <h2 id="inhaler-tittle">¿Qué es un inhalador?</h2>
+                      <p id="text-modal-inhaler">
+                        El inhalador es un dispositivo que administra
+                        medicamentos directamente a los pulmones, ayudando a
+                        aliviar y prevenir los síntomas del asma.
+                      </p>
+                      <button
+                        id="cerrar-inhaler"
+                        onClick={() => setShowInhalerInfo(false)}
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
               <ul>
                 <li>
