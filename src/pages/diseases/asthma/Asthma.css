@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 50vh;
+  height: 60vh;
 }
 .asthma-description {
   display: flex;
@@ -79,23 +79,14 @@
   width: 80%;
 }
 
-.asthma-modelo-texto {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-.asthma-modelo3D {
+.asthma-modelo3D-causas {
   width: 80%;
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
+  margin: 0 auto 15px auto;
 }
-
 .modelo3d-asthma {
   margin: 10px 0 0 0;
   width: 40%;
@@ -197,10 +188,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  line-height: 1.6;
-  margin-top: 30px;
   background-color: rgb(254, 254, 254);
   align-items: center;
 }
@@ -211,27 +199,16 @@
   justify-content: center;
 }
 
-.tittle-causas-asthma div div{
+#causas-title{
   width: 100%;
-}
-
-
-.tittle-causas-asthma div div div{
-  width: 100%;
-}
-
-#causas-title-2d {
-  width: 100%;
-  height: 100%;
   font-family: Verdana;
-  padding: 0;
+  padding: 0 0 5px 0;
   font-weight: 600;
   font-size: clamp(1.5rem, 2.5vw, 1.8rem);
-  margin: 0 0 30px 0;
+  margin: 0 0 15px 0;
   color: #333;
   border-bottom: solid 2px #4b9cd3;
-  text-align: center;
-  
+
 }
 
 #button-bottle-asthma {
@@ -324,6 +301,11 @@
   width: 700px;
   height: 700px;
 }
+.lista-causas ul {
+  /* height: 295.97px; */
+  flex-grow: 1;
+
+}
 
 .asthma-tratamiento {
   background-color: #fff;
@@ -333,6 +315,14 @@
   padding: 25px 30px 25px 45px;
   width: 700px;
   height: 700px;
+}
+
+.modelo-texto-tratamiento-asthma{
+  flex-grow: 1;;
+}
+
+.asthma-tratamiento ul{
+  flex-grow:1;
 }
 
 .asthma-container-causas-tratamiento {
@@ -361,21 +351,17 @@
   justify-content: center;
 }
 
-.tratamiento-title-asthma div div {
-  width: 100%;
-}
 
 
-#tratamiento-title-2d{
+#tratamiento-title{
   width: 100%;
   font-family: Verdana;
   padding: 0 0 5px 0;
   font-weight: 600;
   font-size: clamp(1.5rem, 2.5vw, 1.8rem);
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
   color: #333;
   border-bottom: solid 2px #4b9cd3;
-  z-index: 0;
 }
 
 .asthma-modelo3D-tratamiento {
@@ -384,7 +370,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
   margin: 0 auto 15px auto;
 }
 
