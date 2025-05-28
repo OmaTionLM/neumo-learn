@@ -16,11 +16,14 @@ import Staging from "./staging/Staging";
 import { useState } from "react";
 import Staging_2 from "./staging/Staging_2";
 import Title from "./texts/Text_asthma_3d";
+import { Cigarette } from "./models-3d/Cigarette";
+import Staging_3 from "./staging/Staging_3";
 
 const Asthma = () => {
   const [showMaskInfo, setShowMaskInfo] = useState(false);
   const [showBottleInfo, setShowBottleInfo] = useState(false);
   const [showInhalerInfo, setShowInhalerInfo] = useState(false);
+  const [showCigaretteInfo, setCigaretteInfo] = useState(false);
   return (
     <>
       <div className="asthma-container-hero">
@@ -78,17 +81,7 @@ const Asthma = () => {
                 </button>
               </Html>
             )}
-            {/* {/* <Html position={[0, 2, 0]} transform distanceFactor={5} style={{ pointerEvents: "none" }}>
-              <h1 style={{ 
-                fontSize: "1rem", 
-                color: "#7b1fa2", 
-                textAlign: "center", 
-                textShadow: "1px 1px 10px rgba(0,0,0,0.5)", 
-                fontWeight: "bold" 
-              }}>
-                Máscara para asma
-              </h1>
-            </Html> */}
+           
           </Canvas>
           {showMaskInfo && (
             <div className="mask-info-modal">
@@ -301,6 +294,85 @@ const Asthma = () => {
           </div>
         </div>
       </ContentModule>
+      <div className="prevencion-asthma-container">
+        <div className="prevencion-asthma-title">
+          <h1>🚫 Prevención 🚫</h1>
+        </div>
+        <div className="prevencion-texto-modelo">
+          <div className="prevencion-asthma-description">
+            <p>
+              Puede disminuir los síntomas de asma evitando los desencadenantes
+              y las sustancias que irritan las vías respiratorias.
+            </p>
+            <ul>
+              <li>
+                Cubra las camas con fundas a prueba de alergias para reducir la
+                exposición a los <strong>ácaros del polvo.</strong>
+              </li>
+              <li>
+                Mantenga los niveles de humedad bajos y arregle las fugas para
+                reducir la proliferación de{" "}
+                <strong>organismos como el moho.</strong>{" "}
+              </li>
+              <li>
+                Elimine de la casa el <strong>humo del tabaco.</strong> Esta es
+                la medida más importante que una familia puede tomar para ayudar
+                a alguien que tenga asma.{" "}
+              </li>
+              <li>
+                Evite la contaminación atmosférica, el polvo industrial y otros
+                vapores irritantes tanto como sea posible..{" "}
+              </li>
+            </ul>
+          </div>
+          <div className="prevencion-modelo3d-asthma">
+            <Canvas
+              camera={{ position: [-Math.PI / 30, 3, 2.5] }}
+              shadows={true}
+              size={[50, 50]}
+            >
+              <Lights />
+              <ambientLight />
+              <directionalLight />
+              <OrbitControls />
+              <Cigarette onClick={() => setShowCigaretteInfo(true)} />
+              <Staging_3 />
+              <Floor x={25} y={25} color={"#8EE411"} />
+
+              {!showCigaretteInfo && (
+                <Html position={[6, -0.5, -1]} distanceFactor={5}>
+                  <button
+                    id="button-cigarette-asthma"
+                    onClick={() => setCigaretteInfo(true)}
+                  >
+                    Saber más🚭
+                  </button>
+                </Html>
+              )}
+            </Canvas>
+          </div>
+          {showCigaretteInfo && (
+            <div className="cigarette-info-modal">
+              <div className="cigarette-info-content">
+                <h2 id="title-cigarette-modal">¿Por qué se debe evitar el cigarrillo?</h2>
+                <p id="text-modal-cigarette">
+                  <strong>El cigarrillo es perjudicial</strong> para el asma porque irrita las
+                  vías respiratorias, causando inflamación, estrechamiento y
+                  producción de mucosidad, lo mismo que ocurre durante un ataque
+                  de asma. Esto puede desencadenar más ataques, hacerlos más
+                  graves y dificultar su control. 
+                </p>
+                <button
+                  id="cerrar-cigarette"
+                  onClick={() => setCigaretteInfo(false)}
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 };

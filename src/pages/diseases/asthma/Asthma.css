@@ -95,7 +95,7 @@
 
 #button-mask-asthma {
   background-color: #7b1fa2;
-  width: 200%;
+  width: 180px;
   font-family: poppins;
   color: white;
   border: none;
@@ -135,7 +135,8 @@
   z-index: 1000;
 }
 
-#cerrar-nebu {
+#cerrar-nebu,
+#cerrar-cigarette {
   font-family: poppins;
   background-color: var(--color-primary);
   font-size: 1rem;
@@ -145,17 +146,20 @@
   cursor: pointer;
 }
 
-#cerrar-nebu:hover {
+#cerrar-nebu:hover,
+#cerrar-cigarette:hover {
   background-color: var(--color-primary-hover);
 }
 
-#text-modal-nebu {
+#text-modal-nebu,
+#text-modal-cigarette {
   color: var(--color-neutral);
   font-size: 1rem;
   padding: 15px 0 10px 0;
 }
 
-#tittle-nebu-modal {
+#tittle-nebu-modal,
+#title-cigarette-modal {
   color: var(--color-neutral);
 }
 
@@ -188,9 +192,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  background-color: rgb(254, 254, 254);
   align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 30px;
+  padding: 25px 30px 25px 45px;
+  width: 700px;
+  height: 700px;
 }
 
 .tittle-causas-asthma {
@@ -213,7 +222,7 @@
 
 #button-bottle-asthma {
   background-color: #7b1fa2;
-  width: 110%;
+  width: 110px;
   font-family: poppins;
   color: white;
   border: none;
@@ -292,15 +301,7 @@
   width: 80%;
 }
 
-.lista-causas {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  margin: 30px;
-  padding: 25px 30px 25px 45px;
-  width: 700px;
-  height: 700px;
-}
+
 .lista-causas ul {
   /* height: 295.97px; */
   flex-grow: 1;
@@ -375,7 +376,7 @@
 
 #button-inhaler-asthma {
   background-color: #7b1fa2;
-  width: 110%;
+  width: 120px;
   font-family: poppins;
   color: white;
   border: none;
@@ -439,3 +440,129 @@
   font-size: 1rem;
   padding: 15px 0 10px 0;
 }
+
+.prevencion-asthma-container{
+  background-color:#7b1fa2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 30px auto;
+  padding: 25px 30px 25px 45px;
+  width: 800px;
+  height: 670px;
+}
+
+.prevencion-asthma-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prevencion-asthma-title h1{
+  width: 100%;
+  font-family: Verdana;
+  padding: 0 0 5px 0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  margin: 15px 0 25px 0;
+  color: #efe3e3;
+  border-bottom: solid 2px #4b9cd3;
+  text-align: center;
+}
+
+.prevencion-asthma-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.prevencion-asthma-description p{
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 0 5px;
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: var(--color-neutral);
+}
+
+.prevencion-asthma-description ul{
+  font-size: 1rem;
+  font-family: Poppins;
+  text-align: justify;
+  padding: 1px;
+}
+
+.prevencion-asthma-description li{
+  font-size: 1rem;
+  font-family: Poppins;
+  margin: 17px 0 0 0;
+  text-align: justify;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--color-neutral);
+  padding: 1px;
+}
+
+.prevencion-modelo3d-asthma{
+  width: 80%;
+  height: 25vh;
+}
+
+.prevencion-texto-modelo{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items:center;
+}
+
+#button-cigarette-asthma{
+  background-color: var(--color-primary);
+  width: 200px;
+  font-family: poppins;
+  color: var(--color-tertiary);
+  border: none;
+  padding: 15px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#button-cigarette-asthma:hover{
+  background-color: var(--color-primary-hover);
+}
+
+.cigarette-info-modal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+  z-index: 10; 
+}
+
+.cigarette-info-content{
+ background: #7b1fa2;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  min-height: 40%;
+  z-index: 1000;
+}
+
+
+
+
+
