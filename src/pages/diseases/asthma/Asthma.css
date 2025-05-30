@@ -87,6 +87,7 @@
   align-items: center;
   margin: 0 auto 15px auto;
 }
+
 .modelo3d-asthma {
   margin: 10px 0 0 0;
   width: 40%;
@@ -105,6 +106,7 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  transform: scale(0.6);
 }
 
 #button-mask-asthma:hover {
@@ -232,6 +234,7 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  transform: scale(0.6);
 }
 
 #button-bottle-asthma:hover {
@@ -386,6 +389,7 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  transform: scale(0.6);
 }
 
 #button-inhaler-asthma:hover {
@@ -530,6 +534,7 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  transform: scale(0.6);
 }
 
 #button-cigarette-asthma:hover{

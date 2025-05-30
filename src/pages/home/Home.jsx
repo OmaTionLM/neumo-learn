@@ -21,6 +21,9 @@ const Home = () => {
   return (
     <>
       <div className="home-container">
+        <div className="home-circle">
+
+       
         <button onClick={handleLogin} className="gsi-material-button" type="button" title="Iniciar sesión con Google">
           <div className="gsi-material-button-state"></div>
           <div className="gsi-material-button-content-wrapper">
@@ -54,6 +57,7 @@ const Home = () => {
             <span className="gsi-material-button-contents">Iniciar sesión con Google</span>
           </div>
         </button>
+         </div>
       </div>
     </>
   );

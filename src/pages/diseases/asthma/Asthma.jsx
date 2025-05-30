@@ -44,11 +44,7 @@ const Asthma = () => {
           </p>
         </div>
         <div className="modelo3d-asthma">
-          <Canvas
-            camera={{ position: [-Math.PI / 30, 3, 2.5] }}
-            shadows={true}
-            size={[50, 50]}
-          >
+          <Canvas camera={{ position: [-Math.PI / 30, 3, 2.5] }} shadows={true}>
             <Staging />
             <Title
               title={"Nebulizador"}
@@ -72,7 +68,11 @@ const Asthma = () => {
             />
 
             {!showMaskInfo && (
-              <Html position={[-1, -2.5, 1]} distanceFactor={5}>
+              <Html
+                position={[-2, -2.5, 1]}
+                transform={false}
+                zIndexRange={[100]}
+              >
                 <button
                   id="button-mask-asthma"
                   onClick={() => setShowMaskInfo(true)}
@@ -81,7 +81,6 @@ const Asthma = () => {
                 </button>
               </Html>
             )}
-           
           </Canvas>
           {showMaskInfo && (
             <div className="mask-info-modal">
@@ -118,7 +117,6 @@ const Asthma = () => {
                 <Canvas
                   camera={{ position: [Math.PI / 9, 1, 4.5] }}
                   shadows={true}
-                  size={[50, 50]}
                 >
                   <Staging_2 />
                   <ContactShadows
@@ -143,7 +141,11 @@ const Asthma = () => {
                   />
 
                   {!showBottleInfo && (
-                    <Html position={[2.5, 2, 0]} distanceFactor={5}>
+                    <Html
+                      position={[2.5, 2, 0]}
+                      transform={false}
+                      zIndexRange={[100]}
+                    >
                       <button
                         id="button-bottle-asthma"
                         onClick={() => setShowBottleInfo(true)}
@@ -211,7 +213,6 @@ const Asthma = () => {
                 <Canvas
                   camera={{ position: [Math.PI / -4, 0.5, 4.2] }}
                   shadows={true}
-                  size={[50, 50]}
                 >
                   <Staging_2 />
                   <ContactShadows
@@ -238,7 +239,11 @@ const Asthma = () => {
                     onClick={() => setShowInhalerInfo(false)}
                   />
                   {!showInhalerInfo && (
-                    <Html position={[2.5, 2, 0.5]} distanceFactor={5}>
+                    <Html
+                      position={[2.5, 2, 0.5]}
+                      transform={false}
+                      zIndexRange={[100]}
+                    >
                       <button
                         id="button-inhaler-asthma"
                         onClick={() => setShowInhalerInfo(true)}
@@ -329,7 +334,6 @@ const Asthma = () => {
             <Canvas
               camera={{ position: [-Math.PI / 30, 3, 2.5] }}
               shadows={true}
-              size={[50, 50]}
             >
               <Lights />
               <ambientLight />
@@ -340,7 +344,11 @@ const Asthma = () => {
               <Floor x={25} y={25} color={"#8EE411"} />
 
               {!showCigaretteInfo && (
-                <Html position={[6, -0.5, -1]} distanceFactor={5}>
+                <Html
+                  position={[3, 1, -2]}
+                  transform={false}
+                  zIndexRange={[100]}
+                >
                   <button
                     id="button-cigarette-asthma"
                     onClick={() => setCigaretteInfo(true)}
@@ -354,13 +362,15 @@ const Asthma = () => {
           {showCigaretteInfo && (
             <div className="cigarette-info-modal">
               <div className="cigarette-info-content">
-                <h2 id="title-cigarette-modal">¿Por qué se debe evitar el cigarrillo?</h2>
+                <h2 id="title-cigarette-modal">
+                  ¿Por qué se debe evitar el cigarrillo?
+                </h2>
                 <p id="text-modal-cigarette">
-                  <strong>El cigarrillo es perjudicial</strong> para el asma porque irrita las
-                  vías respiratorias, causando inflamación, estrechamiento y
-                  producción de mucosidad, lo mismo que ocurre durante un ataque
-                  de asma. Esto puede desencadenar más ataques, hacerlos más
-                  graves y dificultar su control. 
+                  <strong>El cigarrillo es perjudicial</strong> para el asma
+                  porque irrita las vías respiratorias, causando inflamación,
+                  estrechamiento y producción de mucosidad, lo mismo que ocurre
+                  durante un ataque de asma. Esto puede desencadenar más
+                  ataques, hacerlos más graves y dificultar su control.
                 </p>
                 <button
                   id="cerrar-cigarette"
