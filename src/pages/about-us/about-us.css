@@ -29,6 +29,8 @@
   font-size: 3rem;
   color: var(--color-neutral);
   margin: 0 0 4vh 0;
+  text-shadow: 3px 3px 7px rgba(0, 0, 0, 1);
+  /*color: #000;*/
 }
 
 .texto-container-about-us p {

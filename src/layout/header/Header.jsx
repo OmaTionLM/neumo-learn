@@ -1,16 +1,17 @@
 import { NavLink } from "react-router";
 import "./Header.css";
 import useAuthStore from "../../stores/use-auth-store";
+import Pulmon3DLogo from "../../components/Pulmon3DLogo"
 
 const Header = () => {
   const { logout } = useAuthStore();
   return (
     <header>
       <nav>
+        <div className="pulmon-icon">
+          <Pulmon3DLogo />
+        </div>
         <div className="header-left">
-          <NavLink to="/" end>
-            Inicio
-          </NavLink>
           <NavLink to="/perfil" end>
             Sistema respiratorio
           </NavLink>
@@ -22,11 +23,6 @@ const Header = () => {
           </NavLink>
           <NavLink to="/quiz" end>
             Quiz
-          </NavLink>
-        </div>
-        <div className="/header-right">
-          <NavLink to="/" onClick={logout} end>
-          Salir
           </NavLink>
         </div>
       </nav>
