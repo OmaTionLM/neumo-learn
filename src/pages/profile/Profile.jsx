@@ -93,7 +93,9 @@ const Profile = () => {
             </div>
           </div>
           <div className="button-container">
-            <button className="button-conoce-tu-sr">Click aquí</button>
+            <button className="button-conoce-tu-sr" onClick={() => navigate("/pulmon-detalle")}>
+              Click aquí
+            </button>
           </div>
         </ContentModule>
 
