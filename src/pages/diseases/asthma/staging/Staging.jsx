@@ -1,8 +1,9 @@
-import { Environment } from "@react-three/drei"
+import { Environment, Stars } from "@react-three/drei";
 
 const Staging = () => {
-    return(
-        <Environment 
+  return (
+    <>
+      <Environment
         files={"staging-asthma/hdris/surgery/hospital_room.hdr"}
         // files={[
         //     "nx.png",
@@ -15,18 +16,23 @@ const Staging = () => {
 
         // path={"staging-asthma/cubemaps/surgery/"}
         environment={null}
-        ground = {{
-            height: 40,
-            radius : 100,
-            scale: 0.5,
-
+        ground={{
+          height: 40,
+          radius: 100,
+          scale: 0.5,
         }}
-
         background
-        />
-         
-
-    )
-}
+      />
+      {/* <Stars
+        radius={500}
+        depth={50}
+        count={5000}
+        factor={4}
+        saturation={0}
+        fade
+      /> */}
+    </>
+  );
+};
 
 export default Staging;
