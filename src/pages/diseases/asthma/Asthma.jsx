@@ -110,7 +110,7 @@ const Asthma = () => {
           <div className="asthma-descripcion-causas">
             <div className="lista-causas">
               <div className="tittle-causas-asthma">
-                <h2 id="causas-title">🫁 Causas 🫁</h2>
+                <h2 id="causas-title"> Causas </h2>
               </div>
 
               <div className="asthma-modelo3D-causas">
@@ -206,7 +206,7 @@ const Asthma = () => {
 
           <div className="asthma-tratamiento">
             <div className="tratamiento-title-asthma">
-              <h2 id="tratamiento-title">💊Tratamiento💊</h2>
+              <h2 id="tratamiento-title">Tratamiento</h2>
             </div>
             <div className="modelo-texto-tratamiento-asthma">
               <div className="asthma-modelo3D-tratamiento">
@@ -301,7 +301,7 @@ const Asthma = () => {
       </ContentModule>
       <div className="prevencion-asthma-container">
         <div className="prevencion-asthma-title">
-          <h1>🚫 Prevención 🚫</h1>
+          <h1>Prevención </h1>
         </div>
         <div className="prevencion-texto-modelo">
           <div className="prevencion-asthma-description">

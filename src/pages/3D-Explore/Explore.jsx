@@ -1,8 +1,7 @@
 /*Sección Explora en 3D*/
 import ContentModule from "../../components/ContentModule/ContentModule";
+import Pulmon3DExplora from "../../components/contentExplora3D/Pulmon3DExplora";
 import WaveImage from "../../assets/wave.png";
-import three from "../../assets/explore3d.png";
-
 
 const Explore = () => {
     return (
@@ -23,11 +22,9 @@ const Explore = () => {
             </h2>
           </ContentModule>
 
-          <ContentModule
-            type="primary"
-            backgroundImage={three}
-            size={"100vh"}
-          ></ContentModule>
+          <div style={{ height: "100vh" }}>
+            <Pulmon3DExplora />
+          </div>
 
           <ContentModule
             type="primary"
