@@ -11,6 +11,11 @@
   padding: 20px;
 }
 
+.asthma-principal{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .asthma-description {
   display: flex;
   flex-direction: column;

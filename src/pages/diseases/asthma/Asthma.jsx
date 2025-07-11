@@ -30,6 +30,7 @@ const Asthma = () => {
         <div className="asthma-tittle">
           <h1>ASMA</h1>
         </div>
+        
         <div className="asthma-description">
           <p>
             El asma es una <strong>enfermedad crónica</strong> que afecta las
