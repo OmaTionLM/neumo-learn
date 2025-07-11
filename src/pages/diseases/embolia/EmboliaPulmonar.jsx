@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ModeloVascular from "./models-3d/vascular/ModeloVascular";
 import VistaDetalle from "./models-3d/seccion-1/ModeloSeccion1";
+import VistaSintomas from "./models-3d/seccion-2/ModeloSeccion2";
 import "./EmboliaPulmonar.css";
 
 const EmboliaPulmonar = () => {
   const [iniciarTransicion, setIniciarTransicion] = useState(false);
   const [mostrarFlecha, setMostrarFlecha] = useState(false);
-  const [mostrarDetalle, setMostrarDetalle] = useState(false);
+  const [seccionActual, setSeccionActual] = useState("inicio");
 
   const manejarInteraccion = (tipo) => {
     if (tipo === "start") {
@@ -24,14 +25,14 @@ const EmboliaPulmonar = () => {
   }, [iniciarTransicion]);
 
   const manejarScroll = () => {
-     setMostrarDetalle(true);
-  };
+       setSeccionActual("seccion1");
+    };
 
   const volverVistaInicial = () => {
-    setMostrarDetalle(false); 
-    setIniciarTransicion(false);
-    setMostrarFlecha(false);
-  };
+      setSeccionActual("inicio");
+      setIniciarTransicion(false);
+      setMostrarFlecha(false);
+    };
 
   return (
     <div className={`embol-container ${iniciarTransicion ? "activo" : ""}`}>
@@ -39,23 +40,31 @@ const EmboliaPulmonar = () => {
        <p className="frase-impacto">
           "Cuando el aire no llega, el cuerpo lo grita en silencio"
        </p>
-          {!mostrarDetalle ? (
-            <>
-              <ModeloVascular
-                play={iniciarTransicion}
-                onFinish={manejarInteraccion}
-              />
+           {seccionActual === "inicio" && (
+              <>
+                <ModeloVascular play={iniciarTransicion} onFinish={manejarInteraccion} />
+                {mostrarFlecha && (
+                  <button className="flecha-siguiente" onClick={() => setSeccionActual("seccion1")}>
+                    →
+                  </button>
+                )}
+              </>
+            )}
 
-              {mostrarFlecha && (
-                <button className="flecha-siguiente" onClick={manejarScroll}>
-                  →
-                </button>
-              )}
-            </>
-          ) : (
-            <VistaDetalle volver={volverVistaInicial} />
-          )}
-        </div>
+            {seccionActual === "seccion1" && (
+              <VistaDetalle
+                volver={() => setSeccionActual("inicio")}
+                avanzar={() => setSeccionActual("seccion2")}
+              />
+            )}
+
+            {seccionActual === "seccion2" && (
+              <VistaSintomas
+                volver={() => setSeccionActual("seccion1")}
+                avanzar={() => setSeccionActual("seccion3")} // Futuro
+              />
+            )}
+         </div>
       );
     };
 
