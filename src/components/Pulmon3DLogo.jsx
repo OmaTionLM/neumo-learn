@@ -18,7 +18,7 @@ function PulmonModel() {
 }
 
 const Pulmon3DLogo = () => (
-  <div style={{ width: "100px", height: "100px" }}>
+  <div style={{ width: "90px", height: "90px" }}>
     <Canvas camera={{ position: [0, 0, 3] }}>
       <ambientLight intensity={1} />
       <directionalLight position={[2, 2, 2]} />
