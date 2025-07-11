@@ -11,8 +11,7 @@ export function Bottle(props) {
   useFrame((state) => {
     if (group.current && isJumping) {
       const t = state.clock.getElapsedTime();
-      // group.current.rotation.y = t * 0.8 // Giro suave
-      group.current.position.y = Math.sin(t * 2) * 0.2 - 2.1; // Rebote
+      group.current.position.y = Math.sin(t * 2) * 0.2 - 2.1; 
     }
   });
 
