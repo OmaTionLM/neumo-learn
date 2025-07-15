@@ -1,0 +1,396 @@
+.dst-disease-container {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Sección Hero */
+.dst-hero-section {
+  display: flex;
+  min-height: 80vh;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+}
+
+.dst-hero-content {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 2rem;
+}
+
+.dst-disease-title {
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.dst-hero-description {
+  max-width: 100%;
+}
+
+.dst-description-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dst-intro-text {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.dst-causes-box {
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dst-causes-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.dst-causes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.dst-causes-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.dst-cause-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.dst-additional-info {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.dst-stat-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dst-stat-box {
+  flex: 1;
+  min-width: 120px;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dst-stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.dst-stat-text {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.dst-main-model-container {
+  flex: 1;
+  max-width: 50%;
+  height: 60vh;
+  min-height: 400px;
+}
+
+/* Secciones generales */
+.dst-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.dst-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+/* Sección de síntomas */
+.dst-symptoms-section {
+  padding: 2rem 0;
+}
+
+.dst-symptoms-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.dst-symptoms-info {
+  flex: 2;
+}
+
+.dst-symptoms-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.dst-symptoms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.dst-symptom-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.dst-symptom-card:hover {
+  transform: translateY(-5px);
+}
+
+.dst-symptom-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.dst-symptom-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.dst-symptom-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.dst-symptoms-model {
+  flex: 1;
+  height: 400px;
+  min-width: 300px;
+}
+
+/* Sección de tratamiento */
+.dst-treatment-section {
+  padding: 2rem 0;
+  background-color: #ffffff;
+}
+
+.dst-treatment-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.dst-treatment-model {
+  flex: 1;
+  height: 400px;
+  min-width: 300px;
+}
+
+.dst-treatment-info {
+  flex: 2;
+}
+
+.dst-treatment-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.dst-treatment-options {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dst-treatment-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dst-treatment-header {
+  padding: 1rem;
+  color: white;
+}
+
+.dst-treatment-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dst-treatment-body {
+  padding: 1.5rem;
+}
+
+.dst-treatment-methods {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dst-treatment-methods li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.dst-treatment-methods li:last-child {
+  border-bottom: none;
+}
+
+/* Sección de prevención */
+.dst-prevention-section {
+  padding: 2rem 0;
+}
+
+.dst-prevention-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.dst-prevention-info {
+  flex: 2;
+}
+
+.dst-prevention-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.dst-prevention-categories {
+  display: grid;
+  gap: 2rem;
+}
+
+.dst-prevention-category {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dst-category-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.dst-category-recommendations {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dst-recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.dst-recommendation-icon {
+  margin-right: 0.8rem;
+  font-weight: bold;
+  margin-top: 0.2rem;
+}
+
+.dst-prevention-model {
+  flex: 1;
+  height: 400px;
+  min-width: 300px;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .dst-hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dst-hero-content,
+  .dst-main-model-container {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .dst-symptoms-content,
+  .dst-treatment-content,
+  .dst-prevention-content {
+    flex-direction: column;
+  }
+
+  .dst-symptoms-model,
+  .dst-treatment-model,
+  .dst-prevention-model {
+    min-width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dst-section-container {
+    padding: 2rem 1rem;
+  }
+
+  .dst-symptoms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dst-stat-container {
+    flex-direction: column;
+  }
+
+  .dst-hero-section {
+    padding: 1rem;
+  }
+
+  .dst-hero-content {
+    padding-right: 0;
+  }
+
+  .dst-description-content {
+    padding: 1.5rem;
+  }
+}

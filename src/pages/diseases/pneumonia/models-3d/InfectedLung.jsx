@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { useGLTF } from "@react-three/drei"
+import { useGLTF, PerspectiveCamera } from "@react-three/drei"
 import { Color } from "three"
 import { useState, useEffect } from "react"
 
@@ -7,6 +7,9 @@ export function InfectedLung(props) {
   const group = useRef()
   const [lungModel, setLungModel] = useState(null)
   const [errorLoading, setErrorLoading] = useState(false)
+
+  // Estado para controlar si ya se ha colocado la cámara personalizada
+  const cameraRef = useRef()
 
   useEffect(() => {
     let gltf = null
@@ -19,9 +22,17 @@ export function InfectedLung(props) {
     }
   }, [])
 
+  // Renderizado de respaldo si hay error cargando el modelo
   if (errorLoading) {
     return (
       <group ref={group} {...props}>
+        {/* Cámara personalizada para alejar el zoom */}
+        <PerspectiveCamera
+          makeDefault
+          ref={cameraRef}
+          position={[0, 0, 6]} // Más lejos que el valor típico (usualmente 2-3)
+          fov={40}
+        />
         <mesh castShadow receiveShadow>
           <sphereGeometry args={[1, 32, 32]} />
           <meshStandardMaterial color="#7D3C98" roughness={0.7} metalness={0.1} />
@@ -34,7 +45,6 @@ export function InfectedLung(props) {
           <torusGeometry args={[0.6, 0.2, 16, 100]} />
           <meshStandardMaterial color="#9B59B6" roughness={0.6} metalness={0.2} />
         </mesh>
-
         {/* Elementos adicionales para mostrar la inflamación e infección */}
         <mesh position={[0.5, 0.3, 0.5]} castShadow receiveShadow>
           <sphereGeometry args={[0.3, 16, 16]} />
@@ -78,9 +88,16 @@ export function InfectedLung(props) {
     }
   })
 
-  // Si se carga correctamente, renderizamos el modelo
+  // Renderizamos el modelo con la cámara más alejada
   return (
     <group ref={group} {...props} dispose={null}>
+      {/* Cámara personalizada para alejar el zoom */}
+      <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        position={[0, 0, 500]} // Más lejos que el valor típico (usualmente 2-3)
+        fov={40}
+      />
       {/* Renderizamos todos los nodos del modelo con materiales modificados */}
       {Object.keys(nodes).map((nodeName) => {
         // Ignoramos los nodos que no son meshes
