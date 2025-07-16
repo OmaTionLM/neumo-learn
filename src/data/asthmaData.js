@@ -17,14 +17,6 @@ export const asthmaData = {
   heroSection: {
     description:
       "El asma es una enfermedad crónica que afecta las vías respiratorias, causando inflamación y estrechamiento de los bronquios, lo que dificulta la respiración y provoca episodios recurrentes de sibilancias, tos y falta de aire.",
-    causes: [
-      "Alérgenos (polen, ácaros, caspa de mascotas)",
-      "Irritantes ambientales (humo, contaminación)",
-      "Infecciones respiratorias virales",
-      "Ejercicio físico intenso",
-      "Estrés emocional",
-      "Cambios climáticos bruscos",
-    ],
     additionalInfo:
       "El asma afecta a personas de todas las edades, pero a menudo comienza en la infancia. Es una condición que puede controlarse efectivamente con el tratamiento adecuado, permitiendo a los pacientes llevar una vida normal y activa.",
     statistics: [
@@ -33,42 +25,43 @@ export const asthmaData = {
       { number: "10%", text: "de niños tienen asma" },
     ],
   },
-  symptomsSection: {
+  causesSection: {
     description:
-      "Los síntomas del asma pueden variar en intensidad y frecuencia. Es importante reconocer tanto los síntomas cotidianos como las señales de una crisis asmática para un manejo adecuado.",
-    symptoms: [
+      "El asma puede ser desencadenado por múltiples factores ambientales, genéticos y emocionales. Identificar y evitar estos desencadenantes es fundamental para el control de la enfermedad.",
+    causes: [
       {
-        icon: "🌪️",
-        title: "Sibilancias",
+        icon: "🌸",
+        title: "Alérgenos Ambientales",
         description:
-          "Sonido silbante al respirar, especialmente al exhalar, causado por el estrechamiento de las vías respiratorias.",
+          "Polen de árboles, pastos y malezas, ácaros del polvo doméstico, caspa de mascotas y esporas de moho.",
       },
       {
-        icon: "😤",
-        title: "Dificultad respiratoria",
+        icon: "🚭",
+        title: "Irritantes del Aire",
         description:
-          "Sensación de falta de aire o respiración entrecortada, especialmente durante actividades físicas.",
+          "Humo del tabaco, contaminación del aire, vapores químicos, perfumes fuertes y productos de limpieza.",
       },
       {
-        icon: "🤧",
-        title: "Tos persistente",
-        description: "Tos seca o con poca mucosidad, que empeora por la noche o temprano en la mañana.",
-      },
-      {
-        icon: "💪",
-        title: "Opresión torácica",
+        icon: "🦠",
+        title: "Infecciones Respiratorias",
         description:
-          "Sensación de presión o tirantez en el pecho, como si algo estuviera apretando alrededor del tórax.",
-      },
-      {
-        icon: "😴",
-        title: "Alteraciones del sueño",
-        description: "Despertares nocturnos debido a tos, sibilancias o dificultad para respirar.",
+          "Resfriados comunes, gripe, sinusitis y otras infecciones virales o bacterianas del tracto respiratorio.",
       },
       {
         icon: "🏃",
-        title: "Limitación de actividades",
-        description: "Reducción de la capacidad para realizar ejercicio o actividades físicas normales.",
+        title: "Ejercicio Físico",
+        description:
+          "Actividad física intensa, especialmente en ambientes fríos y secos, puede desencadenar broncoespasmo.",
+      },
+      {
+        icon: "😰",
+        title: "Factores Emocionales",
+        description: "Estrés emocional intenso, ansiedad, risa excesiva o llanto pueden provocar episodios asmáticos.",
+      },
+      {
+        icon: "🌡️",
+        title: "Cambios Climáticos",
+        description: "Cambios bruscos de temperatura, alta humedad, tormentas y cambios de presión barométrica.",
       },
     ],
   },
@@ -156,7 +149,7 @@ export const asthmaData = {
   },
   models: {
     hero: Staging,
-    symptoms: Bottle,
+    causes: Bottle,
     treatment: Inhaler,
     prevention: Cigarette,
   },

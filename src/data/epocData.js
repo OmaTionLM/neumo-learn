@@ -13,14 +13,6 @@ export const epoceData = {
   heroSection: {
     description:
       "La Enfermedad Pulmonar Obstructiva Crónica (EPOC) es una enfermedad progresiva que causa dificultad respiratoria debido al daño en los pulmones. Incluye enfisema y bronquitis crónica, caracterizándose por la obstrucción del flujo de aire que no es completamente reversible.",
-    causes: [
-      "Tabaquismo (causa principal - 85-90% de casos)",
-      "Exposición a humo de segunda mano",
-      "Contaminación del aire interior y exterior",
-      "Exposición ocupacional (polvo, químicos, vapores)",
-      "Deficiencia de alfa-1 antitripsina (genética)",
-      "Infecciones respiratorias frecuentes en la infancia",
-    ],
     additionalInfo:
       "La EPOC es una de las principales causas de muerte en el mundo y es completamente prevenible. Aunque el daño pulmonar no se puede revertir completamente, el tratamiento puede ralentizar la progresión y mejorar significativamente la calidad de vida.",
     statistics: [
@@ -29,40 +21,45 @@ export const epoceData = {
       { number: "4ta", text: "causa de muerte global" },
     ],
   },
-  symptomsSection: {
+  causesSection: {
     description:
-      "Los síntomas de la EPOC se desarrollan gradualmente y empeoran con el tiempo. El reconocimiento temprano permite un mejor manejo de la enfermedad.",
-    symptoms: [
+      "La EPOC es causada principalmente por la exposición prolongada a irritantes que dañan los pulmones y las vías respiratorias. El tabaquismo es la causa principal, pero existen otros factores importantes.",
+    causes: [
       {
-        icon: "💨",
-        title: "Disnea progresiva",
+        icon: "🚬",
+        title: "Tabaquismo",
         description:
-          "Dificultad respiratoria que inicialmente ocurre con el esfuerzo y progresa hasta presentarse en reposo.",
+          "Causa principal (85-90% de casos). El humo del tabaco contiene más de 4,000 químicos tóxicos que dañan progresivamente los pulmones.",
+      },
+      {
+        icon: "🌫️",
+        title: "Humo de Segunda Mano",
+        description:
+          "Exposición pasiva al humo del tabaco en el hogar, trabajo o espacios públicos, especialmente peligrosa en niños y adultos mayores.",
+      },
+      {
+        icon: "🏭",
+        title: "Contaminación Ambiental",
+        description:
+          "Contaminación del aire exterior por industrias, vehículos y quema de combustibles, así como contaminación interior por cocinas de leña.",
+      },
+      {
+        icon: "⚒️",
+        title: "Exposición Ocupacional",
+        description:
+          "Inhalación de polvo, vapores químicos, humos y gases en el lugar de trabajo, especialmente en minería, construcción y manufactura.",
+      },
+      {
+        icon: "🧬",
+        title: "Deficiencia Genética",
+        description:
+          "Deficiencia de alfa-1 antitripsina, una condición hereditaria rara que predispone al desarrollo temprano de enfisema.",
       },
       {
         icon: "🤧",
-        title: "Tos crónica",
-        description: "Tos persistente que dura más de 3 meses al año durante 2 años consecutivos, a menudo productiva.",
-      },
-      {
-        icon: "🟡",
-        title: "Expectoración",
-        description: "Producción excesiva de mucosidad espesa, a menudo de color amarillento o verdoso.",
-      },
-      {
-        icon: "🌪️",
-        title: "Sibilancias",
-        description: "Sonidos silbantes al respirar debido al estrechamiento de las vías respiratorias.",
-      },
-      {
-        icon: "😴",
-        title: "Fatiga crónica",
-        description: "Cansancio extremo y falta de energía que interfiere con las actividades diarias normales.",
-      },
-      {
-        icon: "⚖️",
-        title: "Pérdida de peso",
-        description: "Pérdida de peso no intencional debido al aumento del trabajo respiratorio y pérdida de apetito.",
+        title: "Infecciones Respiratorias",
+        description:
+          "Infecciones respiratorias frecuentes y severas durante la infancia que pueden afectar el desarrollo pulmonar normal.",
       },
     ],
   },
@@ -152,7 +149,7 @@ export const epoceData = {
   },
   models: {
     hero: LungSickModel,
-    symptoms: AlveolusModel,
+    causes: AlveolusModel,
     treatment: BronchiModel,
     prevention: null,
   },

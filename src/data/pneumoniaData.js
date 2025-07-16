@@ -14,12 +14,6 @@ export const pneumoniaData = {
   heroSection: {
     description:
       "La neumonía es una infección grave que afecta a los pulmones, causando que los alvéolos se llenen de líquido o pus, lo que dificulta la respiración y el intercambio de oxígeno.",
-    causes: [
-      "Bacterias (Streptococcus pneumoniae)",
-      "Virus (influenza, COVID-19)",
-      "Hongos (en personas inmunodeprimidas)",
-      "Aspiración de contenido gástrico",
-    ],
     additionalInfo:
       "Puede ser causada por bacterias, virus u hongos. La neumonía puede variar en gravedad desde leve hasta potencialmente mortal, especialmente en personas mayores, niños pequeños y aquellos con sistemas inmunológicos comprometidos.",
     statistics: [
@@ -28,39 +22,45 @@ export const pneumoniaData = {
       { number: "7%", text: "de todas las muertes" },
     ],
   },
-  symptomsSection: {
+  causesSection: {
     description:
-      "Los síntomas de la neumonía pueden variar desde leves hasta graves, y su reconocimiento temprano es crucial para un tratamiento efectivo.",
-    symptoms: [
+      "La neumonía puede ser causada por diversos microorganismos patógenos y factores de riesgo. Identificar el agente causante es crucial para determinar el tratamiento más efectivo.",
+    causes: [
       {
-        icon: "🔥",
-        title: "Fiebre alta",
-        description: "Temperatura corporal elevada, a menudo acompañada de escalofríos y sudoración.",
+        icon: "🦠",
+        title: "Bacterias",
+        description:
+          "Streptococcus pneumoniae es la causa más común. También Haemophilus influenzae, Staphylococcus aureus y bacterias atípicas como Mycoplasma.",
       },
       {
-        icon: "💨",
-        title: "Dificultad respiratoria",
-        description: "Sensación de falta de aire, especialmente durante actividades físicas.",
+        icon: "🔬",
+        title: "Virus",
+        description:
+          "Influenza A y B, virus respiratorio sincitial (VRS), adenovirus, y más recientemente SARS-CoV-2 (COVID-19).",
       },
       {
-        icon: "🤧",
-        title: "Tos productiva",
-        description: "Tos con flema que puede contener sangre o tener color amarillento/verdoso.",
+        icon: "🍄",
+        title: "Hongos",
+        description:
+          "Pneumocystis jirovecii en pacientes inmunodeprimidos, Histoplasma, Coccidioides y Aspergillus en ciertas regiones geográficas.",
       },
       {
-        icon: "💔",
-        title: "Dolor torácico",
-        description: "Dolor agudo en el pecho que empeora al respirar profundamente o toser.",
+        icon: "🫁",
+        title: "Aspiración",
+        description:
+          "Inhalación de contenido gástrico, saliva o cuerpos extraños, especialmente en pacientes con alteración de la conciencia o disfagia.",
       },
       {
-        icon: "😴",
-        title: "Fatiga extrema",
-        description: "Cansancio severo y debilidad que interfiere con las actividades diarias.",
+        icon: "🏥",
+        title: "Neumonía Nosocomial",
+        description:
+          "Adquirida en el hospital, causada por bacterias resistentes como Pseudomonas aeruginosa, Klebsiella pneumoniae y MRSA.",
       },
       {
-        icon: "🤢",
-        title: "Síntomas gastrointestinales",
-        description: "Náuseas, vómitos o diarrea, especialmente en casos graves.",
+        icon: "⚕️",
+        title: "Factores de Riesgo",
+        description:
+          "Edad avanzada, inmunodepresión, enfermedades crónicas, tabaquismo, alcoholismo y hospitalización prolongada.",
       },
     ],
   },
@@ -144,7 +144,7 @@ export const pneumoniaData = {
   },
   models: {
     hero: HealthyLung,
-    symptoms: InfectedLung,
+    causes: InfectedLung,
     treatment: PillBottle,
     prevention: Vaccine,
   },

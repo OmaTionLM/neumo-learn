@@ -44,40 +44,6 @@
   margin-bottom: 1.5rem;
 }
 
-.dst-causes-box {
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.dst-causes-title {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.dst-causes-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.8rem;
-  list-style-type: none;
-  padding: 0;
-}
-
-.dst-causes-list li {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  color: #333;
-}
-
-.dst-cause-icon {
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
 .dst-additional-info {
   font-size: 1rem;
   line-height: 1.6;
@@ -137,35 +103,35 @@
   font-weight: 600;
 }
 
-/* Sección de síntomas */
-.dst-symptoms-section {
+/* Sección de causas */
+.dst-causes-section {
   padding: 2rem 0;
 }
 
-.dst-symptoms-content {
+.dst-causes-content {
   display: flex;
   gap: 3rem;
   align-items: flex-start;
 }
 
-.dst-symptoms-info {
+.dst-causes-info {
   flex: 2;
 }
 
-.dst-symptoms-description {
+.dst-causes-description {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
   color: #333;
 }
 
-.dst-symptoms-grid {
+.dst-causes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
-.dst-symptom-card {
+.dst-cause-card {
   background: white;
   padding: 1.5rem;
   border-radius: 10px;
@@ -174,11 +140,11 @@
   transition: transform 0.3s ease;
 }
 
-.dst-symptom-card:hover {
+.dst-cause-card:hover {
   transform: translateY(-5px);
 }
 
-.dst-symptom-icon {
+.dst-cause-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -190,19 +156,19 @@
   font-size: 1.5rem;
 }
 
-.dst-symptom-title {
+.dst-cause-title {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   color: #333;
 }
 
-.dst-symptom-description {
+.dst-cause-description {
   font-size: 0.9rem;
   color: #666;
   line-height: 1.4;
 }
 
-.dst-symptoms-model {
+.dst-causes-model {
   flex: 1;
   height: 400px;
   min-width: 300px;
@@ -355,13 +321,13 @@
     padding-right: 0;
   }
 
-  .dst-symptoms-content,
+  .dst-causes-content,
   .dst-treatment-content,
   .dst-prevention-content {
     flex-direction: column;
   }
 
-  .dst-symptoms-model,
+  .dst-causes-model,
   .dst-treatment-model,
   .dst-prevention-model {
     min-width: 100%;
@@ -374,7 +340,7 @@
     padding: 2rem 1rem;
   }
 
-  .dst-symptoms-grid {
+  .dst-causes-grid {
     grid-template-columns: 1fr;
   }
 

@@ -12,7 +12,7 @@ const LoadingFallback = () => (
 )
 
 const DiseaseTemplate = ({ diseaseData }) => {
-  const { title, heroSection, symptomsSection, treatmentSection, preventionSection, models, colors } = diseaseData
+  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors } = diseaseData
 
   return (
     <div className="dst-disease-container">
@@ -25,21 +25,6 @@ const DiseaseTemplate = ({ diseaseData }) => {
           <div className="dst-hero-description">
             <div className="dst-description-content">
               <p className="dst-intro-text">{heroSection.description}</p>
-              <div className="dst-causes-box" style={{ backgroundColor: colors.lightBackground }}>
-                <h3 className="dst-causes-title" style={{ color: colors.primary }}>
-                  Causas principales:
-                </h3>
-                <ul className="dst-causes-list">
-                  {heroSection.causes.map((cause, index) => (
-                    <li key={index}>
-                      <span className="dst-cause-icon" style={{ color: colors.primary }}>
-                        •
-                      </span>
-                      {cause}
-                    </li>
-                  ))}
-                </ul>
-              </div>
               <p className="dst-additional-info">{heroSection.additionalInfo}</p>
               <div className="dst-stat-container">
                 {heroSection.statistics.map((stat, index) => (
@@ -72,28 +57,28 @@ const DiseaseTemplate = ({ diseaseData }) => {
         </div>
       </section>
 
-      {/* Sección 2: Síntomas */}
-      <section className="dst-symptoms-section" style={{ backgroundColor: colors.lightBackground }}>
+      {/* Sección 2: Causas */}
+      <section className="dst-causes-section" style={{ backgroundColor: colors.lightBackground }}>
         <div className="dst-section-container">
           <h2 className="dst-section-title" style={{ color: colors.primary }}>
-            Síntomas
+            Causas
           </h2>
-          <div className="dst-symptoms-content">
-            <div className="dst-symptoms-info">
-              <p className="dst-symptoms-description">{symptomsSection.description}</p>
-              <div className="dst-symptoms-grid">
-                {symptomsSection.symptoms.map((symptom, index) => (
-                  <div key={index} className="dst-symptom-card">
-                    <div className="dst-symptom-icon" style={{ backgroundColor: colors.primary }}>
-                      {symptom.icon}
+          <div className="dst-causes-content">
+            <div className="dst-causes-info">
+              <p className="dst-causes-description">{causesSection.description}</p>
+              <div className="dst-causes-grid">
+                {causesSection.causes.map((cause, index) => (
+                  <div key={index} className="dst-cause-card">
+                    <div className="dst-cause-icon" style={{ backgroundColor: colors.primary }}>
+                      {cause.icon}
                     </div>
-                    <h4 className="dst-symptom-title">{symptom.title}</h4>
-                    <p className="dst-symptom-description">{symptom.description}</p>
+                    <h4 className="dst-cause-title">{cause.title}</h4>
+                    <p className="dst-cause-description">{cause.description}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="dst-symptoms-model">
+            <div className="dst-causes-model">
               <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
@@ -101,9 +86,7 @@ const DiseaseTemplate = ({ diseaseData }) => {
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 <Environment preset="studio" />
                 <Suspense fallback={<LoadingFallback />}>
-                  {models.symptoms && (
-                    <models.symptoms scale={[0.8, 0.8, 0.8]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
-                  )}
+                  {models.causes && <models.causes scale={[0.8, 0.8, 0.8]} position={[0, 0, 0]} rotation={[0, 0, 0]} />}
                 </Suspense>
               </Canvas>
             </div>
