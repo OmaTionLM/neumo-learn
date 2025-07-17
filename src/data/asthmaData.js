@@ -1,6 +1,7 @@
 import { Bottle } from "../pages/diseases/asthma/models-3d/Bottle"
 import { Inhaler } from "../pages/diseases/asthma/models-3d/Inhaler"
 import { Cigarette } from "../pages/diseases/asthma/models-3d/Cigarette"
+import Mask from "../pages/diseases/asthma/models-3d/Mask"
 import Staging from "../pages/diseases/asthma/staging/Staging"
 import Staging_2 from "../pages/diseases/asthma/staging/Staging_2"
 import Title from "../pages/diseases/asthma/texts/Text_asthma_3d"
@@ -148,7 +149,7 @@ export const asthmaData = {
     ],
   },
   models: {
-    hero: Staging,
+    hero: Mask,
     causes: Bottle,
     treatment: Inhaler,
     prevention: Cigarette,

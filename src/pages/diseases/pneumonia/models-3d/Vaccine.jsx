@@ -1,17 +1,42 @@
-import { useRef } from "react"
-import { useGLTF } from "@react-three/drei"
-import { Color } from "three"
-import { useState, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
+import {
+  useGLTF,
+  PerspectiveCamera,
+  Html,
+  OrbitControls,
+  Text,
+  Environment,
+  Stars,
+  Sparkles
+} from "@react-three/drei"
+import { useThree, useFrame } from "@react-three/fiber"
+import { KeyboardControls } from "@react-three/drei"
+import * as THREE from "three"
 
 export function Vaccine(props) {
   const group = useRef()
+  const cameraRef = useRef()
+  const { scene } = useThree()
+
   const [vaccineModel, setVaccineModel] = useState(null)
   const [errorLoading, setErrorLoading] = useState(false)
+  const [message, setMessage] = useState("Vacuna Activa")
+  const [eventLog, setEventLog] = useState([])
+  const [hovered, setHovered] = useState(false)
+  const [highlight, setHighlight] = useState(false)
+  const textRef = useRef()
+
+  // Animación flotante
+  useFrame(({ clock }) => {
+    if (textRef.current) {
+      const t = clock.getElapsedTime()
+      textRef.current.position.y = 4.2 + Math.sin(t * 1.5) * 0.2
+    }
+  })
 
   useEffect(() => {
-    let gltf = null
     try {
-      gltf = useGLTF("/models-3d/pneumonia/vaccine.glb")
+      const gltf = useGLTF("/models-3d/pneumonia/vaccine.glb")
       setVaccineModel(gltf)
     } catch (error) {
       console.error("Error cargando el modelo de vacuna:", error)
@@ -19,114 +44,177 @@ export function Vaccine(props) {
     }
   }, [])
 
-  if (errorLoading) {
-    // Modelo de respaldo simple para la vacuna (jeringa estilizada)
-    return (
-      <group ref={group} {...props}>
-        {/* Cuerpo de la jeringa */}
-        <mesh castShadow receiveShadow>
-          <cylinderGeometry args={[0.15, 0.15, 2, 32]} />
-          <meshStandardMaterial color="#AED6F1" roughness={0.4} metalness={0.3} />
-        </mesh>
-        {/* Émbolo */}
-        <mesh position={[0, 1.1, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.08, 0.08, 0.5, 32]} />
-          <meshStandardMaterial color="#5DADE2" roughness={0.5} metalness={0.2} />
-        </mesh>
-        {/* Aguja */}
-        <mesh position={[0, -1.1, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.025, 0.025, 0.5, 16]} />
-          <meshStandardMaterial color="#BFC9CA" roughness={0.2} metalness={0.8} />
-        </mesh>
-        {/* Líquido dentro de la jeringa */}
-        <mesh position={[0, -0.3, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.13, 0.13, 0.8, 32]} />
-          <meshStandardMaterial color="#58D68D" roughness={0.3} metalness={0.1} transparent opacity={0.7} />
-        </mesh>
-      </group>
-    )
-  }
+  useEffect(() => {
+    scene.background = null
+  }, [scene])
 
-  if (!vaccineModel) {
-    return null // O un loader
-  }
-
-  const { nodes, materials } = vaccineModel
-
-  // Creamos copias de los materiales para no afectar al modelo original
-  const vaccineMaterials = {}
-
-  Object.keys(materials).forEach((matName) => {
-    // Clonamos el material
-    vaccineMaterials[matName] = materials[matName].clone()
-
-    // Modificamos el color para que parezca más "saludable" (tonos azulados/verdosos)
-    if (vaccineMaterials[matName].color) {
-      const originalColor = vaccineMaterials[matName].color.clone()
-      // Mezclamos con un tono azul/verde para simular protección
-      vaccineMaterials[matName].color = new Color(
-        originalColor.r * 0.5 + 0.5 * 0.2, // Reducimos rojo
-        originalColor.g * 0.7 + 0.3 * 0.8, // Aumentamos verde
-        originalColor.b * 0.7 + 0.3 * 0.9  // Aumentamos azul
-      )
-
-      // Bajamos la rugosidad para un aspecto más limpio
-      if (vaccineMaterials[matName].roughness !== undefined) {
-        vaccineMaterials[matName].roughness = Math.max(0, vaccineMaterials[matName].roughness - 0.2)
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "v") {
+        setHighlight(true)
+        addToLog("Tecla V → Activado modo 'destello clínico'")
+        setMessage("💉 Modo intensificado")
+      }
+      if (event.key === "r") {
+        setHighlight(false)
+        addToLog("Tecla R → Reinicio visual")
+        setMessage("Modo normal")
       }
     }
-  })
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
-  // Si se carga correctamente, renderizamos el modelo
+  const addToLog = (text) => {
+    setEventLog((prev) => [text, ...prev.slice(0, 4)])
+  }
+
+  const handleClick = () => {
+    setMessage("Modelo clicado")
+    addToLog("🖱️ Click → Vacuna interactuada")
+  }
+
+  const handleWheel = () => {
+    if (cameraRef.current) {
+      cameraRef.current.position.z += 1
+      setMessage("Zoom out")
+      addToLog("🖱️ Rueda → Zoom alejado")
+    }
+  }
+
+  if (errorLoading) {
+    return <Text position={[0, 0, 0]} fontSize={1} color="red">Error cargando modelo</Text>
+  }
+
+  if (!vaccineModel) return null
+
+  const { nodes } = vaccineModel
+
   return (
-    <group ref={group} {...props} dispose={null}>
-      {/* Renderizamos todos los nodos del modelo con materiales modificados */}
-      {Object.keys(nodes).map((nodeName) => {
-        // Ignoramos los nodos que no son meshes
-        if (nodes[nodeName].type === "Mesh" || (nodes[nodeName].isObject3D && nodes[nodeName].children.length === 0)) {
-          // Obtenemos el nombre del material original
-          const materialName = nodes[nodeName].material ? nodes[nodeName].material.name : null
+    <KeyboardControls
+      map={[
+        { name: "visualBoost", keys: ["v"] },
+        { name: "resetView", keys: ["r"] }
+      ]}
+    >
+      <group ref={group} {...props} dispose={null}>
+        {/* Cámara */}
+        <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 2, 30]} fov={40} />
 
-          return (
-            <mesh
-              key={nodeName}
-              castShadow
-              receiveShadow
-              geometry={nodes[nodeName].geometry}
-              material={materialName ? vaccineMaterials[materialName] : nodes[nodeName].material}
-              position={nodes[nodeName].position}
-              rotation={nodes[nodeName].rotation}
-              scale={nodes[nodeName].scale}
-            />
-          )
-        }
-        return null
-      })}
+        {/* HDRI */}
+        <Environment files="/scenes-pneumonia/hdr/vaccine.hdr" background />
 
-      {/* Añadimos elementos adicionales para resaltar la protección de la vacuna */}
-      <group position={[0, 0, 0]}>
-        {/* Esferas translúcidas para simular "escudo" de protección */}
-        {[...Array(4)].map((_, i) => {
-          const x = (Math.random() - 0.5) * 1.2
-          const y = (Math.random() - 0.5) * 1.2
-          const z = (Math.random() - 0.5) * 1.2
-          const size = 0.5 + Math.random() * 0.2
+        {/* Iluminación intensificada */}
+        <ambientLight intensity={0.3} />
+        <directionalLight
+          castShadow
+          position={[5, 10, 5]}
+          intensity={highlight ? 3 : 1.5}
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-camera-near={1}
+          shadow-camera-far={50}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
 
-          return (
-            <mesh key={i} position={[x, y, z]} castShadow>
-              <sphereGeometry args={[size, 24, 24]} />
-              <meshStandardMaterial color="#76D7C4" roughness={0.2} metalness={0.1} transparent={true} opacity={0.18} />
-            </mesh>
-          )
+        {/* Plano receptor de sombras */}
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, -1.5, 0]}
+          receiveShadow
+        >
+          <planeGeometry args={[30, 30]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+
+        {/* Partículas */}
+        <Stars radius={80} depth={40} count={1500} factor={2} fade />
+        <Sparkles count={25} scale={4} size={1.5} speed={0.4} color="#d6f5ff" />
+
+        {/* Modelo */}
+        {Object.keys(nodes).map((nodeName) => {
+          const node = nodes[nodeName]
+          if (
+            node.type === "Mesh" ||
+            (node.isObject3D && node.children.length === 0)
+          ) {
+            return (
+              <mesh
+                key={nodeName}
+                castShadow
+                receiveShadow
+                geometry={node.geometry}
+                material={
+                  highlight
+                    ? new THREE.MeshStandardMaterial({ color: "#58D68D" })
+                    : node.material
+                }
+                position={node.position}
+                rotation={node.rotation}
+                scale={node.scale}
+                onClick={handleClick}
+                onWheel={handleWheel}
+              />
+            )
+          }
+          return null
         })}
+
+        {/* Botón HTML */}
+        <Html position={[0, -2, 0]} transform>
+          <button
+            style={{
+              padding: "10px 20px",
+              background: hovered ? "#58D68D" : "#5DADE2",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={() => {
+              setHighlight(true)
+              setMessage("💉 Intensificado manualmente")
+              addToLog("Botón → Activación visual")
+            }}
+          >
+            Activar Efecto
+          </button>
+        </Html>
+
+        {/* Texto flotante */}
+        <Text
+          ref={textRef}
+          fontSize={0.7}
+          color="#3498db"
+          anchorX="center"
+          anchorY="middle"
+          position={[0, 4.2, 2]}
+        >
+          {message}
+        </Text>
+
+        {/* Historial de eventos */}
+        {eventLog.map((line, i) => (
+          <Text
+            key={`log-${i}`}
+            position={[-4, 2.5 - i * 0.4, -2]}
+            fontSize={0.25}
+            color="#626567"
+            anchorX="left"
+          >
+            {line}
+          </Text>
+        ))}
+
+        <OrbitControls />
       </group>
-    </group>
+    </KeyboardControls>
   )
 }
 
-// Intentamos precargar el modelo
-try {
-  useGLTF.preload("/models-3d/pneumonia/vaccine.glb")
-} catch (error) {
-  console.error("Error precargando el modelo de vacuna:", error)
-}
+useGLTF.preload("/models-3d/pneumonia/vaccine.glb")
