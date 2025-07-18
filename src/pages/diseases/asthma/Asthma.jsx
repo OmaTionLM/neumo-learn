@@ -25,7 +25,7 @@ const Asthma = () => {
   title3DPositions={{
     hero: [-0.75, 2.1, 0],
     causes: [-0.5, 2, 0],
-    treatment: [-0.52, 2, 0],
+    treatment: [-0.6, 2, 0],
     prevention: [-0.42, 2.1, 0]
   }}
   Button3DPosition={{

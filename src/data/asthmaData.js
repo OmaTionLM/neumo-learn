@@ -166,6 +166,13 @@ export const asthmaData = {
     treatment: { title: "Inhalador", id: "asma-title-3d" },
     prevention: { title: "Tabaco", id: "asma-title-3d" },
   },
+  texts2D: {
+    hero: { title: "Modelo 3D referencia"},
+    causes: { title: "Modelo 3D referencia" },
+    treatment: { title: "Modelo 3D referencia" },
+    prevention: { title: "Modelo 3D referencia" },
+  },
+
   InfoButtonModal: {
     hero: {
       buttonLabel: "Saber más💡",
@@ -191,4 +198,7 @@ export const asthmaData = {
   Luz: {
     causes: true,
   },
+  texto3D: {
+
+  }
 }
