@@ -1,8 +1,7 @@
-import { HealthyLung } from "../pages/diseases/pneumonia/models-3d/HealthyLung"
-import { InfectedLung } from "../pages/diseases/pneumonia/models-3d/InfectedLung"
-import { Vaccine } from "../pages/diseases/pneumonia/models-3d/Vaccine"
-import { PillBottle } from "../pages/diseases/pneumonia/models-3d/PillBottle"
-import { Environment } from "@react-three/drei"
+import { HealthyLung } from "../pages/diseases/pneumonia/models-3d/HealthyLung";
+import { InfectedLung } from "../pages/diseases/pneumonia/models-3d/InfectedLung";
+import { Vaccine } from "../pages/diseases/pneumonia/models-3d/Vaccine";
+import { PillBottle } from "../pages/diseases/pneumonia/models-3d/PillBottle";
 
 export const pneumoniaData = {
   title: "NEUMONÍA",
@@ -155,10 +154,36 @@ export const pneumoniaData = {
     treatment: null,
     prevention: null,
   },
-  //   texts3D: {
-  //   hero: { title: "A", id: "asma-title-3d" },
-  //   causes: { title: "B", id: "asma-title-3d" },
-  //   treatment: { title: "C", id: "asma-title-3d" },
-  //   prevention: { title: "D", id: "asma-title-3d" },
+  // texts3D: {
+  //   hero: { title: "Pulmón sano", id: "pneumonia-title-3d" },
+  //   causes: { title: "Pulmón infectado", id: "pneumonia-title-3d" },
+  //   treatment: { title: "Medicamentos", id: "pneumonia-title-3d" },
+  //   prevention: { title: "Vacuna", id: "pneumonia-title-3d" },
   // },
-}
+  // InfoButtonModal: {
+  //   hero: {
+  //     buttonId: "button-healthy-pneumonia",
+  //     buttonLabel: "Saber más💡",
+  //     modalTitle: "¿Qué es la neumonía?",
+  //     modalText: "La neumonía es una infección pulmonar que puede ser causada por bacterias, virus u hongos y puede ser potencialmente mortal si no se trata adecuadamente.",
+  //   },
+  //   causes: {
+  //     buttonId: "button-infected-pneumonia",
+  //     buttonLabel: "Causas",
+  //     modalTitle: "¿Qué causa la neumonía?",
+  //     modalText: "Las causas incluyen bacterias, virus, hongos, aspiración y factores de riesgo como edad avanzada y enfermedades crónicas.",
+  //   },
+  //   treatment: {
+  //     buttonId: "button-pill-pneumonia",
+  //     buttonLabel: "Tratamiento",
+  //     modalTitle: "¿Cómo se trata?",
+  //     modalText: "El tratamiento depende del agente causal e incluye antibióticos, antivirales y cuidados de soporte como oxígeno y líquidos.",
+  //   },
+  //   prevention: {
+  //     buttonId: "button-vaccine-pneumonia",
+  //     buttonLabel: "Prevención",
+  //     modalTitle: "¿Cómo prevenir?",
+  //     modalText: "La prevención incluye vacunación, higiene personal, evitar el tabaco y mantener un sistema inmunológico saludable.",
+  //   },
+  // },
+};

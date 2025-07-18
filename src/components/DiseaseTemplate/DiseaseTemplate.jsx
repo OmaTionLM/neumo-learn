@@ -75,13 +75,15 @@ const DiseaseTemplate = ({
             <Suspense fallback={<LoadingFallback />}>
               {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} />}
             </Suspense>
-            <Info3DButtonModal
-              buttonId={InfoButtonModal.hero.buttonId}
-              buttonLabel={InfoButtonModal.hero.buttonLabel}
-              buttonPosition={Button3DPosition.hero}
-              modalTitle={InfoButtonModal.hero.modalTitle}
-              modalText={InfoButtonModal.hero.modalText}
-            />
+            {InfoButtonModal?.hero && (
+              <Info3DButtonModal
+                buttonId={InfoButtonModal.hero.buttonId}
+                buttonLabel={InfoButtonModal.hero.buttonLabel}
+                buttonPosition={Button3DPosition.hero}
+                modalTitle={InfoButtonModal.hero.modalTitle}
+                modalText={InfoButtonModal.hero.modalText}
+              />
+            )}
           </Canvas>
         </div>
       </section>
@@ -127,13 +129,15 @@ const DiseaseTemplate = ({
                 <Suspense fallback={<LoadingFallback />}>
                   {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} />}
                 </Suspense>
-                <Info3DButtonModal
-                  buttonId={InfoButtonModal.causes.buttonId}
-                  buttonLabel={InfoButtonModal.causes.buttonLabel}
-                  buttonPosition={Button3DPosition.causes}
-                  modalTitle={InfoButtonModal.causes.modalTitle}
-                  modalText={InfoButtonModal.causes.modalText}
-                />
+                {InfoButtonModal?.causes && (
+                  <Info3DButtonModal
+                    buttonId={InfoButtonModal.causes.buttonId}
+                    buttonLabel={InfoButtonModal.causes.buttonLabel}
+                    buttonPosition={Button3DPosition.causes}
+                    modalTitle={InfoButtonModal.causes.modalTitle}
+                    modalText={InfoButtonModal.causes.modalText}
+                  />
+                )}
               </Canvas>
             </div>
           </div>
@@ -170,13 +174,15 @@ const DiseaseTemplate = ({
                     <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} />
                   )}
                 </Suspense>
-                <Info3DButtonModal
-                  buttonId={InfoButtonModal.treatment.buttonId}
-                  buttonLabel={InfoButtonModal.treatment.buttonLabel}
-                  buttonPosition={Button3DPosition.treatment}
-                  modalTitle={InfoButtonModal.treatment.modalTitle}
-                  modalText={InfoButtonModal.treatment.modalText}
-                />
+                {InfoButtonModal?.treatment && (
+                  <Info3DButtonModal
+                    buttonId={InfoButtonModal.treatment.buttonId}
+                    buttonLabel={InfoButtonModal.treatment.buttonLabel}
+                    buttonPosition={Button3DPosition.treatment}
+                    modalTitle={InfoButtonModal.treatment.modalTitle}
+                    modalText={InfoButtonModal.treatment.modalText}
+                  />
+                )}
               </Canvas>
             </div>
             <div className="dst-treatment-info">
@@ -254,13 +260,15 @@ const DiseaseTemplate = ({
                     <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} />
                   )}
                 </Suspense>
-                <Info3DButtonModal
-                  buttonId={InfoButtonModal.prevention.buttonId}
-                  buttonLabel={InfoButtonModal.prevention.buttonLabel}
-                  buttonPosition={Button3DPosition.prevention}
-                  modalTitle={InfoButtonModal.prevention.modalTitle}
-                  modalText={InfoButtonModal.prevention.modalText}
-                />
+                {InfoButtonModal?.prevention && (
+                  <Info3DButtonModal
+                    buttonId={InfoButtonModal.prevention.buttonId}
+                    buttonLabel={InfoButtonModal.prevention.buttonLabel}
+                    buttonPosition={Button3DPosition.prevention}
+                    modalTitle={InfoButtonModal.prevention.modalTitle}
+                    modalText={InfoButtonModal.prevention.modalText}
+                  />
+                )}
               </Canvas>
             </div>
           </div>
