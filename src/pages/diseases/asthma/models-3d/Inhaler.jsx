@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Html, useGLTF } from "@react-three/drei";
 
-export function Inhaler(props) {
+export function Inhaler({
+  scale,
+  position,
+  rotation,
+  ...props
+}) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models-3d/asthma/inhaler.glb");
   const [hovered, setHovered] = useState(false);
@@ -10,14 +15,19 @@ export function Inhaler(props) {
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
-    const scale = 2.5 + Math.sin(t * 2) * 0.05; // pulso suave
     if (group.current && isBreathing) {
-      group.current.scale.set(scale, scale + 0.05, scale); // sutil variación en Y
+      // Aplica la animación sobre la escala base
+      const baseScale = Array.isArray(scale) ? scale : [2.5, 2.6, 2.0];
+      group.current.scale.set(
+        baseScale[0] + Math.sin(t * 2) * 0.05,
+        baseScale[1] + Math.sin(t * 2) * 0.05,
+        baseScale[2] + Math.sin(t * 2) * 0.05
+      );
     }
   });
 
   const handleClick = () => {
-    setIsBreathing(false); // Detiene el respiro
+    setIsBreathing(false);
     if (props.onClick) props.onClick();
   };
 
@@ -36,7 +46,9 @@ export function Inhaler(props) {
       ref={group}
       {...props}
       dispose={null}
-      scale={[2.5, 2.6, 2.0]}
+      scale={scale}
+      position={position}
+      rotation={rotation}
       onClick={handleClick}
       onPointerOver={(e) => {
         e.stopPropagation();

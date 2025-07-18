@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-export function Bottle(props) {
+export function Bottle({
+  scale,
+  position,
+  rotation,
+  ...props
+}) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models-3d/asthma/bottle.glb");
   const [hovered, setHovered] = useState(false);
@@ -11,7 +16,8 @@ export function Bottle(props) {
   useFrame((state) => {
     if (group.current && isJumping) {
       const t = state.clock.getElapsedTime();
-      group.current.position.y = Math.sin(t * 2) * 0.2 - 2.1; 
+      // Suma el rebote al valor original de position[1]
+      group.current.position.y = (position?.[1] ?? 0) + Math.sin(t * 2) * 0.2;
     }
   });
 
@@ -33,9 +39,11 @@ export function Bottle(props) {
   return (
     <group
       ref={group}
+      scale={scale}
+      position={position}
+      rotation={rotation}
       {...props}
       dispose={null}
-      scale={[1.4, 1.2, 1.3]}
       onClick={handleClick}
       onPointerOver={(e) => {
         e.stopPropagation();

@@ -17,9 +17,9 @@ const Staging = () => {
         // path={"staging-asthma/cubemaps/surgery/"}
         environment={null}
         ground={{
-          height: 40,
+          height: 10,
           radius: 100,
-          scale: 0.5,
+          scale: 0.05,
         }}
         background
       />
