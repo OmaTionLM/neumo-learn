@@ -1,25 +1,45 @@
-import DiseaseTemplate from "../../../components/DiseaseTemplate/DiseaseTemplate"
-import { epoceData } from "../../../data/epocData"
+import DiseaseTemplate from "../../../components/DiseaseTemplate/DiseaseTemplate";
+import { epoceData } from "../../../data/epocData";
 
 const EPOC = () => {
-  return <DiseaseTemplate
-    diseaseData={epoceData}
-    ModeloPosition={{
-      hero: [0, 0, 5],
-      causes: [0, 0, 3],
-      treatment: [0, 0, 3],
-      // prevention: [0, 0, 5],
-    }}
-    title3DPositions={{
-      hero: [-0.5, 2, -1],
-      causes: [2.5, 2, 0],
-      treatment: [2.5, 2, 0.5],
-      prevention: [3, 1, -2]
-    }}
-  />
-}
+  return (
+    <DiseaseTemplate
+      diseaseData={epoceData}
+      ModeloPosition={{
+        hero: [0, 0, 0],
+        causes: [0, 0, 3],
+        treatment: [0, 0, 3],
+        prevention: [0, 0, 5],
+      }}
+      ModeloScale={{
+        hero: [10, 10, 10],
+        causes: [4, 4, 4],
+        treatment: [6, 6, 6],
+        prevention: [1, 1, 1],
+      }}
+      ModeloRotation={{
+        hero: [0, 0, 0],
+        causes: [0, 0, 0],
+        treatment: [0, 0, 0],
+        prevention: [0, 0, 0],
+      }}
+      title3DPositions={{
+        hero: [-0.5, 2, -1],
+        causes: [0, 2, 0],
+        treatment: [-1, 2, 0],
+        prevention: [-1, 2, 0],
+      }}
+      Button3DPosition={{
+        hero: [0, -1, 0],
+        causes: [-0, -1.5, 0],
+        treatment: [-0.6, -1.5, 0],
+        prevention: [-0.3, -1.4, 0],
+      }}
+    />
+  );
+};
 
-export default EPOC
+export default EPOC;
 
 // import React, { useRef, useState, useEffect } from "react";
 // import { Canvas, useFrame, useThree } from "@react-three/fiber";

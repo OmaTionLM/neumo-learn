@@ -1,7 +1,6 @@
-import { LungSickModel } from "../pages/diseases/epoc/models/ModeloPulmon"
-import { AlveolusModel } from "../pages/diseases/epoc/models/ModeloAlveolus"
-import { BronchiModel } from "../pages/diseases/epoc/models/ModeloBronquios"
-import { Environment } from "@react-three/drei"
+import { LungSickModel } from "../pages/diseases/epoc/models/ModeloPulmon";
+import { AlveolusModel } from "../pages/diseases/epoc/models/ModeloAlveolus";
+import { BronchiModel } from "../pages/diseases/epoc/models/ModeloBronquios";
 
 export const epoceData = {
   title: "EPOC",
@@ -154,16 +153,42 @@ export const epoceData = {
     treatment: BronchiModel,
     prevention: null,
   },
-  Environment: {
+  Environment3D: {
     hero: null,
     causes: null,
     treatment: null,
     prevention: null,
   },
-  // texts3D: {
-  //   hero: { title: "A", id: "asma-title-3d" },
-  //   causes: { title: "B", id: "asma-title-3d" },
-  //   treatment: { title: "C", id: "asma-title-3d" },
-  //   prevention: { title: "D", id: "asma-title-3d" },
-  // },
-}
+  texts3D: {
+    hero: { title: "Pulmón enfermo", id: "epoc-title-3d" },
+    causes: { title: "Alvéolo", id: "epoc-title-3d" },
+    treatment: { title: "Bronquios", id: "epoc-title-3d" },
+    prevention: { title: "Prevención", id: "epoc-title-3d" },
+  },
+  InfoButtonModal: {
+    hero: {
+      buttonId: "button-lung-epoc",
+      buttonLabel: "Saber más💡",
+      modalTitle: "¿Qué es EPOC?",
+      modalText: "La EPOC es una enfermedad pulmonar crónica que causa dificultad para respirar y limita la calidad de vida. Incluye enfisema y bronquitis crónica.",
+    },
+    causes: {
+      buttonId: "button-alveolus-epoc",
+      buttonLabel: "Causas",
+      modalTitle: "¿Qué causa la EPOC?",
+      modalText: "El tabaquismo es la causa principal, pero también influyen la contaminación ambiental, factores genéticos y exposiciones laborales.",
+    },
+    treatment: {
+      buttonId: "button-bronchi-epoc",
+      buttonLabel: "Tratamiento",
+      modalTitle: "¿Cómo se trata?",
+      modalText: "El tratamiento incluye broncodilatadores, antiinflamatorios, oxigenoterapia y rehabilitación pulmonar.",
+    },
+    prevention: {
+      buttonId: "button-prevention-epoc",
+      buttonLabel: "Prevención",
+      modalTitle: "¿Cómo prevenir?",
+      modalText: "Evitar el tabaco, protegerse de contaminantes y mantener un estilo de vida saludable son claves para prevenir la EPOC.",
+    },
+  },
+};
