@@ -27,7 +27,7 @@ const DiseaseTemplate = ({
   Sombras,
   SombraUp
 }) => {
-  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
+  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal, Luz } = diseaseData
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState(null); 
   const handleOpenModal = ({ modalTitle, modalText }) => {
@@ -36,8 +36,7 @@ const DiseaseTemplate = ({
   };
 
   return (
-    console.log("DiseaseTemplate rendered with data:", diseaseData),
-    console.log("position: ", ModeloPosition.hero),
+    console.log(Luz),
     <div className="dst-disease-container">
       {/* Sección 1: ¿Qué es la enfermedad? */}
       <section className="dst-hero-section">
@@ -69,7 +68,7 @@ const DiseaseTemplate = ({
         <div className="dst-main-model-container">
           <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
             <color attach="background" args={["#f8f9fa"]} />
-            <ambientLight intensity={1} />
+            <ambientLight intensity={1.5} />
             <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
             {Sombras?.hero && <Floor x={30} y={30} position={[0, SombraUp.hero, 0]} color={"white"} />}
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
@@ -131,7 +130,8 @@ const DiseaseTemplate = ({
             <div className="dst-causes-model">
               <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
                 <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
+                <ambientLight intensity={1.5} />
+                {Luz?.causes && <Lights />}
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 {Sombras?.causes && <Floor x={30} y={30} position={[0, SombraUp.causes, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
@@ -174,7 +174,7 @@ const DiseaseTemplate = ({
             <div className="dst-treatment-model">
               <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
                 <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
+                <ambientLight intensity={1.5} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 {Sombras?.treatment && <Floor x={30} y={30} position={[0, SombraUp.treatment, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
@@ -261,7 +261,7 @@ const DiseaseTemplate = ({
             <div className="dst-prevention-model">
               <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
                 <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
+                <ambientLight intensity={1.5} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 {Sombras?.prevention && <Floor x={30} y={30} position={[0, SombraUp.prevention, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />

@@ -162,7 +162,7 @@ export const asthmaData = {
   },
   texts3D: {
     hero: { title: "Nebulizador", id: "asma-title-3d" },
-    causes: { title: "Pastas", id: "asma-title-3d" },
+    causes: { title: "Aspirina", id: "asma-title-3d" },
     treatment: { title: "Inhalador", id: "asma-title-3d" },
     prevention: { title: "Tabaco", id: "asma-title-3d" },
   },
@@ -187,5 +187,8 @@ export const asthmaData = {
       modalTitle: "¿Por qué se debe evitar el cigarrillo?",
       modalText: "El cigarrillo es perjudicial para el asma porque irrita las vías respiratorias, causando inflamación, estrechamiento y producción de mucosidad, lo mismo que ocurre durante un ataque de asma. Esto puede desencadenar más ataques, hacerlos más graves y dificultar su control."
     },
-  }
+  },
+  Luz: {
+    causes: true,
+  },
 }
