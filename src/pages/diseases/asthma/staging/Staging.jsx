@@ -16,11 +16,11 @@ const Staging = () => {
 
         // path={"staging-asthma/cubemaps/surgery/"}
         environment={null}
-        // ground={{
-        //   height: 40,
-        //   radius: 100,
-        //   scale: 0.5,
-        // }}
+        ground={{
+          height: 10,
+          radius: 100,
+          scale: 0.05,
+        }}
         background
       />
       {/* <Stars

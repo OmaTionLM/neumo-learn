@@ -27,17 +27,16 @@ const DiseaseTemplate = ({
   Sombras,
   SombraUp
 }) => {
-  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
+  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, texts2D, InfoButtonModal, Luz } = diseaseData
   const [showModal, setShowModal] = useState(false);
-  const [modalData, setModalData] = useState(null); 
+  const [modalData, setModalData] = useState(null);
   const handleOpenModal = ({ modalTitle, modalText }) => {
     setModalData({ title: modalTitle, text: modalText }); //guarda la info
     setShowModal(true);                                   //muestra el modal
   };
 
   return (
-    console.log("DiseaseTemplate rendered with data:", diseaseData),
-    console.log("position: ", ModeloPosition.hero),
+    console.log(Luz),
     <div className="dst-disease-container">
       {/* Sección 1: ¿Qué es la enfermedad? */}
       <section className="dst-hero-section">
@@ -67,36 +66,45 @@ const DiseaseTemplate = ({
 
         {/* Modelo 3D principal */}
         <div className="dst-main-model-container">
-          <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
-            <color attach="background" args={["#f8f9fa"]} />
-            <ambientLight intensity={1} />
-            <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-            {Sombras?.hero && <Floor x={30} y={30} position={[0, SombraUp.hero, 0]} color={"white"} />}
-            <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-            {texts3D && texts3D.hero && (
-              <Title
-                title={texts3D.hero.title}
-                id={texts3D.hero.id}
-                position={title3DPositions.hero}
-              />
-            )}
-            {Environment3D && Environment3D.hero
-              ? <Environment3D.hero />
-              : <EnvironmentDefault />
-            }
-            <Suspense fallback={<LoadingFallback />}>
-              {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} castShadow />}
-            </Suspense>
-            {InfoButtonModal?.hero && (
-              <Button3D
-                buttonLabel={InfoButtonModal.hero.buttonLabel}
-                buttonPosition={Button3DPosition.hero}
-                modalTitle={InfoButtonModal.hero.modalTitle}
-                modalText={InfoButtonModal.hero.modalText}
-                onClick={() => handleOpenModal(InfoButtonModal.hero)}
-              />
-            )}
-          </Canvas>
+          <div className="dst-model">
+            <div className="dst-2d-model">
+              {texts2D && texts2D.hero && (
+                <h1 className="dst-title-text" style={{ color: colors.primary }}>
+                  {texts2D.hero.title}
+                </h1>
+              )}
+            </div>
+            <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
+              <color attach="background" args={["#f8f9fa"]} />
+              <ambientLight intensity={1.5} />
+              <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+              {Sombras?.hero && <Floor x={30} y={30} position={[0, SombraUp.hero, 0]} color={"white"} />}
+              <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+              {texts3D && texts3D.hero && (
+                <Title
+                  title={texts3D.hero.title}
+                  id={texts3D.hero.id}
+                  position={title3DPositions.hero}
+                />
+              )}
+              {Environment3D && Environment3D.hero
+                ? <Environment3D.hero />
+                : <EnvironmentDefault />
+              }
+              <Suspense fallback={<LoadingFallback />}>
+                {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} castShadow />}
+              </Suspense>
+              {InfoButtonModal?.hero && (
+                <Button3D
+                  buttonLabel={InfoButtonModal.hero.buttonLabel}
+                  buttonPosition={Button3DPosition.hero}
+                  modalTitle={InfoButtonModal.hero.modalTitle}
+                  modalText={InfoButtonModal.hero.modalText}
+                  onClick={() => handleOpenModal(InfoButtonModal.hero)}
+                />
+              )}
+            </Canvas>
+          </div>
           {showModal && modalData && (
             <InfoModal
               title={modalData.title}
@@ -129,36 +137,46 @@ const DiseaseTemplate = ({
               </div>
             </div>
             <div className="dst-causes-model">
-              <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
-                <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
-                <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.causes && <Floor x={30} y={30} position={[0, SombraUp.causes, 0]} color={"white"} />}
-                <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                {texts3D && texts3D.causes && (
-                  <Title
-                    title={texts3D.causes.title}
-                    id={texts3D.causes.id}
-                    position={title3DPositions.causes}
-                  />
-                )}
-                {Environment3D && Environment3D.causes
-                  ? <Environment3D.causes />
-                  : <EnvironmentDefault />
-                }
-                <Suspense fallback={<LoadingFallback />}>
-                  {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} castShadow />}
-                </Suspense>
-                {InfoButtonModal?.causes && (
-                  <Button3D
-                    buttonLabel={InfoButtonModal.causes.buttonLabel}
-                    buttonPosition={Button3DPosition.causes}
-                    modalTitle={InfoButtonModal.causes.modalTitle}
-                    modalText={InfoButtonModal.causes.modalText}
-                    onClick={() => handleOpenModal(InfoButtonModal.causes)}
-                  />
-                )}
-              </Canvas>
+              <div className="dst-model">
+                <div className="dst-2d-model">
+                  {texts2D && texts2D.causes && (
+                    <h1 className="dst-title-text" style={{ color: colors.primary }}>
+                      {texts2D.causes.title}
+                    </h1>
+                  )}
+                </div>
+                <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
+                  <color attach="background" args={[colors.modelBackground]} />
+                  <ambientLight intensity={1.5} />
+                  {Luz?.causes && <Lights />}
+                  <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                  {Sombras?.causes && <Floor x={30} y={30} position={[0, SombraUp.causes, 0]} color={"white"} />}
+                  <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+                  {texts3D && texts3D.causes && (
+                    <Title
+                      title={texts3D.causes.title}
+                      id={texts3D.causes.id}
+                      position={title3DPositions.causes}
+                    />
+                  )}
+                  {Environment3D && Environment3D.causes
+                    ? <Environment3D.causes />
+                    : <EnvironmentDefault />
+                  }
+                  <Suspense fallback={<LoadingFallback />}>
+                    {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} castShadow />}
+                  </Suspense>
+                  {InfoButtonModal?.causes && (
+                    <Button3D
+                      buttonLabel={InfoButtonModal.causes.buttonLabel}
+                      buttonPosition={Button3DPosition.causes}
+                      modalTitle={InfoButtonModal.causes.modalTitle}
+                      modalText={InfoButtonModal.causes.modalText}
+                      onClick={() => handleOpenModal(InfoButtonModal.causes)}
+                    />
+                  )}
+                </Canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -172,38 +190,47 @@ const DiseaseTemplate = ({
           </h2>
           <div className="dst-treatment-content">
             <div className="dst-treatment-model">
-              <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
-                <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
-                <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.treatment && <Floor x={30} y={30} position={[0, SombraUp.treatment, 0]} color={"white"} />}
-                <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                {texts3D && texts3D.treatment && (
-                  <Title
-                    title={texts3D.treatment.title}
-                    id={texts3D.treatment.id}
-                    position={title3DPositions.treatment}
-                  />
-                )}
-                {Environment3D && Environment3D.treatment
-                  ? <Environment3D.treatment />
-                  : <EnvironmentDefault />
-                }
-                <Suspense fallback={<LoadingFallback />}>
-                  {models.treatment && (
-                    <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} castShadow />
+              <div className="dst-model">
+                <div className="dst-2d-model">
+                  {texts2D && texts2D.treatment && (
+                    <h1 className="dst-title-text" style={{ color: colors.primary }}>
+                      {texts2D.treatment.title}
+                    </h1>
                   )}
-                </Suspense>
-                {InfoButtonModal?.treatment && (
-                  <Button3D
-                    buttonLabel={InfoButtonModal.treatment.buttonLabel}
-                    buttonPosition={Button3DPosition.treatment}
-                    modalTitle={InfoButtonModal.treatment.modalTitle}
-                    modalText={InfoButtonModal.treatment.modalText}
-                    onClick={() => handleOpenModal(InfoButtonModal.treatment)}
-                  />
-                )}
-              </Canvas>
+                </div>
+                <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
+                  <color attach="background" args={[colors.modelBackground]} />
+                  <ambientLight intensity={1.5} />
+                  <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                  {Sombras?.treatment && <Floor x={30} y={30} position={[0, SombraUp.treatment, 0]} color={"white"} />}
+                  <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+                  {texts3D && texts3D.treatment && (
+                    <Title
+                      title={texts3D.treatment.title}
+                      id={texts3D.treatment.id}
+                      position={title3DPositions.treatment}
+                    />
+                  )}
+                  {Environment3D && Environment3D.treatment
+                    ? <Environment3D.treatment />
+                    : <EnvironmentDefault />
+                  }
+                  <Suspense fallback={<LoadingFallback />}>
+                    {models.treatment && (
+                      <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} castShadow />
+                    )}
+                  </Suspense>
+                  {InfoButtonModal?.treatment && (
+                    <Button3D
+                      buttonLabel={InfoButtonModal.treatment.buttonLabel}
+                      buttonPosition={Button3DPosition.treatment}
+                      modalTitle={InfoButtonModal.treatment.modalTitle}
+                      modalText={InfoButtonModal.treatment.modalText}
+                      onClick={() => handleOpenModal(InfoButtonModal.treatment)}
+                    />
+                  )}
+                </Canvas>
+              </div>
             </div>
             <div className="dst-treatment-info">
               <p className="dst-treatment-description">{treatmentSection.description}</p>
@@ -259,38 +286,47 @@ const DiseaseTemplate = ({
               </div>
             </div>
             <div className="dst-prevention-model">
-              <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
-                <color attach="background" args={[colors.modelBackground]} />
-                <ambientLight intensity={0.7} />
-                <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.prevention && <Floor x={30} y={30} position={[0, SombraUp.prevention, 0]} color={"white"} />}
-                <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                {texts3D && texts3D.prevention && (
-                  <Title
-                    title={texts3D.prevention.title}
-                    id={texts3D.prevention.id}
-                    position={title3DPositions.prevention}
-                  />
-                )}
-                {Environment3D && Environment3D.prevention
-                  ? <Environment3D.prevention />
-                  : <EnvironmentDefault />
-                }
-                <Suspense fallback={<LoadingFallback />}>
-                  {models.prevention && (
-                    <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} castShadow />
+              <div className="dst-model">
+                <div className="dst-2d-model">
+                  {texts2D && texts2D.prevention && (
+                    <h1 className="dst-title-text" style={{ color: colors.primary }}>
+                      {texts2D.prevention.title}
+                    </h1>
                   )}
-                </Suspense>
-                {InfoButtonModal?.prevention && (
-                  <Button3D
-                    buttonLabel={InfoButtonModal.prevention.buttonLabel}
-                    buttonPosition={Button3DPosition.prevention}
-                    modalTitle={InfoButtonModal.prevention.modalTitle}
-                    modalText={InfoButtonModal.prevention.modalText}
-                    onClick={() => handleOpenModal(InfoButtonModal.prevention)}
-                  />
-                )}
-              </Canvas>
+                </div>
+                <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
+                  <color attach="background" args={[colors.modelBackground]} />
+                  <ambientLight intensity={1.5} />
+                  <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                  {Sombras?.prevention && <Floor x={30} y={30} position={[0, SombraUp.prevention, 0]} color={"white"} />}
+                  <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+                  {texts3D && texts3D.prevention && (
+                    <Title
+                      title={texts3D.prevention.title}
+                      id={texts3D.prevention.id}
+                      position={title3DPositions.prevention}
+                    />
+                  )}
+                  {Environment3D && Environment3D.prevention
+                    ? <Environment3D.prevention />
+                    : <EnvironmentDefault />
+                  }
+                  <Suspense fallback={<LoadingFallback />}>
+                    {models.prevention && (
+                      <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} castShadow />
+                    )}
+                  </Suspense>
+                  {InfoButtonModal?.prevention && (
+                    <Button3D
+                      buttonLabel={InfoButtonModal.prevention.buttonLabel}
+                      buttonPosition={Button3DPosition.prevention}
+                      modalTitle={InfoButtonModal.prevention.modalTitle}
+                      modalText={InfoButtonModal.prevention.modalText}
+                      onClick={() => handleOpenModal(InfoButtonModal.prevention)}
+                    />
+                  )}
+                </Canvas>
+              </div>
             </div>
           </div>
         </div>

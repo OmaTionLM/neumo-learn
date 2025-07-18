@@ -6,7 +6,7 @@ const Asthma = () => {
   diseaseData={asthmaData} 
   ModeloPosition={{
     hero: [0, 0, 0] ,
-    causes: [0, -1.2, 0],
+    causes: [0, -1.1, 0],
     treatment: [-0.7, -1, 0],
     prevention: [0, -0.25, 0]
   }}
@@ -23,16 +23,16 @@ const Asthma = () => {
     prevention: [-1, 0, 0]
   }}
   title3DPositions={{
-    hero: [-1.2, 2, -1],
-    causes: [-0.6, 2, 0],
-    treatment: [-0.8, 2, 0],
-    prevention: [-0.66, 2.2, 0]
+    hero: [-0.75, 2.1, 0],
+    causes: [-0.5, 2, 0],
+    treatment: [-0.6, 2, 0],
+    prevention: [-0.42, 2.1, 0]
   }}
   Button3DPosition={{
-    hero: [-1, -1, 0],
-    causes: [-0.55, -1.5, 0],
-    treatment: [-0.6, -1.5, 0],
-    prevention: [-1, -1.4, 0]
+    hero: [-1, -1.5, 0],
+    causes: [-1.05, -1.5, 0],
+    treatment: [-1, -1.5, 0],
+    prevention: [-1.02, -1.4, 0]
   }}
   Sombras={{
     hero: true,
