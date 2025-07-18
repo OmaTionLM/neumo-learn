@@ -5,10 +5,10 @@ import { BronchiModel } from "../pages/diseases/epoc/models/ModeloBronquios"
 export const epoceData = {
   title: "EPOC",
   colors: {
-    primary: "#FF9800",
-    secondary: "#F57C00",
-    lightBackground: "#FFF3E0",
-    modelBackground: "#fffaf0",
+    primary: "#7b1fa2",
+    secondary: "#9c27b0",
+    lightBackground: "#f8f4ff",
+    modelBackground: "#f0f0f0",
   },
   heroSection: {
     description:

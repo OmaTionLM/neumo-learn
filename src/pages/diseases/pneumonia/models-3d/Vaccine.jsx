@@ -53,12 +53,10 @@ export function Vaccine(props) {
       if (event.key === "v") {
         setHighlight(true)
         addToLog("Tecla V → Activado modo 'destello clínico'")
-        setMessage("💉 Modo intensificado")
       }
       if (event.key === "r") {
         setHighlight(false)
         addToLog("Tecla R → Reinicio visual")
-        setMessage("Modo normal")
       }
     }
     window.addEventListener("keydown", handleKeyDown)
@@ -70,14 +68,12 @@ export function Vaccine(props) {
   }
 
   const handleClick = () => {
-    setMessage("Modelo clicado")
     addToLog("🖱️ Click → Vacuna interactuada")
   }
 
   const handleWheel = () => {
     if (cameraRef.current) {
       cameraRef.current.position.z += 1
-      setMessage("Zoom out")
       addToLog("🖱️ Rueda → Zoom alejado")
     }
   }
