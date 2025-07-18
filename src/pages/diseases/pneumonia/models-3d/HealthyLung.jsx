@@ -1,133 +1,245 @@
-import { useRef } from "react"
-import { useGLTF } from "@react-three/drei"
-import { Color } from "three"
-import { useState, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
+import {
+  useGLTF,
+  PerspectiveCamera,
+  Html,
+  Environment,
+  Stars,
+  Sparkles,
+  OrbitControls,
+  Text
+} from "@react-three/drei"
+import { useThree, useFrame } from "@react-three/fiber"
+import { KeyboardControls } from "@react-three/drei"
+import * as THREE from "three"
 
 export function HealthyLung(props) {
   const group = useRef()
+  const cameraRef = useRef()
+  const { scene } = useThree()
+
   const [lungModel, setLungModel] = useState(null)
   const [errorLoading, setErrorLoading] = useState(false)
+  const [clicked, setClicked] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [modelColor, setModelColor] = useState(null)
+  const [message, setMessage] = useState("Pulmón Sano")
+  const [colorIndex, setColorIndex] = useState(0)
+  const [eventLog, setEventLog] = useState([])
+  const [confetti, setConfetti] = useState([])
+
+  const pulseRef = useRef(0)
+
+  const colorList = ["#E74C3C", "#F39C12", "#8E44AD", "#1ABC9C", "#2ECC71"]
 
   useEffect(() => {
-    let gltf = null
     try {
-      gltf = useGLTF("/models-3d/pneumonia/healthy-lung.glb")
+      const gltf = useGLTF("/models-3d/pneumonia/healthy-lung.glb")
       setLungModel(gltf)
     } catch (error) {
-      console.error("Error cargando el modelo de pulmón sano:", error)
+      console.error("Error cargando el modelo:", error)
       setErrorLoading(true)
     }
   }, [])
 
-  if (errorLoading) {
-    return (
-      <group ref={group} {...props}>
-        <mesh castShadow receiveShadow>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshStandardMaterial color="#7D3C98" roughness={0.7} metalness={0.1} />
-        </mesh>
-        <mesh position={[0, 1.2, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.2, 0.2, 1.5, 32]} />
-          <meshStandardMaterial color="#884EA0" roughness={0.8} metalness={0.1} />
-        </mesh>
-        <mesh position={[0, 0, 0]} castShadow receiveShadow>
-          <torusGeometry args={[0.6, 0.2, 16, 100]} />
-          <meshStandardMaterial color="#9B59B6" roughness={0.6} metalness={0.2} />
-        </mesh>
+  useEffect(() => {
+    scene.background = null
+  }, [scene])
 
-        {/* Elementos adicionales para mostrar la inflamación e infección */}
-        <mesh position={[0.5, 0.3, 0.5]} castShadow receiveShadow>
-          <sphereGeometry args={[0.3, 16, 16]} />
-          <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-        </mesh>
-        <mesh position={[-0.4, -0.2, 0.4]} castShadow receiveShadow>
-          <sphereGeometry args={[0.25, 16, 16]} />
-          <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-        </mesh>
-      </group>
-    )
-  }
-
-  if (!lungModel) {
-    return null // O un loader
-  }
-
-  const { nodes, materials } = lungModel
-
-  // Creamos copias de los materiales para no afectar al modelo original
-  const infectedMaterials = {}
-
-  Object.keys(materials).forEach((matName) => {
-    // Clonamos el material
-    infectedMaterials[matName] = materials[matName].clone()
-
-    // Modificamos el color para que parezca infectado (tonos morados/rojizos)
-    if (infectedMaterials[matName].color) {
-      const originalColor = infectedMaterials[matName].color.clone()
-      // Mezclamos con un tono morado para simular infección
-      infectedMaterials[matName].color = new Color(
-        originalColor.r * 0.7 + 0.3 * 0.5, // Reducimos rojo y mezclamos con morado
-        originalColor.g * 0.5, // Reducimos verde
-        originalColor.b * 0.7 + 0.3 * 0.8, // Aumentamos azul para tono morado
-      )
-
-      // Aumentamos la rugosidad para un aspecto enfermo
-      if (infectedMaterials[matName].roughness !== undefined) {
-        infectedMaterials[matName].roughness += 0.2
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "c") {
+        const nextIndex = (colorIndex + 1) % colorList.length
+        const newColor = colorList[nextIndex]
+        setColorIndex(nextIndex)
+        setModelColor(newColor)
+        addToLog(`Tecla C → Color cambiado`)
+      }
+      if (event.key === "b") {
+        setModelColor(null)
+        addToLog("Tecla B → Color original restaurado")
       }
     }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [colorIndex])
+
+  useFrame(() => {
+    if (clicked && group.current) {
+      pulseRef.current += 0.05
+      const scale = 1 + Math.sin(pulseRef.current) * 0.05
+      group.current.scale.set(scale, scale, scale)
+    }
+
+    // Confeti animado
+    setConfetti((prev) =>
+      prev
+        .map((c) => ({
+          ...c,
+          position: [
+            c.position[0],
+            c.position[1] - 0.1,
+            c.position[2] + Math.sin(c.position[0]) * 0.05
+          ]
+        }))
+        .filter((c) => c.position[1] > -5)
+    )
   })
 
-  // Si se carga correctamente, renderizamos el modelo
-  return (
-    <group ref={group} {...props} dispose={null}>
-      {/* Renderizamos todos los nodos del modelo con materiales modificados */}
-      {Object.keys(nodes).map((nodeName) => {
-        // Ignoramos los nodos que no son meshes
-        if (nodes[nodeName].type === "Mesh" || (nodes[nodeName].isObject3D && nodes[nodeName].children.length === 0)) {
-          // Obtenemos el nombre del material original
-          const materialName = nodes[nodeName].material ? nodes[nodeName].material.name : null
+  const handleClick = () => {
+    setClicked(!clicked)
+  }
 
+  const handleWheel = () => {
+    if (cameraRef.current) {
+      cameraRef.current.position.z += 1
+    }
+  }
+
+  const addToLog = (text) => {
+    setEventLog((prev) => [text, ...prev.slice(0, 4)])
+  }
+
+  const launchConfetti = () => {
+    const newBalls = Array.from({ length: 20 }).map((_, i) => ({
+      id: `ball-${Date.now()}-${i}`,
+      position: [
+        Math.random() * 4 - 2,
+        Math.random() * 2 + 2,
+        Math.random() * 4 - 2
+      ],
+      color: colorList[Math.floor(Math.random() * colorList.length)]
+    }))
+    setConfetti((prev) => [...prev, ...newBalls])
+  }
+
+  if (errorLoading) {
+    return <Text position={[0, 0, 0]} fontSize={1} color="red">Error cargando modelo</Text>
+  }
+
+  if (!lungModel) return null
+
+  const { nodes } = lungModel
+
+  return (
+    <KeyboardControls
+      map={[
+        { name: "cycleColor", keys: ["c"] },
+        { name: "resetColor", keys: ["b"] }
+      ]}
+    >
+      <group ref={group} {...props} dispose={null}>
+        <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 15]} fov={40} />
+
+        {/* HDRI */}
+        <Environment files="/scenes-pneumonia/hdr/childrens_hospital.hdr" background />
+
+        {/* Iluminación */}
+        <ambientLight intensity={0.25} />
+        <directionalLight
+          castShadow
+          position={[4, 10, 4]}
+          intensity={2.5}
+          shadow-mapSize-width={4096}
+          shadow-mapSize-height={4096}
+          shadow-bias={-0.0005}
+          shadow-camera-near={1}
+          shadow-camera-far={30}
+          shadow-camera-left={-5}
+          shadow-camera-right={5}
+          shadow-camera-top={5}
+          shadow-camera-bottom={-5}
+        />
+        <pointLight
+          position={[-3, 5, -3]}
+          intensity={0.6}
+          color="#ffffff"
+          castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+        />
+
+        {/* Plano receptor */}
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.5, 0]} receiveShadow>
+          <planeGeometry args={[12, 12]} />
+          <meshStandardMaterial color="#eeeeee" />
+        </mesh>
+
+        {/* Modelo */}
+        {Object.keys(nodes).map((key) => {
+          const node = nodes[key]
+          if (!node.geometry) return null
           return (
             <mesh
-              key={nodeName}
+              key={key}
               castShadow
               receiveShadow
-              geometry={nodes[nodeName].geometry}
-              material={materialName ? infectedMaterials[materialName] : nodes[nodeName].material}
-              position={nodes[nodeName].position}
-              rotation={nodes[nodeName].rotation}
-              scale={nodes[nodeName].scale}
+              geometry={node.geometry}
+              material={
+                modelColor
+                  ? new THREE.MeshStandardMaterial({ color: modelColor })
+                  : node.material
+              }
+              position={node.position}
+              rotation={node.rotation}
+              scale={node.scale}
+              onClick={handleClick}
+              onWheel={handleWheel}
+              onPointerOver={() => setHovered(true)}
+              onPointerOut={() => setHovered(false)}
             />
           )
-        }
-        return null
-      })}
-
-      {/* Añadimos elementos adicionales para mostrar la infección */}
-      <group position={[0, 0, 0]}>
-        {/* Pequeñas esferas para representar infección/inflamación */}
-        {[...Array(8)].map((_, i) => {
-          const x = (Math.random() - 0.5) * 1.5
-          const y = (Math.random() - 0.5) * 1.5
-          const z = (Math.random() - 0.5) * 1.5
-          const size = 0.1 + Math.random() * 0.15
-
-          return (
-            <mesh key={i} position={[x, y, z]} castShadow>
-              <sphereGeometry args={[size, 16, 16]} />
-              <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-            </mesh>
-          )
         })}
+
+        {/* Confeti */}
+        {confetti.map((ball) => (
+          <mesh key={ball.id} position={ball.position} castShadow>
+            <sphereGeometry args={[0.05, 16, 16]} />
+            <meshStandardMaterial color={ball.color} />
+          </mesh>
+        ))}
+
+        {/* Botón HTML */}
+        <Html position={[0, -2, 0]} transform>
+          <button
+            style={{
+              padding: "10px 20px",
+              background: hovered ? "#F1C40F" : "#3498DB",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+            onClick={launchConfetti}
+          >
+            Interactúa
+          </button>
+        </Html>
+
+        {/* Texto 3D */}
+        <Text position={[0, 3.5, 0]} fontSize={0.5} color="white">
+          {message}
+        </Text>
+
+        {/* Historial */}
+        {eventLog.map((line, i) => (
+          <Text
+            key={`log-${i}`}
+            position={[-4, 3 - i * 0.4, -2]}
+            fontSize={0.25}
+            color="#aaaaaa"
+            anchorX="left"
+          >
+            {line}
+          </Text>
+        ))}
+
+        <Stars radius={100} depth={50} count={5000} factor={4} />
+        <Sparkles count={30} scale={5} size={2} speed={0.4} />
+        <OrbitControls />
       </group>
-    </group>
+    </KeyboardControls>
   )
 }
 
-// Intentamos precargar el modelo
-try {
-  useGLTF.preload("/models-3d/pneumonia/healthy-lung.glb")
-} catch (error) {
-  console.error("Error precargando el modelo de pulmón sano:", error)
-}
+useGLTF.preload("/models-3d/pneumonia/healthy-lung.glb")
