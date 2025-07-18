@@ -34,8 +34,6 @@ const Mask = (props) => {
     return(
         <group ref={group} {...props} 
         dispose={null} 
-        scale={[0.1, 0.1, 0.1]} 
-        position={[0, 1, 0]} 
         onClick={handleClick}
         onPointerOver={(e) => {
         e.stopPropagation();

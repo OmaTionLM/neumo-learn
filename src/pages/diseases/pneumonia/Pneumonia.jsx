@@ -2,7 +2,21 @@ import DiseaseTemplate from "../../../components/DiseaseTemplate/DiseaseTemplate
 import { pneumoniaData } from "../../../data/pneumoniaData"
 
 const PneumoniaPage = () => {
-  return <DiseaseTemplate diseaseData={pneumoniaData} />
+  return <DiseaseTemplate
+    diseaseData={pneumoniaData}
+    ModeloPosition={{
+      hero: [10, 10, 10],
+      causes: [0, 0, 3],
+      treatment: [0, 0, 3],
+      prevention: [0, 0, 5],
+    }}
+    title3DPositions={{
+      hero: [-0.5, 2, -1],
+      causes: [2.5, 2, 0],
+      treatment: [2.5, 2, 0.5],
+      prevention: [3, 1, -2]
+    }}
+  />
 }
 
 export default PneumoniaPage

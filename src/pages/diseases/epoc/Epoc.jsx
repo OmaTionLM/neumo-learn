@@ -2,7 +2,21 @@ import DiseaseTemplate from "../../../components/DiseaseTemplate/DiseaseTemplate
 import { epoceData } from "../../../data/epocData"
 
 const EPOC = () => {
-  return <DiseaseTemplate diseaseData={epoceData} />
+  return <DiseaseTemplate
+    diseaseData={epoceData}
+    ModeloPosition={{
+      hero: [0, 0, 5],
+      causes: [0, 0, 3],
+      treatment: [0, 0, 3],
+      // prevention: [0, 0, 5],
+    }}
+    title3DPositions={{
+      hero: [-0.5, 2, -1],
+      causes: [2.5, 2, 0],
+      treatment: [2.5, 2, 0.5],
+      prevention: [3, 1, -2]
+    }}
+  />
 }
 
 export default EPOC
@@ -13,7 +27,7 @@ export default EPOC
 // import { LungSickModel } from "./models/ModeloPulmon";
 // import { AlveolusModel } from "./models/ModeloAlveolus";
 // import { BronchiModel } from "./models/ModeloBronquios";
-// import Lights from './components/Lights'; 
+// import Lights from './components/Lights';
 // import "./Epoc.css";
 
 // function CameraControls() {

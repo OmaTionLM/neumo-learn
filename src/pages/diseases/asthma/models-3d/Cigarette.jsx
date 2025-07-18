@@ -2,28 +2,34 @@ import { Html, useGLTF } from "@react-three/drei";
 import React, { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
-export function Cigarette(props) {
+export function Cigarette({
+  scale,
+  position,
+  rotation,
+  ...props
+}) {
   const { nodes, materials } = useGLTF("/models-3d/asthma/cigarettes.glb");
   const [hovered, setHovered] = useState(false);
   const [isFloating, setIsFloating] = useState(true);
   const group = useRef();
-  
+
   useFrame((state) => {
-   if (group.current && isFloating) {
+    if (group.current && isFloating) {
       const t = state.clock.getElapsedTime();
-      group.current.position.y = Math.sin(t * 2) * 0.2;
+      // Suma el rebote al valor original de position[1]
+      group.current.position.y = (position?.[1] ?? 0) + Math.sin(t * 2) * 0.2;
     }
   });
 
-   const handleClick = () => {
-    setIsFloating(false); // Detiene la animación
+  const handleClick = () => {
+    setIsFloating(false);
     if (props.onClick) props.onClick();
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "r" || e.key === "R") {
-        setIsFloating(true); // Reanuda la animación
+        setIsFloating(true);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -35,7 +41,11 @@ export function Cigarette(props) {
       {...props}
       ref={group}
       dispose={null}
-       onPointerOver={(e) => {
+      scale={scale}
+      position={position}
+      rotation={rotation}
+      onClick={handleClick}
+      onPointerOver={(e) => {
         e.stopPropagation();
         setHovered(true);
         document.body.style.cursor = "pointer";
@@ -46,7 +56,7 @@ export function Cigarette(props) {
         document.body.style.cursor = "default";
       }}
     >
-       {hovered && (
+      {hovered && (
         <Html position={[0, 0, 0]} center>
           <div
             style={{
@@ -63,17 +73,14 @@ export function Cigarette(props) {
           </div>
         </Html>
       )}
-
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Object_2.geometry}
         material={materials.material_0}
-        rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.065}
-        onClick={props.onClick}
       />
     </group>
   );
 }
+
 useGLTF.preload("/models-3d/asthma/cigarettes.glb");

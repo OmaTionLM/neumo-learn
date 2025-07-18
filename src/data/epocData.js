@@ -1,14 +1,15 @@
 import { LungSickModel } from "../pages/diseases/epoc/models/ModeloPulmon"
 import { AlveolusModel } from "../pages/diseases/epoc/models/ModeloAlveolus"
 import { BronchiModel } from "../pages/diseases/epoc/models/ModeloBronquios"
+import { Environment } from "@react-three/drei"
 
 export const epoceData = {
   title: "EPOC",
   colors: {
-    primary: "#FF9800",
-    secondary: "#F57C00",
-    lightBackground: "#FFF3E0",
-    modelBackground: "#fffaf0",
+    primary: "#7b1fa2",
+    secondary: "#9c27b0",
+    lightBackground: "#f8f4ff",
+    modelBackground: "#f0f0f0",
   },
   heroSection: {
     description:
@@ -153,4 +154,16 @@ export const epoceData = {
     treatment: BronchiModel,
     prevention: null,
   },
+  Environment: {
+    hero: null,
+    causes: null,
+    treatment: null,
+    prevention: null,
+  },
+  // texts3D: {
+  //   hero: { title: "A", id: "asma-title-3d" },
+  //   causes: { title: "B", id: "asma-title-3d" },
+  //   treatment: { title: "C", id: "asma-title-3d" },
+  //   prevention: { title: "D", id: "asma-title-3d" },
+  // },
 }

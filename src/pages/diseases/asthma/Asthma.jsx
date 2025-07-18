@@ -2,7 +2,39 @@ import DiseaseTemplate from "../../../components/DiseaseTemplate/DiseaseTemplate
 import { asthmaData } from "../../../data/asthmaData"
 
 const Asthma = () => {
-  return <DiseaseTemplate diseaseData={asthmaData} />
+  return <DiseaseTemplate 
+  diseaseData={asthmaData} 
+  ModeloPosition={{
+    hero: [0, 0, 0] ,
+    causes: [0, -1.2, 0],
+    treatment: [-0.7, -1, 0],
+    prevention: [0, -0.25, 0]
+  }}
+  ModeloScale={{
+    hero: [0.1, 0.1, 0.1],
+    causes: [0.7, 0.6, 0.65],
+    treatment: [1.15, 1.15, 1.15],
+    prevention: [0.05, 0.05, 0.05]
+  }}
+  ModeloRotation={{
+    hero: [0.4, 0, 0],
+    causes: [0, 0, 0],
+    treatment: [0, 0, 0],
+    prevention: [-1, 0, 0]
+  }}
+  title3DPositions={{
+    hero: [-0.5, 2, -1],
+    causes: [-0.6, 2, 0],
+    treatment: [-0.8, 2, 0],
+    prevention: [-0.66, 2.2, 0]
+  }}
+  Button3DPosition={{
+    hero: [-1, -1, 0],
+    causes: [-0.55, -1.5, 0],
+    treatment: [-0.6, -1.5, 0],
+    prevention: [-1, -1.4, 0]
+  }}
+  />
 }
 
 export default Asthma

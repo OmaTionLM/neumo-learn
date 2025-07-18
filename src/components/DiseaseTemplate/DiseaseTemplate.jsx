@@ -1,7 +1,10 @@
 import "./DiseaseTemplate.css"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Environment } from "@react-three/drei"
+import { OrbitControls, Environment, Html } from "@react-three/drei"
 import { Suspense } from "react"
+import Title from "../../pages/diseases/asthma/texts/Text_asthma_3d"
+import EnvironmentDefault from "../Environment/Environment"
+import Info3DButtonModal from "../../pages/diseases/asthma/modal/info3DButtonModal"
 
 // Componente de respaldo mientras se carga el modelo
 const LoadingFallback = () => (
@@ -11,10 +14,19 @@ const LoadingFallback = () => (
   </mesh>
 )
 
-const DiseaseTemplate = ({ diseaseData }) => {
-  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors } = diseaseData
+const DiseaseTemplate = ({
+  diseaseData,
+  ModeloPosition,
+  ModeloScale,
+  ModeloRotation,
+  title3DPositions,
+  Button3DPosition
+}) => {
+  const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
 
   return (
+    console.log("DiseaseTemplate rendered with data:", diseaseData),
+    console.log("position: ", ModeloPosition.hero),
     <div className="dst-disease-container">
       {/* Sección 1: ¿Qué es la enfermedad? */}
       <section className="dst-hero-section">
@@ -46,13 +58,30 @@ const DiseaseTemplate = ({ diseaseData }) => {
         <div className="dst-main-model-container">
           <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows>
             <color attach="background" args={["#f8f9fa"]} />
-            <ambientLight intensity={0.6} />
+            <ambientLight intensity={1} />
             <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-            <Environment preset="studio" />
+            {texts3D && texts3D.hero && (
+              <Title
+                title={texts3D.hero.title}
+                id={texts3D.hero.id}
+                position={title3DPositions.hero}
+              />
+            )}
+            {Environment3D && Environment3D.hero
+              ? <Environment3D.hero />
+              : <EnvironmentDefault />
+            }
             <Suspense fallback={<LoadingFallback />}>
-              {models.hero && <models.hero scale={[1, 1, 1]} position={[0, 0, 0]} rotation={[0, 0, 0]} />}
+              {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} />}
             </Suspense>
+            <Info3DButtonModal
+              buttonId={InfoButtonModal.hero.buttonId}
+              buttonLabel={InfoButtonModal.hero.buttonLabel}
+              buttonPosition={Button3DPosition.hero}
+              modalTitle={InfoButtonModal.hero.modalTitle}
+              modalText={InfoButtonModal.hero.modalText}
+            />
           </Canvas>
         </div>
       </section>
@@ -84,10 +113,27 @@ const DiseaseTemplate = ({ diseaseData }) => {
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                <Environment preset="studio" />
+                {texts3D && texts3D.causes && (
+                  <Title
+                    title={texts3D.causes.title}
+                    id={texts3D.causes.id}
+                    position={title3DPositions.causes}
+                  />
+                )}
+                {Environment3D && Environment3D.causes
+                  ? <Environment3D.causes />
+                  : <EnvironmentDefault />
+                }
                 <Suspense fallback={<LoadingFallback />}>
-                  {models.causes && <models.causes scale={[0.8, 0.8, 0.8]} position={[0, 0, 0]} rotation={[0, 0, 0]} />}
+                  {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} />}
                 </Suspense>
+                <Info3DButtonModal
+                  buttonId={InfoButtonModal.causes.buttonId}
+                  buttonLabel={InfoButtonModal.causes.buttonLabel}
+                  buttonPosition={Button3DPosition.causes}
+                  modalTitle={InfoButtonModal.causes.modalTitle}
+                  modalText={InfoButtonModal.causes.modalText}
+                />
               </Canvas>
             </div>
           </div>
@@ -107,12 +153,30 @@ const DiseaseTemplate = ({ diseaseData }) => {
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                <Environment preset="studio" />
+                {texts3D && texts3D.treatment && (
+                  <Title
+                    title={texts3D.treatment.title}
+                    id={texts3D.treatment.id}
+                    position={title3DPositions.treatment}
+                    
+                  />
+                )}
+                {Environment3D && Environment3D.treatment
+                  ? <Environment3D.treatment />
+                  : <EnvironmentDefault />
+                }
                 <Suspense fallback={<LoadingFallback />}>
                   {models.treatment && (
-                    <models.treatment scale={[0.8, 0.8, 0.8]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
+                    <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} />
                   )}
                 </Suspense>
+                <Info3DButtonModal
+                  buttonId={InfoButtonModal.treatment.buttonId}
+                  buttonLabel={InfoButtonModal.treatment.buttonLabel}
+                  buttonPosition={Button3DPosition.treatment}
+                  modalTitle={InfoButtonModal.treatment.modalTitle}
+                  modalText={InfoButtonModal.treatment.modalText}
+                />
               </Canvas>
             </div>
             <div className="dst-treatment-info">
@@ -174,12 +238,29 @@ const DiseaseTemplate = ({ diseaseData }) => {
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-                <Environment preset="studio" />
+                {texts3D && texts3D.prevention && (
+                  <Title
+                    title={texts3D.prevention.title}
+                    id={texts3D.prevention.id}
+                    position={title3DPositions.prevention}
+                  />
+                )}
+                {Environment3D && Environment3D.prevention
+                  ? <Environment3D.prevention />
+                  : <EnvironmentDefault />
+                }
                 <Suspense fallback={<LoadingFallback />}>
                   {models.prevention && (
-                    <models.prevention scale={[0.8, 0.8, 0.8]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
+                    <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} />
                   )}
                 </Suspense>
+                <Info3DButtonModal
+                  buttonId={InfoButtonModal.prevention.buttonId}
+                  buttonLabel={InfoButtonModal.prevention.buttonLabel}
+                  buttonPosition={Button3DPosition.prevention}
+                  modalTitle={InfoButtonModal.prevention.modalTitle}
+                  modalText={InfoButtonModal.prevention.modalText}
+                />
               </Canvas>
             </div>
           </div>

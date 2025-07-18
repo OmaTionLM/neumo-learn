@@ -100,4 +100,4 @@ const ModeloVascular = ({ play, onFinish }) => {
 };
 
 export default ModeloVascular;
-
+export { ModeloMesh };

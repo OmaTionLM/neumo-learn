@@ -10,10 +10,10 @@ import Staging_3 from "../pages/diseases/asthma/staging/Staging_3"
 export const asthmaData = {
   title: "ASMA",
   colors: {
-    primary: "#2196F3",
-    secondary: "#1976D2",
-    lightBackground: "#E3F2FD",
-    modelBackground: "#f0f8ff",
+    primary: "#7b1fa2",
+    secondary: "#9c27b0",
+    lightBackground: "#f8f4ff",
+    modelBackground: "#f0f0f0",
   },
   heroSection: {
     description:
@@ -154,4 +154,42 @@ export const asthmaData = {
     treatment: Inhaler,
     prevention: Cigarette,
   },
+  Environment3D: {
+    hero: Staging,
+    causes: Staging,
+    treatment: Staging_2,
+    prevention: Staging_3,
+  },
+  texts3D: {
+    hero: { title: "Nebulizador", id: "asma-title-3d" },
+    causes: { title: "Pastas", id: "asma-title-3d" },
+    treatment: { title: "Inhalador", id: "asma-title-3d" },
+    prevention: { title: "Tabaco", id: "asma-title-3d" },
+  },
+  InfoButtonModal: {
+    hero: {
+      buttonId:"button-mask-asthma",
+      buttonLabel:"Saber más💡",
+      modalTitle:"¿Qué es un nebulizador?",
+      modalText:"Un nebulizador es un dispositivo que convierte medicamentos líquidos en vapor para que puedan ser inhalados directamente a los pulmones, facilitando el tratamiento de enfermedades respiratorias como el asma."
+    },
+    causes: {
+       buttonId:"button-bottle-asthma",
+      buttonLabel:"Aspirina",
+      modalTitle:"¿Qué puede causar esto?",
+      modalText:"La aspirina puede causar reacciones adversas en algunas personas con asma, incluyendo ataques de asma. Es importante consultar a un médico antes de usarla."
+    },
+    treatment: {
+       buttonId:"button-inhaler-asthma",
+      buttonLabel:"Inhalador",
+      modalTitle:"¿Qué es un inhalador?",
+      modalText:"Un inhalador es un dispositivo que permite la administración de medicamentos directamente a los pulmones, facilitando el tratamiento de enfermedades respiratorias como el asma."
+    },
+    prevention: {
+      buttonId:"button-cigarette-asthma",
+      buttonLabel:"Saber más🚭",
+      modalTitle:"¿Por qué se debe evitar el cigarrillo?",
+      modalText:"El cigarrillo es perjudicial para el asma porque irrita las vías respiratorias, causando inflamación, estrechamiento y producción de mucosidad, lo mismo que ocurre durante un ataque de asma. Esto puede desencadenar más ataques, hacerlos más graves y dificultar su control."
+    },
+  }
 }

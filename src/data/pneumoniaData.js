@@ -2,6 +2,7 @@ import { HealthyLung } from "../pages/diseases/pneumonia/models-3d/HealthyLung"
 import { InfectedLung } from "../pages/diseases/pneumonia/models-3d/InfectedLung"
 import { Vaccine } from "../pages/diseases/pneumonia/models-3d/Vaccine"
 import { PillBottle } from "../pages/diseases/pneumonia/models-3d/PillBottle"
+import { Environment } from "@react-three/drei"
 
 export const pneumoniaData = {
   title: "NEUMONÍA",
@@ -148,4 +149,16 @@ export const pneumoniaData = {
     treatment: PillBottle,
     prevention: Vaccine,
   },
+  Environment3D: {
+    hero: null,
+    causes: null,
+    treatment: null,
+    prevention: null,
+  },
+  //   texts3D: {
+  //   hero: { title: "A", id: "asma-title-3d" },
+  //   causes: { title: "B", id: "asma-title-3d" },
+  //   treatment: { title: "C", id: "asma-title-3d" },
+  //   prevention: { title: "D", id: "asma-title-3d" },
+  // },
 }
