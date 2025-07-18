@@ -1,0 +1,119 @@
+.detalle-container {
+  display: flex;
+  width: 90vw;
+  max-width: 1100px;
+  height: 580px;
+  background-color: #000;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 2rem 2rem 0;
+}
+
+/* Pegado al borde izquierdo */
+.menu-vertical {
+  width: 350px;
+  height: 580px;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem;
+  border-radius: 1rem 0 0 1rem;
+  overflow-y: auto;
+}
+
+/* Botones */
+.menu-btn,
+.volver-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.menu-btn:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Activo resaltado */
+.menu-btn.activo {
+  font-weight: bold;
+  border: 2px solid #00ffff;
+}
+
+/* Contenedor del modelo */
+.contenido-detalle {
+  width: 700px;
+  height: 500px; 
+  position: relative;
+}
+
+.navegacion-flechas {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; 
+  margin-top: 2rem;
+  transform: translateX(-20%);
+}
+
+/* Descripción debajo del botón */
+.descripcion {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.etiqueta-modelo {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.etiqueta-texto {
+  background-color: white;
+  color: black;
+  font-size: 1.1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.tooltip-etiqueta {
+  font-Size: 0.95rem;
+  margin-top: 0.25rem;
+  background: #fff;
+  color: #000;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-Shadow: 0 0 10px rgba(0,0,0,0.2);
+  max-width: 200px;
+  white-space: normal;
+}
+
+.icono-audio{
+  background: #eee;
+  border: 1px solid #ccc;
+  border-Radius: 5px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+
