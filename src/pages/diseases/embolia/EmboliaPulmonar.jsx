@@ -34,6 +34,12 @@ const EmboliaPulmonarPage = () => {
       treatment: [-0.6, -1.5, 0],
       prevention: [-1, -1.4, 0]
     }}
+    Sombras={{
+      hero: true,
+      causes: true,
+      treatment: true,
+      prevention: true
+    }}
   />
 }
 

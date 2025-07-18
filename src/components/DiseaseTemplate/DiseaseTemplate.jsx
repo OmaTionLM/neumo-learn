@@ -1,10 +1,12 @@
 import "./DiseaseTemplate.css"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Environment, Html } from "@react-three/drei"
+import { OrbitControls } from "@react-three/drei"
 import { Suspense } from "react"
 import Title from "../../pages/diseases/asthma/texts/Text_asthma_3d"
 import EnvironmentDefault from "../Environment/Environment"
 import Info3DButtonModal from "../../pages/diseases/asthma/modal/info3DButtonModal"
+import Lights from "../../pages/diseases/asthma/Lights/Lights"
+import Floor from "../../pages/diseases/asthma/Lights/Floor"
 
 // Componente de respaldo mientras se carga el modelo
 const LoadingFallback = () => (
@@ -20,7 +22,8 @@ const DiseaseTemplate = ({
   ModeloScale,
   ModeloRotation,
   title3DPositions,
-  Button3DPosition
+  Button3DPosition,
+  Sombras
 }) => {
   const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
 
@@ -60,6 +63,7 @@ const DiseaseTemplate = ({
             <color attach="background" args={["#f8f9fa"]} />
             <ambientLight intensity={1} />
             <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+            {Sombras?.hero && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
             {texts3D && texts3D.hero && (
               <Title
@@ -73,7 +77,7 @@ const DiseaseTemplate = ({
               : <EnvironmentDefault />
             }
             <Suspense fallback={<LoadingFallback />}>
-              {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} />}
+              {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} castShadow />}
             </Suspense>
             {InfoButtonModal?.hero && (
               <Info3DButtonModal
@@ -114,6 +118,7 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                {Sombras?.causes && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.causes && (
                   <Title
@@ -127,7 +132,7 @@ const DiseaseTemplate = ({
                   : <EnvironmentDefault />
                 }
                 <Suspense fallback={<LoadingFallback />}>
-                  {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} />}
+                  {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} castShadow />}
                 </Suspense>
                 {InfoButtonModal?.causes && (
                   <Info3DButtonModal
@@ -156,13 +161,13 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                {Sombras?.treatment && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.treatment && (
                   <Title
                     title={texts3D.treatment.title}
                     id={texts3D.treatment.id}
                     position={title3DPositions.treatment}
-                    
                   />
                 )}
                 {Environment3D && Environment3D.treatment
@@ -171,7 +176,7 @@ const DiseaseTemplate = ({
                 }
                 <Suspense fallback={<LoadingFallback />}>
                   {models.treatment && (
-                    <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} />
+                    <models.treatment scale={ModeloScale.treatment} position={ModeloPosition.treatment} rotation={ModeloRotation.treatment} castShadow />
                   )}
                 </Suspense>
                 {InfoButtonModal?.treatment && (
@@ -243,6 +248,7 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
+                {Sombras?.prevention && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.prevention && (
                   <Title
@@ -257,7 +263,7 @@ const DiseaseTemplate = ({
                 }
                 <Suspense fallback={<LoadingFallback />}>
                   {models.prevention && (
-                    <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} />
+                    <models.prevention scale={ModeloScale.prevention} position={ModeloPosition.prevention} rotation={ModeloRotation.prevention} castShadow />
                   )}
                 </Suspense>
                 {InfoButtonModal?.prevention && (

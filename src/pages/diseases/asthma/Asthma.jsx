@@ -17,13 +17,13 @@ const Asthma = () => {
     prevention: [0.05, 0.05, 0.05]
   }}
   ModeloRotation={{
-    hero: [0.4, 0, 0],
+    hero: [0.2, 0, 0],
     causes: [0, 0, 0],
     treatment: [0, 0, 0],
     prevention: [-1, 0, 0]
   }}
   title3DPositions={{
-    hero: [-0.5, 2, -1],
+    hero: [-1.2, 2, -1],
     causes: [-0.6, 2, 0],
     treatment: [-0.8, 2, 0],
     prevention: [-0.66, 2.2, 0]
@@ -33,6 +33,12 @@ const Asthma = () => {
     causes: [-0.55, -1.5, 0],
     treatment: [-0.6, -1.5, 0],
     prevention: [-1, -1.4, 0]
+  }}
+  Sombras={{
+    hero: true,
+    causes: true,
+    treatment: true,
+    prevention: true
   }}
   />
 }

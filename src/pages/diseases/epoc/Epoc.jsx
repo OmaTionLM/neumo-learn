@@ -7,14 +7,14 @@ const EPOC = () => {
       diseaseData={epoceData}
       ModeloPosition={{
         hero: [0, 0, 0],
-        causes: [0, 0, 3],
-        treatment: [0, 0, 3],
-        prevention: [0, 0, 5],
+        causes: [0, 0, 0],
+        treatment: [0, 0, 0],
+        prevention: [0, 0, 0],
       }}
       ModeloScale={{
         hero: [10, 10, 10],
-        causes: [4, 4, 4],
-        treatment: [6, 6, 6],
+        causes: [10, 10, 10],
+        treatment: [10, 10, 10],
         prevention: [1, 1, 1],
       }}
       ModeloRotation={{
@@ -34,6 +34,12 @@ const EPOC = () => {
         causes: [-0, -1.5, 0],
         treatment: [-0.6, -1.5, 0],
         prevention: [-0.3, -1.4, 0],
+      }}
+      Sombras={{
+        hero: true,
+        causes: true,
+        treatment: true,
+        prevention: true
       }}
     />
   );
@@ -185,12 +191,12 @@ export default EPOC;
 //           </p>
 //         </div>
 //         <div className="model-container">
-//           <Canvas 
-//             camera={{ position: [0, 0, 3], fov: 20 }}  
-//             style={{ 
-//               background: 'transparent', 
-//               width: '100%', 
-//               height: '100%' 
+//           <Canvas
+//             camera={{ position: [0, 0, 3], fov: 20 }}
+//             style={{
+//               background: 'transparent',
+//               width: '100%',
+//               height: '100%'
 //             }}
 //           >
 //             <Lights />
@@ -203,13 +209,13 @@ export default EPOC;
 //       {/* Segundo bloque (invertido) */}
 //       <div className="model-row">
 //         <div className="model-container">
-//           <Canvas  
+//           <Canvas
 //             camera={{ position: [0, 0, 3], fov: 20 }}
 //             gl={{ preserveDrawingBuffer: true }}
-//             style={{ 
-//               backgroundColor: 'transparent', 
-//               width: '100%', 
-//               height: '100%' 
+//             style={{
+//               backgroundColor: 'transparent',
+//               width: '100%',
+//               height: '100%'
 //             }}
 //           >
 //             <Lights />
