@@ -159,32 +159,32 @@ export const epoceData = {
     treatment: null,
     prevention: null,
   },
-  texts3D: {
-    hero: { title: "Pulmón enfermo", id: "epoc-title-3d" },
-    causes: { title: "Alvéolo", id: "epoc-title-3d" },
-    treatment: { title: "Bronquios", id: "epoc-title-3d" },
-    prevention: { title: "Prevención", id: "epoc-title-3d" },
-  },
-  InfoButtonModal: {
-    hero: {
-      buttonLabel: "Saber más💡",
-      modalTitle: "¿Qué es EPOC?",
-      modalText: "La EPOC es una enfermedad pulmonar crónica que causa dificultad para respirar y limita la calidad de vida. Incluye enfisema y bronquitis crónica.",
-    },
-    causes: {
-      buttonLabel: "Causas",
-      modalTitle: "¿Qué causa la EPOC?",
-      modalText: "El tabaquismo es la causa principal, pero también influyen la contaminación ambiental, factores genéticos y exposiciones laborales.",
-    },
-    treatment: {
-      buttonLabel: "Tratamiento",
-      modalTitle: "¿Cómo se trata?",
-      modalText: "El tratamiento incluye broncodilatadores, antiinflamatorios, oxigenoterapia y rehabilitación pulmonar.",
-    },
-    prevention: {
-      buttonLabel: "Prevención",
-      modalTitle: "¿Cómo prevenir?",
-      modalText: "Evitar el tabaco, protegerse de contaminantes y mantener un estilo de vida saludable son claves para prevenir la EPOC.",
-    },
-  },
+  // texts3D: {
+  //   hero: { title: "Pulmón enfermo", id: "epoc-title-3d" },
+  //   causes: { title: "Alvéolo", id: "epoc-title-3d" },
+  //   treatment: { title: "Bronquios", id: "epoc-title-3d" },
+  //   prevention: { title: "Prevención", id: "epoc-title-3d" },
+  // },
+  // InfoButtonModal: {
+  //   hero: {
+  //     buttonLabel: "Saber más💡",
+  //     modalTitle: "¿Qué es EPOC?",
+  //     modalText: "La EPOC es una enfermedad pulmonar crónica que causa dificultad para respirar y limita la calidad de vida. Incluye enfisema y bronquitis crónica.",
+  //   },
+  //   causes: {
+  //     buttonLabel: "Causas",
+  //     modalTitle: "¿Qué causa la EPOC?",
+  //     modalText: "El tabaquismo es la causa principal, pero también influyen la contaminación ambiental, factores genéticos y exposiciones laborales.",
+  //   },
+  //   treatment: {
+  //     buttonLabel: "Tratamiento",
+  //     modalTitle: "¿Cómo se trata?",
+  //     modalText: "El tratamiento incluye broncodilatadores, antiinflamatorios, oxigenoterapia y rehabilitación pulmonar.",
+  //   },
+  //   prevention: {
+  //     buttonLabel: "Prevención",
+  //     modalTitle: "¿Cómo prevenir?",
+  //     modalText: "Evitar el tabaco, protegerse de contaminantes y mantener un estilo de vida saludable son claves para prevenir la EPOC.",
+  //   },
+  // },
 };

@@ -40,6 +40,12 @@ const EmboliaPulmonarPage = () => {
       treatment: true,
       prevention: true
     }}
+    SombraUp={{
+      hero: -1.5,
+      causes: -1,
+      treatment: -1,
+      prevention: -1
+    }}
   />
 }
 

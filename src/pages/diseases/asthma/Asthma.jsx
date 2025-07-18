@@ -40,6 +40,12 @@ const Asthma = () => {
     treatment: true,
     prevention: true
   }}
+  SombraUp={{
+    hero: -1.5,
+    causes: -2,
+    treatment: -1,
+    prevention: -1.5
+  }}
   />
 }
 

@@ -41,6 +41,12 @@ const EPOC = () => {
         treatment: true,
         prevention: true
       }}
+      SombraUp={{
+        hero: -20,
+        causes: -20,
+        treatment: -10,
+        prevention: 2
+      }}
     />
   );
 };

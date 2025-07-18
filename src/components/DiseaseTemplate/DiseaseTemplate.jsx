@@ -24,7 +24,8 @@ const DiseaseTemplate = ({
   ModeloRotation,
   title3DPositions,
   Button3DPosition,
-  Sombras
+  Sombras,
+  SombraUp
 }) => {
   const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
   const [showModal, setShowModal] = useState(false);
@@ -70,7 +71,7 @@ const DiseaseTemplate = ({
             <color attach="background" args={["#f8f9fa"]} />
             <ambientLight intensity={1} />
             <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-            {Sombras?.hero && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
+            {Sombras?.hero && <Floor x={30} y={30} position={[0, SombraUp.hero, 0]} color={"white"} />}
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
             {texts3D && texts3D.hero && (
               <Title
@@ -132,7 +133,7 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.causes && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
+                {Sombras?.causes && <Floor x={30} y={30} position={[0, SombraUp.causes, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.causes && (
                   <Title
@@ -175,7 +176,7 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.treatment && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
+                {Sombras?.treatment && <Floor x={30} y={30} position={[0, SombraUp.treatment, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.treatment && (
                   <Title
@@ -262,7 +263,7 @@ const DiseaseTemplate = ({
                 <color attach="background" args={[colors.modelBackground]} />
                 <ambientLight intensity={0.7} />
                 <spotLight position={[5, 5, 5]} intensity={0.8} castShadow />
-                {Sombras?.prevention && <Floor x={30} y={30} position={[0, -2, 0]} color={"white"} />}
+                {Sombras?.prevention && <Floor x={30} y={30} position={[0, SombraUp.prevention, 0]} color={"white"} />}
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                 {texts3D && texts3D.prevention && (
                   <Title
