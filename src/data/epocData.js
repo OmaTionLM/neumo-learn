@@ -167,25 +167,21 @@ export const epoceData = {
   },
   InfoButtonModal: {
     hero: {
-      buttonId: "button-lung-epoc",
       buttonLabel: "Saber más💡",
       modalTitle: "¿Qué es EPOC?",
       modalText: "La EPOC es una enfermedad pulmonar crónica que causa dificultad para respirar y limita la calidad de vida. Incluye enfisema y bronquitis crónica.",
     },
     causes: {
-      buttonId: "button-alveolus-epoc",
       buttonLabel: "Causas",
       modalTitle: "¿Qué causa la EPOC?",
       modalText: "El tabaquismo es la causa principal, pero también influyen la contaminación ambiental, factores genéticos y exposiciones laborales.",
     },
     treatment: {
-      buttonId: "button-bronchi-epoc",
       buttonLabel: "Tratamiento",
       modalTitle: "¿Cómo se trata?",
       modalText: "El tratamiento incluye broncodilatadores, antiinflamatorios, oxigenoterapia y rehabilitación pulmonar.",
     },
     prevention: {
-      buttonId: "button-prevention-epoc",
       buttonLabel: "Prevención",
       modalTitle: "¿Cómo prevenir?",
       modalText: "Evitar el tabaco, protegerse de contaminantes y mantener un estilo de vida saludable son claves para prevenir la EPOC.",

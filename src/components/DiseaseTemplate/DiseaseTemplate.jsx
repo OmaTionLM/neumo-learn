@@ -1,12 +1,13 @@
 import "./DiseaseTemplate.css"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 import Title from "../../pages/diseases/asthma/texts/Text_asthma_3d"
 import EnvironmentDefault from "../Environment/Environment"
-import Info3DButtonModal from "../../pages/diseases/asthma/modal/info3DButtonModal"
+import Button3D from "../../pages/diseases/asthma/modal/Button3D"
 import Lights from "../../pages/diseases/asthma/Lights/Lights"
 import Floor from "../../pages/diseases/asthma/Lights/Floor"
+import InfoModal from "../../pages/diseases/asthma/modal/InfoModal"
 
 // Componente de respaldo mientras se carga el modelo
 const LoadingFallback = () => (
@@ -26,6 +27,12 @@ const DiseaseTemplate = ({
   Sombras
 }) => {
   const { title, heroSection, causesSection, treatmentSection, preventionSection, models, colors, Environment3D, texts3D, InfoButtonModal } = diseaseData
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState(null); 
+  const handleOpenModal = ({ modalTitle, modalText }) => {
+    setModalData({ title: modalTitle, text: modalText }); //guarda la info
+    setShowModal(true);                                   //muestra el modal
+  };
 
   return (
     console.log("DiseaseTemplate rendered with data:", diseaseData),
@@ -80,15 +87,22 @@ const DiseaseTemplate = ({
               {models.hero && <models.hero scale={ModeloScale.hero} position={ModeloPosition.hero} rotation={ModeloRotation.hero} castShadow />}
             </Suspense>
             {InfoButtonModal?.hero && (
-              <Info3DButtonModal
-                buttonId={InfoButtonModal.hero.buttonId}
+              <Button3D
                 buttonLabel={InfoButtonModal.hero.buttonLabel}
                 buttonPosition={Button3DPosition.hero}
                 modalTitle={InfoButtonModal.hero.modalTitle}
                 modalText={InfoButtonModal.hero.modalText}
+                onClick={() => handleOpenModal(InfoButtonModal.hero)}
               />
             )}
           </Canvas>
+          {showModal && modalData && (
+            <InfoModal
+              title={modalData.title}
+              text={modalData.text}
+              onClose={() => setShowModal(false)}
+            />
+          )}
         </div>
       </section>
 
@@ -135,12 +149,12 @@ const DiseaseTemplate = ({
                   {models.causes && <models.causes scale={ModeloScale.causes} position={ModeloPosition.causes} rotation={ModeloRotation.causes} castShadow />}
                 </Suspense>
                 {InfoButtonModal?.causes && (
-                  <Info3DButtonModal
-                    buttonId={InfoButtonModal.causes.buttonId}
+                  <Button3D
                     buttonLabel={InfoButtonModal.causes.buttonLabel}
                     buttonPosition={Button3DPosition.causes}
                     modalTitle={InfoButtonModal.causes.modalTitle}
                     modalText={InfoButtonModal.causes.modalText}
+                    onClick={() => handleOpenModal(InfoButtonModal.causes)}
                   />
                 )}
               </Canvas>
@@ -180,12 +194,12 @@ const DiseaseTemplate = ({
                   )}
                 </Suspense>
                 {InfoButtonModal?.treatment && (
-                  <Info3DButtonModal
-                    buttonId={InfoButtonModal.treatment.buttonId}
+                  <Button3D
                     buttonLabel={InfoButtonModal.treatment.buttonLabel}
                     buttonPosition={Button3DPosition.treatment}
                     modalTitle={InfoButtonModal.treatment.modalTitle}
                     modalText={InfoButtonModal.treatment.modalText}
+                    onClick={() => handleOpenModal(InfoButtonModal.treatment)}
                   />
                 )}
               </Canvas>
@@ -267,12 +281,12 @@ const DiseaseTemplate = ({
                   )}
                 </Suspense>
                 {InfoButtonModal?.prevention && (
-                  <Info3DButtonModal
-                    buttonId={InfoButtonModal.prevention.buttonId}
+                  <Button3D
                     buttonLabel={InfoButtonModal.prevention.buttonLabel}
                     buttonPosition={Button3DPosition.prevention}
                     modalTitle={InfoButtonModal.prevention.modalTitle}
                     modalText={InfoButtonModal.prevention.modalText}
+                    onClick={() => handleOpenModal(InfoButtonModal.prevention)}
                   />
                 )}
               </Canvas>
