@@ -1,140 +1,151 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react";
 import {
   useGLTF,
-  Html,
-  Text,
-  OrbitControls,
+  PerspectiveCamera,
   Environment,
+  Html,
+  OrbitControls,
+  Text,
+  Float,
   Stars,
-  Sparkles
-} from "@react-three/drei"
-import { useFrame, useThree } from "@react-three/fiber"
-import * as THREE from "three"
+  Sparkles,
+  Shadow,
+} from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 
 export function BronchiModel(props) {
-  const group = useRef()
-  const textRef = useRef()
-  const { scene } = useThree()
-  const { nodes } = useGLTF("/models-3d/epoc/bronchi.glb")
+  const group = useRef();
+  const cameraRef = useRef();
+  const { scene } = useThree();
+  const [bronchiModel, setBronchiModel] = useState(null);
+  const [errorLoading, setErrorLoading] = useState(false);
+  const [colorMode, setColorMode] = useState(false);
 
-  const [highlight, setHighlight] = useState(false)
-  const [message, setMessage] = useState("BRONQUIOS")
-  const [eventLog, setEventLog] = useState([])
-  const [hovered, setHovered] = useState(false)
-
-  const colorBase = "#d87c41"
-  const colorHighlight = "#ffca28"
-
-  // Animación flotante del texto
-  useFrame(({ clock }) => {
-    if (textRef.current) {
-      const t = clock.getElapsedTime()
-      textRef.current.position.y = 1.5 + Math.sin(t * 1.5) * 0.2
-    }
-  })
-
-  // Fondo transparente
   useEffect(() => {
-    scene.background = null
-  }, [scene])
-
-  // Manejo de teclado
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "a") {
-        setHighlight(true)
-        addToLog("Tecla A → Activado modo 'intensificado'")
-        setMessage("BRONQUIOS")
-      }
-      if (event.key === "r") {
-        setHighlight(false)
-        addToLog("Tecla R → Reinicio visual")
-        setMessage("Modelo de bronquios")
-      }
+    try {
+      const gltf = useGLTF("/models-3d/epoc/bronchi.glb");
+      setBronchiModel(gltf);
+    } catch (error) {
+      console.error("Error cargando el modelo de bronquios:", error);
+      setErrorLoading(true);
     }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
+  }, []);
 
-  // Click sobre modelo
-  const handleClick = () => {
-    setMessage("Das clic para interactuar con el modelo")
-    addToLog("🖱️ Click → Diste click")
+  useEffect(() => {
+    scene.background = null;
+  }, [scene]);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "t") {
+        setColorMode((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, []);
+
+  useEffect(() => {
+    if (!bronchiModel) return;
+
+    bronchiModel.scene.traverse((child) => {
+      if (child.isMesh && child.material) {
+        if (!child.userData.originalColor) {
+          child.userData.originalColor = child.material.color.clone();
+        }
+        child.material.color = colorMode
+          ? new THREE.Color(0.8, 0.2, 0.4)
+          : child.userData.originalColor.clone();
+        child.material.needsUpdate = true;
+
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  }, [colorMode, bronchiModel]);
+
+  useFrame(() => {
+    if (group.current) {
+      group.current.rotation.y += 0.0025;
+    }
+  });
+
+  if (errorLoading) {
+    return (
+      <group ref={group} {...props}>
+        <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 0, 6]} fov={40} />
+        <Text position={[0, 0, 0]} fontSize={1} color="red">Error cargando modelo</Text>
+      </group>
+    );
   }
 
-  const addToLog = (text) => {
-    setEventLog((prev) => [text, ...prev.slice(0, 4)])
-  }
+  if (!bronchiModel) return null;
 
   return (
     <group ref={group} {...props} dispose={null}>
-      {/* HDRI opcional */}
-      <Environment preset="city" background />
-      <ambientLight intensity={0.4} />
+      <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 15]} fov={40} />
+      <Environment files="/scenes-pneumonia/hdr/surgery.hdr" background />
+
+      <ambientLight intensity={0.6} />
       <directionalLight
         castShadow
         position={[5, 10, 5]}
-        intensity={2}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
+        intensity={4}
+        shadow-mapSize-width={8192}
+        shadow-mapSize-height={8192}
+        shadow-bias={-0.0005}
       />
 
-      {/* Piso receptor de sombras */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.5, 0]} receiveShadow>
-        <planeGeometry args={[10, 10]} />
-        <meshStandardMaterial color="#e0e0e0" />
-      </mesh>
-
-      {/* Modelo GLB mapeado manualmente */}
-      {Object.keys(nodes).map((key) => {
-        const node = nodes[key]
-        if (!node.geometry) return null
-        return (
-          <mesh
-            key={key}
-            castShadow
-            receiveShadow
-            geometry={node.geometry}
-            material={
-              highlight
-                ? new THREE.MeshStandardMaterial({ color: colorHighlight })
-                : node.material || new THREE.MeshStandardMaterial({ color: colorBase })
-            }
-            position={node.position}
-            rotation={node.rotation}
-            scale={node.scale}
-            onClick={handleClick}
-            onPointerOver={() => setHovered(true)}
-            onPointerOut={() => setHovered(false)}
-          />
-        )
-      })}
-
-      {/* Texto flotante */}
-      <Text ref={textRef} position={[0, 3.5, 0]} fontSize={0.4} color="black">
-        {message}
-      </Text>
-
-      {/* Bitácora */}
-      {eventLog.map((line, i) => (
-        <Text
-          key={`log-${i}`}
-          position={[-4, 3 - i * 0.4, -2]}
-          fontSize={0.25}
-          color="#666666"
-          anchorX="left"
-        >
-          {line}
-        </Text>
-      ))}
-
-      {/* Estrellas y brillo */}
-      <Stars radius={100} depth={50} count={3000} factor={4} />
-      <Sparkles count={25} scale={5} size={1.8} speed={0.3} />
+      <Stars radius={80} depth={40} count={3000} factor={4} />
+      <Sparkles count={25} scale={4} size={1.5} speed={0.5} />
 
       <OrbitControls />
+
+      <Float floatIntensity={1.3} speed={1.7}>
+        <group
+          castShadow
+          receiveShadow
+          scale={[15, 15, 15]}
+          position={[0, 0, 0]}
+        >
+          <primitive object={bronchiModel.scene} />
+        </group>
+      </Float>
+
+      <Text
+        position={[0, 3.5, 0]}
+        fontSize={0.55}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Bronquios Humanos
+      </Text>
+
+      <Html position={[0, -2.6, 0]} transform>
+        <div style={{ textAlign: "center" }}>
+          <p style={{ color: "white", fontSize: "14px", marginBottom: "8px" }}>
+            Pulsa <strong>T</strong> para cambiar el color del modelo
+          </p>
+          <button
+            style={{
+              padding: "8px 16px",
+              background: "#2C3E50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              boxShadow: "0 4px 8px rgba(0,0,0,0.4)",
+            }}
+            onClick={() => setColorMode((prev) => !prev)}
+          >
+            Cambiar estilo 🧬
+          </button>
+        </div>
+      </Html>
     </group>
   )
 }
 
-useGLTF.preload("/models-3d/epoc/bronchi.glb")
+useGLTF.preload("/models-3d/epoc/bronchi.glb");

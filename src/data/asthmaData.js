@@ -10,10 +10,10 @@ import Staging_3 from "../pages/diseases/asthma/staging/Staging_3"
 export const asthmaData = {
   title: "ASMA",
   colors: {
-    primary: "#2196F3",
-    secondary: "#1976D2",
-    lightBackground: "#E3F2FD",
-    modelBackground: "#f0f8ff",
+    primary: "#7b1fa2",
+    secondary: "#9c27b0",
+    lightBackground: "#f8f4ff",
+    modelBackground: "#f0f0f0",
   },
   heroSection: {
     description:

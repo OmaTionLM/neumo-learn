@@ -5,10 +5,10 @@
   export const emboliaData = {
     title: "EMBOLIA PULMONAR",
     colors: {
-      primary: "#D32F2F",
-      secondary: "#F44336",
-      lightBackground: "#FFEBEE",
-      modelBackground: "#fff5f5",
+      primary: "#7b1fa2",
+      secondary: "#9c27b0",
+      lightBackground: "#f8f4ff",
+      modelBackground: "#f0f0f0",
     },
     heroSection: {
       description:

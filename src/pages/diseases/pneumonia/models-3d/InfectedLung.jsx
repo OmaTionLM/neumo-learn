@@ -1,150 +1,150 @@
-import { useRef } from "react"
-import { useGLTF, PerspectiveCamera } from "@react-three/drei"
-import { Color } from "three"
-import { useState, useEffect } from "react"
+import { useRef, useEffect, useState } from "react";
+import {
+  useGLTF,
+  PerspectiveCamera,
+  Html,
+  Environment,
+  Stars,
+  Sparkles,
+  OrbitControls,
+  Text,
+  Float
+} from "@react-three/drei";
+import { useThree, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 export function InfectedLung(props) {
-  const group = useRef()
-  const [lungModel, setLungModel] = useState(null)
-  const [errorLoading, setErrorLoading] = useState(false)
+  const group = useRef();
+  const cameraRef = useRef();
+  const { scene } = useThree();
 
-  // Estado para controlar si ya se ha colocado la cámara personalizada
-  const cameraRef = useRef()
+  const [lungModel, setLungModel] = useState(null);
+  const [errorLoading, setErrorLoading] = useState(false);
 
   useEffect(() => {
-    let gltf = null
     try {
-      gltf = useGLTF("/models-3d/pneumonia/infected-lung.glb")
-      setLungModel(gltf)
+      const gltf = useGLTF("/models-3d/pneumonia/infected-lung.glb");
+      setLungModel(gltf);
     } catch (error) {
-      console.error("Error cargando el modelo de pulmón infectado:", error)
-      setErrorLoading(true)
+      console.error("Error cargando el modelo de pulmón infectado:", error);
+      setErrorLoading(true);
     }
-  }, [])
+  }, []);
 
-  // Renderizado de respaldo si hay error cargando el modelo
+  useEffect(() => {
+    scene.background = null;
+  }, [scene]);
+
+  useFrame(() => {
+    if (group.current) {
+      group.current.rotation.y += 0.0025;
+    }
+  });
+
   if (errorLoading) {
     return (
       <group ref={group} {...props}>
-        {/* Cámara personalizada para alejar el zoom */}
-        <PerspectiveCamera
-          makeDefault
-          ref={cameraRef}
-          position={[0, 0, 6]} // Más lejos que el valor típico (usualmente 2-3)
-          fov={40}
-        />
-        <mesh castShadow receiveShadow>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshStandardMaterial color="#7D3C98" roughness={0.7} metalness={0.1} />
-        </mesh>
-        <mesh position={[0, 1.2, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.2, 0.2, 1.5, 32]} />
-          <meshStandardMaterial color="#884EA0" roughness={0.8} metalness={0.1} />
-        </mesh>
-        <mesh position={[0, 0, 0]} castShadow receiveShadow>
-          <torusGeometry args={[0.6, 0.2, 16, 100]} />
-          <meshStandardMaterial color="#9B59B6" roughness={0.6} metalness={0.2} />
-        </mesh>
-        {/* Elementos adicionales para mostrar la inflamación e infección */}
-        <mesh position={[0.5, 0.3, 0.5]} castShadow receiveShadow>
-          <sphereGeometry args={[0.3, 16, 16]} />
-          <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-        </mesh>
-        <mesh position={[-0.4, -0.2, 0.4]} castShadow receiveShadow>
-          <sphereGeometry args={[0.25, 16, 16]} />
-          <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-        </mesh>
+        <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 0, 6]} fov={40} />
+        <Text position={[0, 0, 0]} fontSize={1} color="red">Error cargando modelo</Text>
       </group>
-    )
+    );
   }
 
-  if (!lungModel) {
-    return null // O un loader
-  }
+  if (!lungModel) return null;
 
-  const { nodes, materials } = lungModel
-
-  // Creamos copias de los materiales para no afectar al modelo original
-  const infectedMaterials = {}
+  const { nodes, materials } = lungModel;
+  const infectedMaterials = {};
 
   Object.keys(materials).forEach((matName) => {
-    // Clonamos el material
-    infectedMaterials[matName] = materials[matName].clone()
-
-    // Modificamos el color para que parezca infectado (tonos morados/rojizos)
+    infectedMaterials[matName] = materials[matName].clone();
     if (infectedMaterials[matName].color) {
-      const originalColor = infectedMaterials[matName].color.clone()
-      // Mezclamos con un tono morado para simular infección
-      infectedMaterials[matName].color = new Color(
-        originalColor.r * 0.7 + 0.3 * 0.5, // Reducimos rojo y mezclamos con morado
-        originalColor.g * 0.5, // Reducimos verde
-        originalColor.b * 0.7 + 0.3 * 0.8, // Aumentamos azul para tono morado
-      )
-
-      // Aumentamos la rugosidad para un aspecto enfermo
+      const originalColor = infectedMaterials[matName].color.clone();
+      infectedMaterials[matName].color = new THREE.Color(
+        originalColor.r * 0.7 + 0.3 * 0.5,
+        originalColor.g * 0.5,
+        originalColor.b * 0.7 + 0.3 * 0.8
+      );
       if (infectedMaterials[matName].roughness !== undefined) {
-        infectedMaterials[matName].roughness += 0.2
+        infectedMaterials[matName].roughness += 0.2;
       }
     }
-  })
+  });
 
-  // Renderizamos el modelo con la cámara más alejada
   return (
     <group ref={group} {...props} dispose={null}>
-      {/* Cámara personalizada para alejar el zoom */}
-      <PerspectiveCamera
-        makeDefault
-        ref={cameraRef}
-        position={[0, 0, 500]} // Más lejos que el valor típico (usualmente 2-3)
-        fov={40}
+      <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 500]} fov={40} />
+      <Environment files="/scenes-pneumonia/hdr/vaccine.hdr" background />
+
+      <ambientLight intensity={0.25} />
+      <directionalLight
+        castShadow
+        position={[4, 10, 500]}
+        intensity={2.5}
+        shadow-mapSize-width={4096}
+        shadow-mapSize-height={4096}
+        shadow-bias={-0.0005}
+        shadow-camera-near={1}
+        shadow-camera-far={30}
+        shadow-camera-left={-5}
+        shadow-camera-right={5}
+        shadow-camera-top={5}
+        shadow-camera-bottom={-5}
       />
-      {/* Renderizamos todos los nodos del modelo con materiales modificados */}
-      {Object.keys(nodes).map((nodeName) => {
-        // Ignoramos los nodos que no son meshes
-        if (nodes[nodeName].type === "Mesh" || (nodes[nodeName].isObject3D && nodes[nodeName].children.length === 0)) {
-          // Obtenemos el nombre del material original
-          const materialName = nodes[nodeName].material ? nodes[nodeName].material.name : null
+      <pointLight
+        position={[-3, 5, -3]}
+        intensity={0.6}
+        color="#ffffff"
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      />
 
-          return (
-            <mesh
-              key={nodeName}
-              castShadow
-              receiveShadow
-              geometry={nodes[nodeName].geometry}
-              material={materialName ? infectedMaterials[materialName] : nodes[nodeName].material}
-              position={nodes[nodeName].position}
-              rotation={nodes[nodeName].rotation}
-              scale={nodes[nodeName].scale}
-            />
-          )
-        }
-        return null
-      })}
+      <Stars radius={100} depth={50} count={5000} factor={4} />
+      <Sparkles count={30} scale={5} size={2} speed={0.4} />
 
-      {/* Añadimos elementos adicionales para mostrar la infección */}
-      <group position={[0, 0, 0]}>
-        {/* Pequeñas esferas para representar infección/inflamación */}
-        {[...Array(8)].map((_, i) => {
-          const x = (Math.random() - 0.5) * 1.5
-          const y = (Math.random() - 0.5) * 1.5
-          const z = (Math.random() - 0.5) * 1.5
-          const size = 0.1 + Math.random() * 0.15
+      <OrbitControls />
 
-          return (
-            <mesh key={i} position={[x, y, z]} castShadow>
-              <sphereGeometry args={[size, 16, 16]} />
-              <meshStandardMaterial color="#C39BD3" roughness={0.5} metalness={0.1} transparent={true} opacity={0.8} />
-            </mesh>
-          )
+      <Float floatIntensity={1.2} speed={2}>
+        {Object.keys(nodes).map((nodeName) => {
+          if (nodes[nodeName].type === "Mesh" || (nodes[nodeName].isObject3D && nodes[nodeName].children.length === 0)) {
+            const materialName = nodes[nodeName].material ? nodes[nodeName].material.name : null;
+            return (
+              <mesh
+                key={nodeName}
+                castShadow
+                receiveShadow
+                geometry={nodes[nodeName].geometry}
+                material={materialName ? infectedMaterials[materialName] : nodes[nodeName].material}
+                position={nodes[nodeName].position}
+                rotation={nodes[nodeName].rotation}
+                scale={nodes[nodeName].scale}
+              />
+            );
+          }
+          return null;
         })}
-      </group>
+      </Float>
+
+      <Html position={[0, -2, 100]} transform>
+        <button
+          style={{
+            padding: "10px 20px",
+            background: "#9B59B6",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer"
+          }}
+        >
+          Información
+        </button>
+      </Html>
+
+      <Text position={[0, 3.5, 100]} fontSize={0.5} color="white">
+        Pulmón Infectado
+      </Text>
     </group>
-  )
+  );
 }
 
-// Intentamos precargar el modelo
-try {
-  useGLTF.preload("/models-3d/pneumonia/infected-lung.glb")
-} catch (error) {
-  console.error("Error precargando el modelo de pulmón infectado:", error)
-}
+useGLTF.preload("/models-3d/pneumonia/infected-lung.glb");
