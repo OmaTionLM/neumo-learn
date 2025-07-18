@@ -161,10 +161,36 @@ export const emboliaData = {
     treatment: null,
     prevention: null,
   },
-  // texts3D: {
-  //   hero: { title: "A", id: "asma-title-3d" },
-  //   causes: { title: "B", id: "asma-title-3d" },
-  //   treatment: { title: "C", id: "asma-title-3d" },
-  //   prevention: { title: "D", id: "asma-title-3d" },
-  // },
+  texts3D: {
+    hero: { title: "Vaso sanguíneo", id: "embolia-title-3d" },
+    causes: { title: "Persona", id: "embolia-title-3d" },
+    treatment: { title: "Tratamiento", id: "embolia-title-3d" },
+    prevention: { title: "Prevención", id: "embolia-title-3d" },
+  },
+  InfoButtonModal: {
+    hero: {
+      buttonId: "button-vascular-embolia",
+      buttonLabel: "Saber más💡",
+      modalTitle: "¿Qué es una embolia pulmonar?",
+      modalText: "Una embolia pulmonar ocurre cuando un coágulo de sangre bloquea una arteria en los pulmones, lo que puede ser mortal si no se trata rápidamente.",
+    },
+    causes: {
+      buttonId: "button-persona-embolia",
+      buttonLabel: "Factores de riesgo",
+      modalTitle: "¿Qué puede causar una embolia?",
+      modalText: "Los principales factores de riesgo incluyen trombosis venosa profunda, inmovilización prolongada, cirugías mayores, traumatismos, cáncer y factores hormonales.",
+    },
+    treatment: {
+      buttonId: "button-treatment-embolia",
+      buttonLabel: "Tratamiento",
+      modalTitle: "¿Cómo se trata?",
+      modalText: "El tratamiento incluye anticoagulantes, terapia trombolítica y procedimientos invasivos en casos graves.",
+    },
+    prevention: {
+      buttonId: "button-prevention-embolia",
+      buttonLabel: "Prevención",
+      modalTitle: "¿Cómo prevenir?",
+      modalText: "La prevención se basa en movilización temprana, profilaxis farmacológica, medidas mecánicas y control de factores de riesgo.",
+    },
+  },
 }
