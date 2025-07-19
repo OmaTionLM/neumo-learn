@@ -3,6 +3,8 @@ import VistaDetalle from "../pages/diseases/embolia/models-3d/seccion-1/ModeloSe
 import VistaSintomas from "../pages/diseases/embolia/models-3d/seccion-2/ModeloSeccion2"
 import ModeloOBJ from "../pages/diseases/embolia/models-3d/personaEmbolia/PersonaEmbolia"
 import FondoHospital from "../pages/diseases/embolia/models-3d/seccion-1/FondoHospital"
+import ModeloTratamiento from "../pages/diseases/embolia/models-3d/seccion-3/ModeloTratamiento";
+import EnvironmentHospital from "../pages/diseases/embolia/models-3d/seccion-3/HeroLights";
 
   export const emboliaData = {
     title: "EMBOLIA PULMONAR",
@@ -152,13 +154,13 @@ import FondoHospital from "../pages/diseases/embolia/models-3d/seccion-1/FondoHo
   models: {
     hero: ModeloMesh,
     causes: ModeloOBJ,
-    treatment: ModeloOBJ,
+    treatment: ModeloTratamiento,
     prevention: ModeloOBJ,
   },
   Environment3D: {
     hero: null,
     causes: null,
-    treatment: null,
+    treatment: EnvironmentHospital,
     prevention: null,
   },
   texts3D: {
