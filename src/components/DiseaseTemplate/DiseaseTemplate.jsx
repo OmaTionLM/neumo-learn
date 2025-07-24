@@ -161,14 +161,14 @@ const DiseaseTemplate = ({
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.causes && (
                    <Text3D 
-              position={title3DPositions.hero} 
+              position={title3DPositions.causes} 
               font="/fonts/Sixty_Regular.json"
               scale = {[0.2, 0.2, 0.1]}
               >
               <meshStandardMaterial 
               color={"rgb(139, 6, 143)"} />
               
-                {texts3D.hero.title}
+                {texts3D.causes.title}
               </Text3D>
 
                   )}
@@ -219,14 +219,14 @@ const DiseaseTemplate = ({
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.treatment && (
                    <Text3D 
-              position={title3DPositions.hero} 
+              position={title3DPositions.treatment} 
               font="/fonts/Sixty_Regular.json"
               scale = {[0.2, 0.2, 0.1]}
               >
               <meshStandardMaterial 
               color={"rgb(139, 6, 143)"} />
               
-                {texts3D.hero.title}
+                {texts3D.treatment.title}
               </Text3D>
 
                   )}
@@ -321,14 +321,14 @@ const DiseaseTemplate = ({
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.prevention && (
                    <Text3D 
-              position={title3DPositions.hero} 
+              position={title3DPositions.prevention} 
               font="/fonts/Sixty_Regular.json"
               scale = {[0.2, 0.2, 0.1]}
               >
               <meshStandardMaterial 
               color={"rgb(139, 6, 143)"} />
               
-                {texts3D.hero.title}
+                {texts3D.prevention.title}
               </Text3D>
 
                   )}
