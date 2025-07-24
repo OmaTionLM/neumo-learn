@@ -1,6 +1,6 @@
 import "./DiseaseTemplate.css"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
+import { OrbitControls, Text3D } from "@react-three/drei"
 import { Suspense, useState } from "react"
 import Title from "../../pages/diseases/asthma/texts/Text_asthma_3d"
 import EnvironmentDefault from "../Environment/Environment"
@@ -8,6 +8,7 @@ import Button3D from "../../pages/diseases/asthma/modal/Button3D"
 import Lights from "../../pages/diseases/asthma/Lights/Lights"
 import Floor from "../../pages/diseases/asthma/Lights/Floor"
 import InfoModal from "../../pages/diseases/asthma/modal/InfoModal"
+
 
 // Componente de respaldo mientras se carga el modelo
 const LoadingFallback = () => (
@@ -81,11 +82,17 @@ const DiseaseTemplate = ({
               {Sombras?.hero && <Floor x={30} y={30} position={[0, SombraUp.hero, 0]} color={"white"} />}
               <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
               {texts3D && texts3D.hero && (
-                <Title
-                  title={texts3D.hero.title}
-                  id={texts3D.hero.id}
-                  position={title3DPositions.hero}
-                />
+              <Text3D 
+              position={title3DPositions.hero} 
+              font="/fonts/Sixty_Regular.json"
+              scale = {[0.2, 0.2, 0.1]}
+              >
+              <meshStandardMaterial 
+              color={"rgb(139, 6, 143)"} />
+
+                {texts3D.hero.title}
+              </Text3D>
+
               )}
               {Environment3D && Environment3D.hero
                 ? <Environment3D.hero />
@@ -153,11 +160,17 @@ const DiseaseTemplate = ({
                   {Sombras?.causes && <Floor x={30} y={30} position={[0, SombraUp.causes, 0]} color={"white"} />}
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.causes && (
-                    <Title
-                      title={texts3D.causes.title}
-                      id={texts3D.causes.id}
-                      position={title3DPositions.causes}
-                    />
+                   <Text3D 
+              position={title3DPositions.hero} 
+              font="/fonts/Sixty_Regular.json"
+              scale = {[0.2, 0.2, 0.1]}
+              >
+              <meshStandardMaterial 
+              color={"rgb(139, 6, 143)"} />
+              
+                {texts3D.hero.title}
+              </Text3D>
+
                   )}
                   {Environment3D && Environment3D.causes
                     ? <Environment3D.causes />
@@ -205,11 +218,17 @@ const DiseaseTemplate = ({
                   {Sombras?.treatment && <Floor x={30} y={30} position={[0, SombraUp.treatment, 0]} color={"white"} />}
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.treatment && (
-                    <Title
-                      title={texts3D.treatment.title}
-                      id={texts3D.treatment.id}
-                      position={title3DPositions.treatment}
-                    />
+                   <Text3D 
+              position={title3DPositions.hero} 
+              font="/fonts/Sixty_Regular.json"
+              scale = {[0.2, 0.2, 0.1]}
+              >
+              <meshStandardMaterial 
+              color={"rgb(139, 6, 143)"} />
+              
+                {texts3D.hero.title}
+              </Text3D>
+
                   )}
                   {Environment3D && Environment3D.treatment
                     ? <Environment3D.treatment />
@@ -301,11 +320,17 @@ const DiseaseTemplate = ({
                   {Sombras?.prevention && <Floor x={30} y={30} position={[0, SombraUp.prevention, 0]} color={"white"} />}
                   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
                   {texts3D && texts3D.prevention && (
-                    <Title
-                      title={texts3D.prevention.title}
-                      id={texts3D.prevention.id}
-                      position={title3DPositions.prevention}
-                    />
+                   <Text3D 
+              position={title3DPositions.hero} 
+              font="/fonts/Sixty_Regular.json"
+              scale = {[0.2, 0.2, 0.1]}
+              >
+              <meshStandardMaterial 
+              color={"rgb(139, 6, 143)"} />
+              
+                {texts3D.hero.title}
+              </Text3D>
+
                   )}
                   {Environment3D && Environment3D.prevention
                     ? <Environment3D.prevention />
