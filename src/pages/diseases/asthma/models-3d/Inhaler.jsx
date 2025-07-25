@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, PositionalAudio} from "@react-three/drei";
 
-export function Inhaler({
-  scale,
-  position,
-  rotation,
-  ...props
-}) {
+export function Inhaler({ scale, position, rotation, ...props }) {
+  const audioRef = useRef();
   const group = useRef();
   const { nodes, materials } = useGLTF("/models-3d/asthma/inhaler.glb");
   const [hovered, setHovered] = useState(false);
@@ -26,10 +22,13 @@ export function Inhaler({
     }
   });
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setIsBreathing(false);
     if (props.onClick) props.onClick();
-  };
+    audioRef.current?.play();
+    audioRef.current.setVolume(10);
+    audioRef.current.setLoop(true);
+  }, [props]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -61,6 +60,16 @@ export function Inhaler({
         document.body.style.cursor = "default";
       }}
     >
+      <group>
+        <PositionalAudio
+          ref={audioRef}
+          loop
+          url="/sounds/inhaler.mp3"
+          distance={1}
+          autoplay
+        />
+      </group>
+
       {hovered && (
         <Html position={[0, 0, 0]} center>
           <div
