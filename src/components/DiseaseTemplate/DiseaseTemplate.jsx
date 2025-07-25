@@ -1,6 +1,6 @@
 import "./DiseaseTemplate.css"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Text3D } from "@react-three/drei"
+import { OrbitControls, PositionalAudio, Text3D } from "@react-three/drei"
 import { Suspense, useState } from "react"
 import Title from "../../pages/diseases/asthma/texts/Text_asthma_3d"
 import EnvironmentDefault from "../Environment/Environment"
@@ -223,6 +223,7 @@ const DiseaseTemplate = ({
               font="/fonts/Sixty_Regular.json"
               scale = {[0.2, 0.2, 0.1]}
               >
+                
               <meshStandardMaterial 
               color={"rgb(139, 6, 143)"} />
               
