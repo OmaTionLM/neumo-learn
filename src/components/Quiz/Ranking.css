@@ -1,0 +1,285 @@
+/* Ranking Container - Removemos restricciones de altura */
+.ranking-container {
+  width: 100%;
+  min-height: 100vh; /* Cambiado de height fijo a min-height */
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Añadido para mejor control */
+}
+
+/* Ranking Header */
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0; /* No se encoge */
+}
+
+.ranking-header-title {
+  color: white;
+  margin: 0;
+  font-size: 2.2em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ranking-back-btn {
+  padding: 12px 25px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  backdrop-filter: blur(10px);
+}
+
+.ranking-back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D Leaderboard Section - Altura fija pero flexible */
+.ranking-3d-section {
+  height: 50vh; /* Reducido para dar más espacio al ranking */
+  width: 100%;
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* Ranking List Section - Aquí está el cambio clave */
+.ranking-list-section {
+  flex: 1; /* Toma todo el espacio disponible */
+  min-height: 0; /* Permite que se encoja si es necesario */
+  padding: 20px 30px;
+  padding-bottom: 120px; /* Espacio generoso para el footer */
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-list-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1; /* Toma todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-list-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* Ranking Table - Permitir scroll si es necesario */
+.ranking-table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  overflow-y: auto; /* Scroll si el contenido es muy largo */
+  padding-right: 10px; /* Espacio para la scrollbar */
+}
+
+/* Scrollbar personalizada */
+.ranking-table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ranking-table::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.ranking-table::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.ranking-table::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ranking-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border-left: 5px solid transparent;
+  flex-shrink: 0; /* Cada fila mantiene su tamaño */
+}
+
+.ranking-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ranking Positions */
+.ranking-row-1 {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  font-weight: bold;
+  border-left-color: #ffd700;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.ranking-row-2 {
+  background: linear-gradient(45deg, #c0c0c0, #e8e8e8);
+  font-weight: bold;
+  border-left-color: #c0c0c0;
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.3);
+}
+
+.ranking-row-3 {
+  background: linear-gradient(45deg, #cd7f32, #deb887);
+  font-weight: bold;
+  border-left-color: #cd7f32;
+  box-shadow: 0 6px 20px rgba(205, 127, 50, 0.3);
+}
+
+/* Ranking Row Elements */
+.ranking-position {
+  font-size: 22px;
+  font-weight: bold;
+  min-width: 60px;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-player-name {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.ranking-score {
+  font-weight: bold;
+  color: #4ecdc4;
+  min-width: 80px;
+  font-size: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-medal {
+  font-size: 24px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.ranking-date {
+  font-size: 14px;
+  color: #666;
+  min-width: 120px;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Loading and Error States */
+.ranking-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+.ranking-loading h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.ranking-empty {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 1.2em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ranking-header {
+    padding: 20px 15px;
+  }
+
+  .ranking-header-title {
+    font-size: 1.8em;
+  }
+
+  .ranking-3d-section {
+    height: 40vh; /* Más pequeño en móvil */
+  }
+
+  .ranking-list-section {
+    padding: 15px;
+    padding-bottom: 140px; /* Más espacio en móvil */
+  }
+
+  .ranking-list-container {
+    padding: 20px;
+  }
+
+  .ranking-list-title {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  .ranking-row {
+    padding: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ranking-player-name {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .ranking-score {
+    font-size: 18px;
+  }
+
+  .ranking-position {
+    font-size: 20px;
+    min-width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ranking-list-section {
+    padding-bottom: 160px; /* Aún más espacio en pantallas pequeñas */
+  }
+
+  .ranking-header-title {
+    font-size: 1.5em;
+  }
+
+  .ranking-back-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
