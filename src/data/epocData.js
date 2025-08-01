@@ -1,6 +1,8 @@
 import { LungSickModel } from "../pages/diseases/epoc/models/ModeloPulmon";
 import { AlveolusModel } from "../pages/diseases/epoc/models/ModeloAlveolus";
 import { BronchiModel } from "../pages/diseases/epoc/models/ModeloBronquios";
+import { PillBottle } from "../pages/diseases/pneumonia/models-3d/PillBottle";
+
 
 export const epoceData = {
   title: "EPOC",
@@ -151,7 +153,7 @@ export const epoceData = {
     hero: LungSickModel,
     causes: AlveolusModel,
     treatment: BronchiModel,
-    prevention: null,
+    prevention: PillBottle,
   },
   Environment3D: {
     hero: null,
