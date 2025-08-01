@@ -7,16 +7,17 @@ import {
   Stars,
   Sparkles,
   OrbitControls,
-  Text
+  Text,
+  Text3D
 } from "@react-three/drei"
-import { useThree, useFrame } from "@react-three/fiber"
+import { useThree, useFrame, useLoader } from "@react-three/fiber"
 import { KeyboardControls } from "@react-three/drei"
 import * as THREE from "three"
 
 export function HealthyLung(props) {
   const group = useRef()
   const cameraRef = useRef()
-  const { scene } = useThree()
+  const { scene, camera } = useThree()
 
   const [lungModel, setLungModel] = useState(null)
   const [errorLoading, setErrorLoading] = useState(false)
@@ -27,10 +28,15 @@ export function HealthyLung(props) {
   const [colorIndex, setColorIndex] = useState(0)
   const [eventLog, setEventLog] = useState([])
   const [confetti, setConfetti] = useState([])
+  const [sound, setSound] = useState(null)
 
   const pulseRef = useRef(0)
+  const listener = useRef()
 
   const colorList = ["#E74C3C", "#F39C12", "#8E44AD", "#1ABC9C", "#2ECC71"]
+
+  // 🔊 Cargar sonido
+  const audioBuffer = useLoader(THREE.AudioLoader, "/sounds/breathing.mp3")
 
   useEffect(() => {
     try {
@@ -63,6 +69,27 @@ export function HealthyLung(props) {
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [colorIndex])
+
+  // 🔊 Inicializar audio posicional
+  useEffect(() => {
+    listener.current = new THREE.AudioListener()
+    camera.add(listener.current)
+
+    const positionalAudio = new THREE.PositionalAudio(listener.current)
+    positionalAudio.setBuffer(audioBuffer)
+    positionalAudio.setRefDistance(1)
+    positionalAudio.setLoop(true)
+    positionalAudio.setVolume(0.5)
+    positionalAudio.play()
+
+    setSound(positionalAudio)
+
+    return () => {
+      if (listener.current) {
+        camera.remove(listener.current)
+      }
+    }
+  }, [audioBuffer, camera])
 
   useFrame(() => {
     if (clicked && group.current) {
@@ -131,10 +158,8 @@ export function HealthyLung(props) {
       <group ref={group} {...props} dispose={null}>
         <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 15]} fov={40} />
 
-        {/* HDRI */}
         <Environment files="/scenes-pneumonia/hdr/childrens_hospital.hdr" background />
 
-        {/* Iluminación */}
         <ambientLight intensity={0.25} />
         <directionalLight
           castShadow
@@ -159,13 +184,11 @@ export function HealthyLung(props) {
           shadow-mapSize-height={1024}
         />
 
-        {/* Plano receptor */}
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.5, 0]} receiveShadow>
           <planeGeometry args={[12, 12]} />
           <meshStandardMaterial color="#eeeeee" />
         </mesh>
 
-        {/* Modelo */}
         {Object.keys(nodes).map((key) => {
           const node = nodes[key]
           if (!node.geometry) return null
@@ -191,7 +214,8 @@ export function HealthyLung(props) {
           )
         })}
 
-        {/* Confeti */}
+        {sound && <primitive object={sound} position={[0, 0, 0]} />}
+
         {confetti.map((ball) => (
           <mesh key={ball.id} position={ball.position} castShadow>
             <sphereGeometry args={[0.05, 16, 16]} />
@@ -199,7 +223,6 @@ export function HealthyLung(props) {
           </mesh>
         ))}
 
-        {/* Botón HTML */}
         <Html position={[0, -2, 0]} transform>
           <button
             style={{
@@ -216,12 +239,18 @@ export function HealthyLung(props) {
           </button>
         </Html>
 
-        {/* Texto 3D */}
-        <Text position={[0, 3.5, 0]} fontSize={0.5} color="white">
-          {message}
-        </Text>
+        <Text3D
+          font="/fonts/Roboto_Regular.typeface.json"
+          position={[-2, 3.5, 0]}
+          size={0.5}
+          height={0.1}
+          bevelEnabled
+          bevelSize={0.01}
+          bevelThickness={0.01}
+        >
+          Pulmon Sano
+        </Text3D>
 
-        {/* Historial */}
         {eventLog.map((line, i) => (
           <Text
             key={`log-${i}`}

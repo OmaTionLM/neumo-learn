@@ -1,10 +1,9 @@
-footer{
-    background-color: var(--color-primary);
-    text-align: center;
-
+footer {
+  background-color: var(--color-primary);
+  text-align: center;
 }
 
-.footer-logo{
-    height: 4.2rem;
-    padding: 0.2rem;
+.footer-logo {
+  height: 4.2rem;
+  padding: 0.2rem;
 }
