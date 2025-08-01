@@ -37,7 +37,6 @@ const DiseaseTemplate = ({
   };
 
   return (
-    console.log(Luz),
     <div className="dst-disease-container">
       {/* Sección 1: ¿Qué es la enfermedad? */}
       <section className="dst-hero-section">

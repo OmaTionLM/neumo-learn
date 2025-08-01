@@ -4,7 +4,6 @@ import { db } from "../../firebase.config"
 export const saveQuizResult = async (quizResult) => {
   try {
     const docRef = await addDoc(collection(db, "quiz_results"), quizResult)
-    console.log("Quiz result saved with ID: ", docRef.id)
     return docRef.id
   } catch (error) {
     console.error("Error saving quiz result: ", error)
