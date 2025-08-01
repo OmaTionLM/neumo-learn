@@ -2,13 +2,14 @@ import { useRef, useEffect, useState } from "react";
 import {
   useGLTF,
   PerspectiveCamera,
-  Html,
   Environment,
+  Html,
+  OrbitControls,
+  Text3D,
+  Float,
   Stars,
   Sparkles,
-  OrbitControls,
-  Text,
-  Float
+  Shadow,
 } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -20,6 +21,7 @@ export function InfectedLung(props) {
 
   const [lungModel, setLungModel] = useState(null);
   const [errorLoading, setErrorLoading] = useState(false);
+  const [colorMode, setColorMode] = useState(false);
 
   useEffect(() => {
     try {
@@ -35,6 +37,34 @@ export function InfectedLung(props) {
     scene.background = null;
   }, [scene]);
 
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "t") {
+        setColorMode((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, []);
+
+  useEffect(() => {
+    if (!lungModel) return;
+    lungModel.scene.traverse((child) => {
+      if (child.isMesh && child.material) {
+        if (!child.userData.originalColor) {
+          child.userData.originalColor = child.material.color.clone();
+        }
+        child.material.color = colorMode
+          ? new THREE.Color(0.7, 0.3, 0.2)
+          : child.userData.originalColor.clone();
+        child.material.needsUpdate = true;
+
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  }, [colorMode, lungModel]);
+
   useFrame(() => {
     if (group.current) {
       group.current.rotation.y += 0.0025;
@@ -45,104 +75,78 @@ export function InfectedLung(props) {
     return (
       <group ref={group} {...props}>
         <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 0, 6]} fov={40} />
-        <Text position={[0, 0, 0]} fontSize={1} color="red">Error cargando modelo</Text>
+        <Text3D
+          font="/fonts/Roboto_Regular.typeface.json"
+          size={0.6}
+          height={0.1}
+          position={[0, 0, 0]}
+        >
+          Error cargando modelo
+        </Text3D>
       </group>
     );
   }
 
   if (!lungModel) return null;
 
-  const { nodes, materials } = lungModel;
-  const infectedMaterials = {};
-
-  Object.keys(materials).forEach((matName) => {
-    infectedMaterials[matName] = materials[matName].clone();
-    if (infectedMaterials[matName].color) {
-      const originalColor = infectedMaterials[matName].color.clone();
-      infectedMaterials[matName].color = new THREE.Color(
-        originalColor.r * 0.7 + 0.3 * 0.5,
-        originalColor.g * 0.5,
-        originalColor.b * 0.7 + 0.3 * 0.8
-      );
-      if (infectedMaterials[matName].roughness !== undefined) {
-        infectedMaterials[matName].roughness += 0.2;
-      }
-    }
-  });
-
   return (
     <group ref={group} {...props} dispose={null}>
-      <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 500]} fov={40} />
+      <PerspectiveCamera makeDefault ref={cameraRef} position={[0, 5, 60]} fov={40} />
       <Environment files="/scenes-pneumonia/hdr/vaccine.hdr" background />
 
-      <ambientLight intensity={0.25} />
+      <ambientLight intensity={0.7} />
       <directionalLight
         castShadow
-        position={[4, 10, 500]}
-        intensity={2.5}
-        shadow-mapSize-width={4096}
-        shadow-mapSize-height={4096}
-        shadow-bias={-0.0005}
-        shadow-camera-near={1}
-        shadow-camera-far={30}
-        shadow-camera-left={-5}
-        shadow-camera-right={5}
-        shadow-camera-top={5}
-        shadow-camera-bottom={-5}
-      />
-      <pointLight
-        position={[-3, 5, -3]}
-        intensity={0.6}
-        color="#ffffff"
-        castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
+        position={[6, 12, 6]}
+        intensity={5.5}
+        shadow-mapSize-width={16384}
+        shadow-mapSize-height={16384}
+        shadow-bias={-0.0003}
       />
 
-      <Stars radius={100} depth={50} count={5000} factor={4} />
-      <Sparkles count={30} scale={5} size={2} speed={0.4} />
-
+      <Stars radius={80} depth={40} count={3000} factor={4} />
+      <Sparkles count={20} scale={4} size={1.5} speed={0.5} />
       <OrbitControls />
 
-      <Float floatIntensity={1.2} speed={2}>
-        {Object.keys(nodes).map((nodeName) => {
-          if (nodes[nodeName].type === "Mesh" || (nodes[nodeName].isObject3D && nodes[nodeName].children.length === 0)) {
-            const materialName = nodes[nodeName].material ? nodes[nodeName].material.name : null;
-            return (
-              <mesh
-                key={nodeName}
-                castShadow
-                receiveShadow
-                geometry={nodes[nodeName].geometry}
-                material={materialName ? infectedMaterials[materialName] : nodes[nodeName].material}
-                position={nodes[nodeName].position}
-                rotation={nodes[nodeName].rotation}
-                scale={nodes[nodeName].scale}
-              />
-            );
-          }
-          return null;
-        })}
+      <Float floatIntensity={1.2} speed={1.5}>
+        <group castShadow receiveShadow scale={[0.1, 0.1, 0.1]} position={[0, 0, 0]}>
+          <primitive object={lungModel.scene} />
+        </group>
       </Float>
 
-      <Html position={[0, -2, 100]} transform>
-        <button
-          style={{
-            padding: "10px 20px",
-            background: "#9B59B6",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}
-        >
-          Información
-        </button>
-      </Html>
+      <Text3D
+        font="/fonts/Roboto_Regular.typeface.json"
+        size={2}
+        height={0.15}
+        bevelEnabled
+        bevelSize={0.01}
+        bevelThickness={0.02}
+        position={[-13, 15, 0]}
+      >
+        Pulmon Infectado
+      </Text3D>
 
-      <Text position={[0, 3.5, 100]} fontSize={0.5} color="white">
-        Pulmón Infectado
-      </Text>
+      <Html position={[-4, -12, 0]} scale={[4, 4, 4]} transform>
+        <div style={{ textAlign: "center" }}>
+          <p style={{ color: "white", fontSize: "14px", marginBottom: "8px" }}>
+            Pulsa <strong>T</strong> para cambiar el color del modelo
+          </p>
+          <button
+            style={{
+              padding: "8px 16px",
+              background: "#2C3E50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              boxShadow: "0 4px 8px rgba(0,0,0,0.4)",
+            }}
+            onClick={() => setColorMode((prev) => !prev)}
+          >
+            Cambiar estilo 🧬
+          </button>
+        </div>
+      </Html>
     </group>
   );
 }
