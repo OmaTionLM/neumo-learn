@@ -1,10 +1,8 @@
-import ModeloVascular, { ModeloMesh } from "../pages/diseases/embolia/models-3d/vascular/ModeloVascular"
-import VistaDetalle from "../pages/diseases/embolia/models-3d/seccion-1/ModeloSeccion1"
-import VistaSintomas from "../pages/diseases/embolia/models-3d/seccion-2/ModeloSeccion2"
-import ModeloOBJ from "../pages/diseases/embolia/models-3d/personaEmbolia/PersonaEmbolia"
-import FondoHospital from "../pages/diseases/embolia/models-3d/seccion-1/FondoHospital"
-import ModeloTratamiento from "../pages/diseases/embolia/models-3d/seccion-3/ModeloTratamiento";
-import EnvironmentHospital from "../pages/diseases/embolia/models-3d/seccion-3/HeroLights";
+import VistaDetalleModel from "../pages/diseases/embolia/models-3d/seccion-1/VistaDetalleModel";
+import VistaSintomasSimple from "../pages/diseases/embolia/models-3d/seccion-2/VistaSintomasSimple";
+import VistaPrevencionModel from "../pages/diseases/embolia/models-3d/seccion-4/VistaSeccion4";
+import EnvironmentHero from "../pages/diseases/embolia/models-3d/seccion-1/EnvironmentHero";
+import EnvironmentCauses from "../pages/diseases/embolia/models-3d/seccion-2/EnvironmentCauses";
 
   export const emboliaData = {
     title: "EMBOLIA PULMONAR",
@@ -152,15 +150,15 @@ import EnvironmentHospital from "../pages/diseases/embolia/models-3d/seccion-3/H
       ],
     },
   models: {
-    hero: ModeloMesh,
-    causes: ModeloOBJ,
-    treatment: ModeloTratamiento,
-    prevention: ModeloOBJ,
+    hero: VistaDetalleModel,
+    causes: VistaSintomasSimple,
+    treatment: null,
+    prevention: VistaPrevencionModel,
   },
   Environment3D: {
-    hero: null,
-    causes: null,
-    treatment: EnvironmentHospital,
+    hero: EnvironmentHero,
+    causes: EnvironmentCauses,
+    treatment: null,
     prevention: null,
   },
   texts3D: {
@@ -169,6 +167,29 @@ import EnvironmentHospital from "../pages/diseases/embolia/models-3d/seccion-3/H
     treatment: { title: "Tratamiento", id: "embolia-title-3d" },
     prevention: { title: "Prevención", id: "embolia-title-3d" },
   },
+  texts2D: {
+      hero: {
+        title: "Vaso sanguíneo",
+        subtitle: "Visualización del sistema vascular afectado",
+        id: "embolia-title-2d",
+      },
+      causes: {
+        title: "Persona",
+        subtitle: "Causas de la embolia pulmonar",
+        id: "embolia-causes-2d",
+      },
+      treatment: {
+        title: "Tratamiento",
+        subtitle: "Intervenciones médicas",
+        id: "embolia-treatment-2d",
+      },
+      prevention: {
+        title: "Prevención",
+        subtitle: "Cómo evitar una embolia pulmonar",
+        id: "embolia-prevention-2d",
+      },
+    },
+
   InfoButtonModal: {
     hero: {
       buttonLabel: "Saber más💡",
